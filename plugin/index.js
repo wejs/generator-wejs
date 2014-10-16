@@ -42,7 +42,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.dest.mkdir('api/services');
 
       this.template('Controller.js', 'api/controllers/' + this.capitalizedName + 'Controller.js');
-      this.template('Model.js', 'api/models/' + this.capitalizedName + 'Model.js');
+      this.template('Model.js', 'api/models/' + this.capitalizedName + '.js');
 
       this.dest.mkdir('config');
       this.copy('gitkeep', 'config/.gitkeep');
