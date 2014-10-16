@@ -1,0 +1,39 @@
+{
+  "name": "we-plugin-<%= _.slugify(appname) %>",
+  "description": "We.js plugin <%= _.slugify(appname) %>",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "istanbul": "^0.2.7",
+    "jshint": "^2.5.0",
+    "jscs": "^1.4.5"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint .",
+    "checkStyle": "./node_modules/.bin/jscs .",
+    "pretest": "npm run-script lint && npm run-script checkStyle",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test",
+    "posttest": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage",
+    "prepublish": "npm prune"
+  },
+  "files": [
+    "app",
+    "config",
+    "lib"
+  ],
+  "keywords": [
+    "we.js",
+    "wejs",
+    "plugin",
+    "sails.js"
+  ]
+}
