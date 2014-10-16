@@ -21,7 +21,7 @@ describe('wejs:plugin', function () {
       'lib/init.js',
       'lib/modelsAlter.js',
       'api/controllers/Temp testController.js',
-      'api/models/Temp testModel.js',
+      'api/models/Temp test.js',
       '.editorconfig',
       '.jshintrc',
       '.gitignore',
