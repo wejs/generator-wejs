@@ -1,5 +1,5 @@
 {
-  "name": "we-plugin-<%= _.slugify(appname) %>",
+  "name": "<%= _.slugify(appname) %>",
   "description": "We.js plugin <%= _.slugify(appname) %>",
   "version": "0.0.0",
   "license": "MIT",
