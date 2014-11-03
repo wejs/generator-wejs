@@ -27,7 +27,7 @@
     "prepublish": "npm prune"
   },
   "files": [
-    "app",
+    "api",
     "config",
     "lib"
   ],
