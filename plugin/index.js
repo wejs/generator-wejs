@@ -28,7 +28,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.name = props.name;
-      this.capitalizedName = _s.classify(props.name);
+      this.capitalizedName = _s.classify(props.name.replace(/\s/g, '-'));
 
       done();
     }.bind(this));
