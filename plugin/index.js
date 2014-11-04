@@ -1,6 +1,7 @@
 'use strict';
 var util = require('util');
 var path = require('path');
+var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
@@ -27,7 +28,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.name = props.name;
-      this.capitalizedName = capitaliseFirstLetter(props.name);
+      this.capitalizedName = _s.classify(props.name);
 
       done();
     }.bind(this));
@@ -43,6 +44,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
       this.template('Controller.js', 'api/controllers/' + this.capitalizedName + 'Controller.js');
       this.template('Model.js', 'api/models/' + this.capitalizedName + '.js');
+      this.template('README.md', 'README.md');
 
       this.dest.mkdir('config');
       this.copy('gitkeep', 'config/.gitkeep');
@@ -66,14 +68,10 @@ var WejsGenerator = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    if(this.name !== 'temp test') {
+    if (this.name !== 'temp test') {
       this.npmInstall();
     }
   }
 });
-
-function capitaliseFirstLetter (string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 module.exports = WejsGenerator;
