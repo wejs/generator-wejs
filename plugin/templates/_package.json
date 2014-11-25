@@ -26,11 +26,6 @@
     "posttest": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage",
     "prepublish": "npm prune"
   },
-  "files": [
-    "api",
-    "config",
-    "lib"
-  ],
   "keywords": [
     "we.js",
     "wejs",
