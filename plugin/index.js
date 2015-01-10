@@ -37,23 +37,34 @@ var WejsGenerator = yeoman.generators.Base.extend({
   writing: {
     app: function () {
 
-      this.dest.mkdir('api');
-      this.dest.mkdir('api/controllers');
-      this.dest.mkdir('api/models');
-      this.dest.mkdir('api/services');
+      this.dest.mkdir('server');
+      this.dest.mkdir('server/controllers');
+      this.dest.mkdir('server/models');
+      this.dest.mkdir('server/services');
 
-      this.template('Controller.js', 'api/controllers/' + this.capitalizedName + 'Controller.js');
-      this.template('Model.js', 'api/models/' + this.capitalizedName + '.js');
+      this.template('Controller.js', 'server/controllers/' + this.capitalizedName + 'Controller.js');
+      this.template('Model.js', 'server/models/' + this.capitalizedName + '.js');
       this.template('README.md', 'README.md');
 
       this.dest.mkdir('config');
       this.copy('gitkeep', 'config/.gitkeep');
 
       this.dest.mkdir('lib');
+      this.src.copy('lib/README.md', 'lib/README.md');
       this.src.copy('lib/index.js', 'lib/index.js');
-      this.src.copy('lib/init.js', 'lib/init.js');
+      this.src.copy('lib/hook.js', 'lib/hook.js');
       this.src.copy('lib/modelsAlter.js', 'lib/modelsAlter.js');
 
+      // - CLIENT side app
+
+      this.dest.mkdir('client');
+      this.dest.mkdir('client/app');
+      this.dest.mkdir('server/appAdmin');
+      this.dest.mkdir('server/assets');
+
+      this.src.copy('client/assets/README.md', 'client/assets/README.md');
+
+      // - package.json file
       this.template('_package.json', 'package.json');
     },
 

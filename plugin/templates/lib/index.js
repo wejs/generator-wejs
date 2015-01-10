@@ -1,8 +1,4 @@
-
-var plugin = {};
-
-// load init function
-plugin.init = require('./init.js');
+var plugin = require('./hook.js');
 // load modelsAlter function
 plugin.modelsAlter = require('./modelsAlter.js');
 
