@@ -59,8 +59,8 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
       this.dest.mkdir('client');
       this.dest.mkdir('client/app');
-      this.dest.mkdir('server/appAdmin');
-      this.dest.mkdir('server/assets');
+      this.dest.mkdir('client/appAdmin');
+      this.dest.mkdir('client/assets');
 
       this.src.copy('client/assets/README.md', 'client/assets/README.md');
 
