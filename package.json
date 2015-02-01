@@ -1,14 +1,14 @@
 {
   "name": "generator-wejs",
-  "version": "0.2.0",
-  "description": "Yeoman generator",
+  "version": "0.2.1",
+  "description": "We.js Yeoman generator for generate plugins, themes and blogs",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "wejs/generator-wejs",
   "author": {
-    "name": "we.js",
-    "email": "alberto.souza.dev@gmail.com",
-    "url": "https://github.com/wejs"
+    "name": "Alberto Souza",
+    "email": "alberto.souza.99@gmail.com",
+    "url": "https://github.com/albertosouza"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -16,10 +16,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "app",
-    "plugin"
-  ],
   "keywords": [
     "yeoman-generator"
   ],
