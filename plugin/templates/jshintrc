@@ -5,7 +5,7 @@
 , "curly": false
 , "devel": false
 , "devel": true
-, "eqeqeq": true
+, "eqeqeq": false
 , "eqnull": true
 , "es5": false
 , "evil": false
@@ -15,7 +15,7 @@
 , "latedef": false
 , "laxbreak": true
 , "laxcomma": true
-, "maxcomplexity": 6
+, "maxcomplexity": 9
 , "maxdepth": 4
 , "maxstatements": 25
 , "maxlen": 120
@@ -32,6 +32,10 @@
   , "beforeEach"
   , "after"
   , "afterEach"
+  , "App"
+  , "Ember"
+  , "DS"
+  , "we"
   ]
 , "smarttabs": true
 , "strict": false
