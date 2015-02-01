@@ -11,6 +11,10 @@ describe('wejs:blog', function () {
     helpers.run(path.join(__dirname, '../blog'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withArguments('name', '--force')
+      .withPrompt(
+        { name: 'temp test' },
+        { title: 'temp test' }
+      )
       .on('end', done);
   });
 
@@ -20,14 +24,13 @@ describe('wejs:blog', function () {
       'TempTest/api/responses/badRequest.js',
       'TempTest/api/responses/forbidden.js',
       'TempTest/api/responses/notFound.js',
-      'TempTest/config/local.example',
+      'TempTest/config/local.js',
       'TempTest/config/locales/pt-br.json',
       'TempTest/config/theme.js',
       'TempTest/client/app/emberApp.js',
       'TempTest/test/bootstrap.js',
       'TempTest/test/integration/api/ACL.test.js',
       'TempTest/test/mocha.opts',
-
       'TempTest/Gruntfile.js',
       'TempTest/.jshintrc',
       'TempTest/.gitignore',

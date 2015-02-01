@@ -7,8 +7,11 @@ var yosay = require('yosay');
 
 
 var WejsGenerator = yeoman.generators.Base.extend({
-  initializing: function () {},
-
+  initializing: function () {
+    if (this.name) {
+      this.log('You called the wejs subgenerator with the argument ' + this.name + '.');
+    }
+  },
   prompting: function () {
     var done = this.async();
 
@@ -154,9 +157,9 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
     if (this.name !== 'temp test') {
       this.npmInstall();
-
-      // TODO generate example data
     }
+
+    process.chdir( '../' );
   }
 });
 

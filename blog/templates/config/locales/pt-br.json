@@ -54,8 +54,15 @@
 	"Ok": "Ok",
 	"Follow": "Seguir",
 	"follow": "seguir",
+	"comments.title": "Comentários",
 	"comments.notAuthenticated": "<a href='{{loginUrl}}'>Login</a> ou <a href='{{registerUrl}}'>registre-se</a> para postar comentários",
 	"comments.empty": "",
+	"comments.loadAll": "mostrar todos?",
+	"comments.list.length.all": "Exibindo {{length}} comentario(s)",
+	"comments.list.length": "Exibindo {{length}} de {{total}} comentarios",
+
+
+
 	"comment.delete.confirm": "Atenção! Você tem certeza que deseja deletar esse comentário?",
 	"sponsor.title": "Realização",
 	"partner.title": "Parcerias",

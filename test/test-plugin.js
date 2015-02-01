@@ -18,7 +18,6 @@ describe('wejs:plugin', function () {
     assert.file([
       'package.json',
       'lib/index.js',
-      'lib/init.js',
       'lib/modelsAlter.js',
       'server/controllers/TempTestController.js',
       'server/models/TempTest.js',
