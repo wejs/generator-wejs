@@ -5,6 +5,7 @@
 ## Features
 
  - yo wejs :construction: ( for create one project )
+ - yo wejs:blog :white_check_mark: ( for create blog project )
  - yo wejs:plugin :white_check_mark:
  - yo wejs:theme :construction:
  - yo wejs:emberjs :construction: ( for ember.js features )
@@ -40,7 +41,10 @@ npm install -g generator-wejs
 TODO!
 
 ### For generate one we.js blog project
-TODO!
+
+```sh
+yo wejs:blog
+```
 
 ### For generate one we.js plugin
 
@@ -58,5 +62,5 @@ TODO!
 
 ## Copyright and license
 
-Copyright 2013-2014 Alberto Souza <alberto.souza.dev@gmail.com> and [contributors](https://github.com/wejs/generator-wejs/graphs/contributors) , under [the MIT license](LICENSE).
+Copyright 2013-2015 Alberto Souza <alberto.souza.99@gmail.com> and [contributors](https://github.com/wejs/generator-wejs/graphs/contributors) , under [the MIT license](LICENSE).
 
