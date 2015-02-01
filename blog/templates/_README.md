@@ -16,6 +16,10 @@ npm install && bower install
 npm start
 ```
 
+## After install:
+
+TODO
+
 ##How to build
 
 ```sh

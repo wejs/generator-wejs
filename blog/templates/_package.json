@@ -30,7 +30,7 @@
     "sails-hook-send-html-to-bots": "0.0.3",
     "sails-mysql": "^0.10.11",
     "sget": "^0.1.5",
-    "we-grunt-tasks": "^0.2.1",
+    "we-grunt-tasks": "^0.2.2",
     "we-helpers": "0.0.7",
     "we-plugin": "^0.2.0",
     "we-plugin-activity": "^0.2.2",
