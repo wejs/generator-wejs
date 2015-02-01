@@ -1,0 +1,21 @@
+{
+  "name": "we-blog-<%= _.slugify(appname) %>",
+  "version": "0.0.1",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests",
+    "assets/bower_components"
+  ],
+  "dependencies": {},
+  "license": "MIT",
+  "devDependencies": {},
+  "resolutions": {
+    "ember": "1.8.1",
+    "handlebars": ">= 1.0.0 < 2.0.0"
+  }
+}
