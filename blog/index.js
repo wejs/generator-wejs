@@ -31,14 +31,14 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'title',
-      message : 'How are the app name / title?',
+      message : 'What's the app name / title?',
       default :  'Simple We.js Blog'
     },
 
     {
       type    : 'input',
       name    : 'appabout',
-      message : 'Your app is about what?',
+      message : 'What's your blog about?',
       default :  'A We.js Blog Theme with Start Bootstrap clean theme'
     },
 
@@ -46,7 +46,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'appemail',
-      message : 'How are the app from email?',
+      message : 'What's the app's contact email?',
       default :  'contato@wejs.org'
     },
 
@@ -54,13 +54,13 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'hostname',
-      message : 'How are the localhost app hostname?',
+      message : 'What's the localhost app hostname?',
       default :  'http://localhost'
     },
     {
       type    : 'input',
       name    : 'port',
-      message : 'How are the url port?',
+      message : 'Which url port do you want to use?',
       default :  1630
     },
 
@@ -69,19 +69,19 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'databasename',
-      message : 'How are the Dabatase name?',
+      message : 'What's the local's database name?',
       default : 'test'
     },
     {
       type    : 'input',
       name    : 'databaseuser',
-      message : 'How are the Dabatase user?',
+      message : 'What's the local's database user?',
       default : 'root'
     },
     {
       type    : 'input',
       name    : 'databasepassword',
-      message : 'How are the Dabatase password?',
+      message : 'What's the local's database password?',
       default : 'root'
     },
 
@@ -89,19 +89,19 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'testdatabasename',
-      message : 'How are the test dabatase name?',
+      message : 'What's the local's database name?',
       default : 'test'
     },
     {
       type    : 'input',
       name    : 'testdatabaseuser',
-      message : 'How are the test dabatase user?',
+      message : 'What's the local's database user?',
       default : 'root'
     },
     {
       type    : 'input',
       name    : 'testdatabasepassword',
-      message : 'How are the test dabatase password?',
+      message : 'What's the local's database password?',
       default : 'root'
     }
 
