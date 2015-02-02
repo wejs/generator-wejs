@@ -31,14 +31,14 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'title',
-      message : 'What's the app name / title?',
+      message : 'What`s the app name / title?',
       default :  'Simple We.js Blog'
     },
 
     {
       type    : 'input',
       name    : 'appabout',
-      message : 'What's your blog about?',
+      message : 'What`s your blog about?',
       default :  'A We.js Blog Theme with Start Bootstrap clean theme'
     },
 
@@ -46,7 +46,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'appemail',
-      message : 'What's the app's contact email?',
+      message : 'What`s the app`s contact email?',
       default :  'contato@wejs.org'
     },
 
@@ -54,7 +54,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'hostname',
-      message : 'What's the localhost app hostname?',
+      message : 'What`s the localhost app hostname?',
       default :  'http://localhost'
     },
     {
@@ -69,19 +69,19 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'databasename',
-      message : 'What's the local's database name?',
+      message : 'What`s the local`s database name?',
       default : 'test'
     },
     {
       type    : 'input',
       name    : 'databaseuser',
-      message : 'What's the local's database user?',
+      message : 'What`s the local`s database user?',
       default : 'root'
     },
     {
       type    : 'input',
       name    : 'databasepassword',
-      message : 'What's the local's database password?',
+      message : 'What`s the local`s database password?',
       default : 'root'
     },
 
@@ -89,19 +89,19 @@ var WejsGenerator = yeoman.generators.Base.extend({
     {
       type    : 'input',
       name    : 'testdatabasename',
-      message : 'What's the local's database name?',
+      message : 'What`s the local`s database name?',
       default : 'test'
     },
     {
       type    : 'input',
       name    : 'testdatabaseuser',
-      message : 'What's the local's database user?',
+      message : 'What`s the local`s database user?',
       default : 'root'
     },
     {
       type    : 'input',
       name    : 'testdatabasepassword',
-      message : 'What's the local's database password?',
+      message : 'What`s the local`s database password?',
       default : 'root'
     }
 
