@@ -1,0 +1,20 @@
+{
+    "role": [
+        {
+            "name": "authenticated",
+            "description": null
+        },
+        {
+            "name": "unAuthenticated",
+            "description": null
+        },
+        {
+            "name": "owner",
+            "description": null
+        },
+        {
+            "name": "administrator",
+            "description": null
+        }
+    ]
+}

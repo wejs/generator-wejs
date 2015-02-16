@@ -1,0 +1,1007 @@
+{
+    "permission": [
+        {
+            "roles": [],
+            "controller": "activity",
+            "action": "add",
+            "name": "activity_add"
+        },
+        {
+            "roles": [],
+            "controller": "activity",
+            "action": "create",
+            "name": "activity_create"
+        },
+        {
+            "roles": [],
+            "controller": "activity",
+            "action": "delete",
+            "name": "activity_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "activity",
+            "action": "find",
+            "name": "activity_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "activity",
+            "action": "findOne",
+            "name": "activity_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "activity",
+            "action": "remove",
+            "name": "activity_remove"
+        },
+        {
+            "roles": [],
+            "controller": "activity",
+            "action": "update",
+            "name": "activity_update"
+        },
+        {
+            "roles": [],
+            "controller": "activity",
+            "action": "_config",
+            "name": "activity__config"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "article",
+            "action": "add",
+            "name": "article_add"
+        },
+        {
+            "roles": [],
+            "controller": "article",
+            "action": "create",
+            "name": "article_create"
+        },
+        {
+            "roles": [],
+            "controller": "article",
+            "action": "createPage",
+            "name": "article_createPage"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "article",
+            "action": "delete",
+            "name": "article_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "article",
+            "action": "find",
+            "name": "article_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "article",
+            "action": "findOne",
+            "name": "article_findOne"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "article",
+            "action": "remove",
+            "name": "article_remove"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "article",
+            "action": "update",
+            "name": "article_update"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "attribute",
+            "action": "updateAtribute",
+            "name": "attribute_updateAtribute"
+        },
+        {
+            "roles": [
+                1,
+                3
+            ],
+            "controller": "avatar",
+            "action": "changeAvatar",
+            "name": "avatar_changeAvatar"
+        },
+        {
+            "roles": [
+                1,
+                3
+            ],
+            "controller": "avatar",
+            "action": "changeAvatarPage",
+            "name": "avatar_changeAvatarPage"
+        },
+        {
+            "roles": [
+                1,
+                3
+            ],
+            "controller": "avatar",
+            "action": "cropAvatar",
+            "name": "avatar_cropAvatar"
+        },
+        {
+            "roles": [
+                1,
+                3
+            ],
+            "controller": "avatar",
+            "action": "cropAvatarPage",
+            "name": "avatar_cropAvatarPage"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "avatar",
+            "action": "getAvatar",
+            "name": "avatar_getAvatar"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "avatar",
+            "action": "uploadAvatar",
+            "name": "avatar_uploadAvatar"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "avatar",
+            "action": "uploadAvatarAPI",
+            "name": "avatar_uploadAvatarAPI"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "avatar",
+            "action": "userAvatarsPage",
+            "name": "avatar_userAvatarsPage"
+        },
+        {
+            "roles": [],
+            "controller": "avatar",
+            "action": "_config",
+            "name": "avatar__config"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "comment",
+            "action": "add",
+            "name": "comment_add"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "comment",
+            "action": "create",
+            "name": "comment_create"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "comment",
+            "action": "delete",
+            "name": "comment_delete"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "comment",
+            "action": "destroy",
+            "name": "comment_destroy"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "comment",
+            "action": "find",
+            "name": "comment_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "comment",
+            "action": "findOne",
+            "name": "comment_findOne"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "comment",
+            "action": "remove",
+            "name": "comment_remove"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "comment",
+            "action": "update",
+            "name": "comment_update"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "add",
+            "name": "files_add"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "create",
+            "name": "files_create"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "delete",
+            "name": "files_delete"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "find",
+            "name": "files_find"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "findOne",
+            "name": "files_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "remove",
+            "name": "files_remove"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "update",
+            "name": "files_update"
+        },
+        {
+            "roles": [],
+            "controller": "files",
+            "action": "upload",
+            "name": "files_upload"
+        },
+        {
+            "roles": [],
+            "controller": "follow",
+            "action": "add",
+            "name": "follow_add"
+        },
+        {
+            "roles": [],
+            "controller": "follow",
+            "action": "create",
+            "name": "follow_create"
+        },
+        {
+            "roles": [],
+            "controller": "follow",
+            "action": "delete",
+            "name": "follow_delete"
+        },
+        {
+            "roles": [],
+            "controller": "follow",
+            "action": "find",
+            "name": "follow_find"
+        },
+        {
+            "roles": [],
+            "controller": "follow",
+            "action": "findOne",
+            "name": "follow_findOne"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "follow",
+            "action": "follow",
+            "name": "follow_follow"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "follow",
+            "action": "isFollowing",
+            "name": "follow_isFollowing"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "follow",
+            "action": "remove",
+            "name": "follow_remove"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "follow",
+            "action": "unFollow",
+            "name": "follow_unFollow"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "follow",
+            "action": "update",
+            "name": "follow_update"
+        },
+        {
+            "roles": [],
+            "controller": "follow",
+            "action": "_config",
+            "name": "follow__config"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "images",
+            "action": "add",
+            "name": "images_add"
+        },
+        {
+            "roles": [],
+            "controller": "images",
+            "action": "create",
+            "name": "images_create"
+        },
+        {
+            "roles": [],
+            "controller": "images",
+            "action": "cropImage",
+            "name": "images_cropImage"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "images",
+            "action": "delete",
+            "name": "images_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "images",
+            "action": "find",
+            "name": "images_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "images",
+            "action": "findOne",
+            "name": "images_findOne"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "images",
+            "action": "findOneReturnData",
+            "name": "images_findOneReturnData"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "images",
+            "action": "remove",
+            "name": "images_remove"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "images",
+            "action": "update",
+            "name": "images_update"
+        },
+        {
+            "roles": [],
+            "controller": "links",
+            "action": "add",
+            "name": "links_add"
+        },
+        {
+            "roles": [],
+            "controller": "links",
+            "action": "create",
+            "name": "links_create"
+        },
+        {
+            "roles": [],
+            "controller": "links",
+            "action": "delete",
+            "name": "links_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "links",
+            "action": "find",
+            "name": "links_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "links",
+            "action": "findOne",
+            "name": "links_findOne"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "links",
+            "action": "index",
+            "name": "links_index"
+        },
+        {
+            "roles": [],
+            "controller": "links",
+            "action": "remove",
+            "name": "links_remove"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "links",
+            "action": "update",
+            "name": "links_update"
+        },
+        {
+            "roles": [],
+            "controller": "menu",
+            "action": "add",
+            "name": "menu_add"
+        },
+        {
+            "roles": [],
+            "controller": "menu",
+            "action": "create",
+            "name": "menu_create"
+        },
+        {
+            "roles": [],
+            "controller": "menu",
+            "action": "delete",
+            "name": "menu_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "menu",
+            "action": "find",
+            "name": "menu_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "menu",
+            "action": "findOne",
+            "name": "menu_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "menu",
+            "action": "remove",
+            "name": "menu_remove"
+        },
+        {
+            "roles": [],
+            "controller": "menu",
+            "action": "update",
+            "name": "menu_update"
+        },
+        {
+            "roles": [],
+            "controller": "menu",
+            "action": "_config",
+            "name": "menu__config"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "add",
+            "name": "notification_add"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "create",
+            "name": "notification_create"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "delete",
+            "name": "notification_delete"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "destroy",
+            "name": "notification_destroy"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "find",
+            "name": "notification_find"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "findOne",
+            "name": "notification_findOne"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "notification",
+            "action": "getUnreadNotificationCount",
+            "name": "notification_getUnreadNotificationCount"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "notification",
+            "action": "linkPermanent",
+            "name": "notification_linkPermanent"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "notification",
+            "action": "markAllModelNotificationAsRead",
+            "name": "notification_markAllModelNotificationAsRead"
+        },
+        {
+            "roles": [
+                1
+            ],
+            "controller": "notification",
+            "action": "markAllNotificationAsRead",
+            "name": "notification_markAllNotificationAsRead"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "populate",
+            "name": "notification_populate"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "remove",
+            "name": "notification_remove"
+        },
+        {
+            "roles": [],
+            "controller": "notification",
+            "action": "update",
+            "name": "notification_update"
+        },
+        {
+            "roles": [],
+            "controller": "permission",
+            "action": "add",
+            "name": "permission_add"
+        },
+        {
+            "roles": [],
+            "controller": "permission",
+            "action": "create",
+            "name": "permission_create"
+        },
+        {
+            "roles": [],
+            "controller": "permission",
+            "action": "delete",
+            "name": "permission_delete"
+        },
+        {
+            "roles": [],
+            "controller": "permission",
+            "action": "fetchActionPermissions",
+            "name": "permission_fetchActionPermissions"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "permission",
+            "action": "find",
+            "name": "permission_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "permission",
+            "action": "findOne",
+            "name": "permission_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "permission",
+            "action": "remove",
+            "name": "permission_remove"
+        },
+        {
+            "roles": [],
+            "controller": "permission",
+            "action": "update",
+            "name": "permission_update"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "pubsub",
+            "action": "subscribe",
+            "name": "pubsub_subscribe"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "pubsub",
+            "action": "unsubscribe",
+            "name": "pubsub_unsubscribe"
+        },
+        {
+            "roles": [],
+            "controller": "role",
+            "action": "add",
+            "name": "role_add"
+        },
+        {
+            "roles": [],
+            "controller": "role",
+            "action": "create",
+            "name": "role_create"
+        },
+        {
+            "roles": [],
+            "controller": "role",
+            "action": "delete",
+            "name": "role_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "role",
+            "action": "find",
+            "name": "role_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "role",
+            "action": "findOne",
+            "name": "role_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "role",
+            "action": "remove",
+            "name": "role_remove"
+        },
+        {
+            "roles": [],
+            "controller": "role",
+            "action": "update",
+            "name": "role_update"
+        },
+        {
+            "roles": [],
+            "controller": "tag",
+            "action": "add",
+            "name": "tag_add"
+        },
+        {
+            "roles": [],
+            "controller": "tag",
+            "action": "create",
+            "name": "tag_create"
+        },
+        {
+            "roles": [],
+            "controller": "tag",
+            "action": "delete",
+            "name": "tag_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "tag",
+            "action": "find",
+            "name": "tag_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "tag",
+            "action": "findOne",
+            "name": "tag_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "tag",
+            "action": "remove",
+            "name": "tag_remove"
+        },
+        {
+            "roles": [],
+            "controller": "tag",
+            "action": "update",
+            "name": "tag_update"
+        },
+        {
+            "roles": [],
+            "controller": "term",
+            "action": "add",
+            "name": "term_add"
+        },
+        {
+            "roles": [],
+            "controller": "term",
+            "action": "create",
+            "name": "term_create"
+        },
+        {
+            "roles": [],
+            "controller": "term",
+            "action": "delete",
+            "name": "term_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "term",
+            "action": "find",
+            "name": "term_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "term",
+            "action": "findOne",
+            "name": "term_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "term",
+            "action": "remove",
+            "name": "term_remove"
+        },
+        {
+            "roles": [],
+            "controller": "term",
+            "action": "update",
+            "name": "term_update"
+        },
+        {
+            "roles": [],
+            "controller": "term",
+            "action": "updateModelTerms",
+            "name": "term_updateModelTerms"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "user",
+            "action": "add",
+            "name": "user_add"
+        },
+        {
+            "roles": [],
+            "controller": "user",
+            "action": "create",
+            "name": "user_create"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "user",
+            "action": "delete",
+            "name": "user_delete"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "user",
+            "action": "destroy",
+            "name": "user_destroy"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "user",
+            "action": "find",
+            "name": "user_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "user",
+            "action": "findOne",
+            "name": "user_findOne"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "user",
+            "action": "findOneByUsername",
+            "name": "user_findOneByUsername"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "user",
+            "action": "remove",
+            "name": "user_remove"
+        },
+        {
+            "roles": [
+                3
+            ],
+            "controller": "user",
+            "action": "update",
+            "name": "user_update"
+        },
+        {
+            "roles": [],
+            "controller": "vocabulary",
+            "action": "add",
+            "name": "vocabulary_add"
+        },
+        {
+            "roles": [],
+            "controller": "vocabulary",
+            "action": "create",
+            "name": "vocabulary_create"
+        },
+        {
+            "roles": [],
+            "controller": "vocabulary",
+            "action": "delete",
+            "name": "vocabulary_delete"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "vocabulary",
+            "action": "find",
+            "name": "vocabulary_find"
+        },
+        {
+            "roles": [
+                1,
+                2
+            ],
+            "controller": "vocabulary",
+            "action": "findOne",
+            "name": "vocabulary_findOne"
+        },
+        {
+            "roles": [],
+            "controller": "vocabulary",
+            "action": "remove",
+            "name": "vocabulary_remove"
+        },
+        {
+            "roles": [],
+            "controller": "vocabulary",
+            "action": "update",
+            "name": "vocabulary_update"
+        }
+    ]
+}

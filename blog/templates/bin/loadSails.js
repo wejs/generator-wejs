@@ -9,7 +9,7 @@ module.exports = function loadSails(cb){
       pubsub: false
     },
     orm: {
-      _hookTimeout: 30000
+      _hookTimeout: 40000
     }
   },function(err, sails) {
   if (err) {

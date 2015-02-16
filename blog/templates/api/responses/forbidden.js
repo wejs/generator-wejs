@@ -42,10 +42,10 @@ module.exports = function forbidden(message) {
   res.render(viewFilePath, result, function(err) {
     // If the view doesn't exist, or an error occured, send json
     if (err) {
-      return res.json(result, result.status);
+      return res.status(result.status).json(result);
     }
 
     // Otherwise, serve the `views/403.*` page
-    res.render(viewFilePath);
+    res.view('403');
   });
 };

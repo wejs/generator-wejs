@@ -17,13 +17,31 @@ module.exports = {
 
   acl: {
     // Change to false in production after configure your permissions in /admin#/permissions
-    disabled: true
+    // this config disables acl feature
+    disabled: false
   },
 
   auth: {
+    // in current we.js version OR is provider OR consumer
+    isProvider: true,
+    isConsumer: true,
+    enableLogin: true,
+
     cookieDomain: null,
-    isProvider: true
+    cookieName: 'wetoken',
+    cookieMaxAge: 900000,
+    cookieSecure: false,
+
+    honeypot: {
+      // add a honeypot key to enable this feature
+      key: null,
+      maxThreatScore: 80,
+      // enable honeypot check in tests?
+      checkInTests: false
+    }
   },
+
+
 
   wejs: {
     providers: {
@@ -104,7 +122,49 @@ module.exports = {
               target: '_blank'
             }
           ]
-        }
+        },
+
+        admin: {
+          links: [
+            // // Submenu item example
+            // {
+            //   text: 'User and permissions',
+            //   isSubmenu: true,
+            //   links: [
+            //     {
+            //       text: 'User',
+            //       type: 'resource',
+            //       model: 'user'
+            //     }
+            //   ]
+            // },
+            // 
+
+            {
+              i18nText: 'menu.link.articles',
+              type: 'resource',
+              model: 'articles'
+            },
+
+            {
+              i18nText: 'menu.link.vocabulary',
+              type: 'resource',
+              model: 'vocabularies'
+            },
+
+            {
+              i18nText: 'menu.link.user',
+              type: 'resource',
+              model: 'user'
+            },
+
+            {
+              i18nText: 'menu.link.permissions',
+              type: 'resource',
+              model: 'permissions'
+            }
+          ]
+        }        
       }
     } // end publicVars
 
@@ -149,6 +209,8 @@ module.exports = {
     }
   },
 
+  csrf: false,
+
   // test database, use mysql in all databases
   connections: {
     mysql: {
@@ -172,11 +234,12 @@ module.exports = {
   models: {
     // alter, drop and safe
     // change migrate config to safe for fast start
-    migrate: 'alter',
+    migrate: 'safe',
     connection: 'mysql'
   },
 
   session: {
+    secret: '3e3b96afc40c746f6bdc6cf365cd6a0b',
     adapter: 'redis',
     cookie: {
       maxAge: 60 * 24 * 60 * 60 * 1000 // 60 days

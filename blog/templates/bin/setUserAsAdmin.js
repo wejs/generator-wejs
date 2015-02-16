@@ -14,11 +14,12 @@ function init() {
   });
 }
 
-function doneAll(err) {
+function doneAll(err, user) {
   if ( err ) {
     sails.log.error('Error on set user as admin', err);
+  } else {
+    sails.log.info('User with id: ' + user.id + ' set as admin: ', user.isAdmin);
   }
-  //sails.load();
   // end / exit
   process.exit();
 }

@@ -9,10 +9,12 @@ function init() {
   console.log('--');
   console.log('-');
 
-  // alows user set new user data
-  var confirm = sget('Are you sure you want to reset the database??. \n y or n?');
-  confirm = confirm.replace('\n','');
-
+  var confirm = process.argv[2];
+  if (!confirm) {
+    // alows user set new user data
+    confirm = sget('Are you sure you want to reset the database??. \n y or n?');
+    confirm = confirm.replace('\n','');
+  }
 
   if (confirm === 'y') {
     Sails.load({

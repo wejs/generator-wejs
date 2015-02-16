@@ -1,1 +1,0 @@
-module.exports = require('we-theme-engine').hook;

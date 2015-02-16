@@ -1,1 +1,0 @@
-module.exports = require('we-send-email').hook;
