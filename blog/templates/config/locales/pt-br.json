@@ -52,6 +52,7 @@
 	"Sair": "Sair",
 	"Exit": "Sair",
 	"Ok": "Ok",
+	"Create": "Criar",
 	"Follow": "Seguir",
 	"follow": "seguir",
 	"comments.title": "Comentários",
@@ -60,8 +61,6 @@
 	"comments.loadAll": "mostrar todos?",
 	"comments.list.length.all": "Exibindo {{length}} comentario(s)",
 	"comments.list.length": "Exibindo {{length}} de {{total}} comentarios",
-
-
 
 	"comment.delete.confirm": "Atenção! Você tem certeza que deseja deletar esse comentário?",
 	"sponsor.title": "Realização",
@@ -174,6 +173,8 @@
 	"articles.title": "Textos do blog",
 	"articles.subTitle": " ",
 	"article.create": "Criar artigo",
+	"articles.link.older": "Artigos antigos",
+	"article.created.by": "Criado por",
 
 	"auth.register.email.label": "Seu email",
 	"auth.register.confirmEmail.label": "Repetir o email",
@@ -188,5 +189,34 @@
 	"admin.create.role": "Criar perfil",
 	"admin.permissions.fetchAll": "Recarregar as permissões",
 
-	"breadcrumb.permissions": "Permissões"
+	"breadcrumb.permissions": "Permissões",
+
+	"menu.link.vocabulary" : "Vocabulários",
+	"menu.link.user" : "Usuários",
+	"menu.link.permissions" : "Permissões",
+	"menu.link.comments" : "Comentários",
+	"menu.link.articles" : "Artigos",
+	"menu.link.manage": "Administrar",
+
+	"admin.vocabularies.title": "Vocabulários",
+	"admin.vocabulary.create": "Criar um vocabulário",
+	"vocabulary.button.create": "Criar um vocabulário",
+	"vocabulary.field.name.label": "Nome do vocabulário",
+	"vocabulary.field.name.description": "Exemplo: Categorias do site",
+	"vocabulary.field.name.placeholder": " ",
+
+	"vocabulary.field.uniqueName.label": "Nome único para o vocabulário",
+	"vocabulary.field.uniqueName.placeholder": " ",
+	"vocabulary.field.uniqueName.description": " ",
+	"vocabulary.field.description.label": "Descrição do vocabulário",
+	"vocabulary.field.description.description": " ",
+
+	"term.create": "Criar um termo",
+
+	"term.field.text.label": "Digite o termo no campo abaixo",
+	"term.field.text.placeholder": " ",
+	"term.field.text.help": "Exemplo: Saúde",
+
+	"term.field.description.label": "Digite uma descrição no campo abaixo (opcional)",
+	"term.field.description.help": " "
 }
