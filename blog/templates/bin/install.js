@@ -14,7 +14,7 @@ console.log('-');
 
 
 var confirm = process.argv[2];
-if (!confirm) {
+if (!confirm || (confirm != 'y' || confirm != 'n')) {
   confirm = sget('Are you sure you want to reinstall the app and delete all data??. \n y or n?');
   confirm = confirm.replace('\n','');
 }
@@ -24,7 +24,6 @@ if (confirm === 'y') {
 } else {
   console.log('Leaving without taking any action.');
 }
-
 
 function doTheWork() {
   return loadSails(function afterLoadSails(err, sails) {

@@ -17,7 +17,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Wejs blog project generator! |o/ |o/'
+      'Wejs blog project generator! |o/ |o/ \n Install the dependencies and create a database in you mysql after run this generator! \n Check https://github.com/wejs/we#installation for more infos'
     ));
 
     var prompts = [{
@@ -82,7 +82,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       type    : 'input',
       name    : 'databasepassword',
       message : 'What`s the local`s database password?',
-      default : 'root'
+      default : ''
     },
 
     // test database
@@ -102,7 +102,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       type    : 'input',
       name    : 'testdatabasepassword',
       message : 'What`s the local`s database password?',
-      default : 'root'
+      default : ''
     }
 
     ];
@@ -153,13 +153,19 @@ var WejsGenerator = yeoman.generators.Base.extend({
   },
 
   end: function () {
+    var self = this
     process.chdir( this.projectFolder );
 
     if (this.name !== 'temp test') {
-      this.npmInstall();
-    }
+      this.npmInstall([],{},function() {
+        console.log('done loading install ...', process.cwd())
 
-    process.chdir( '../' );
+        // self.spawnCommand('node ./bin/install.js');
+        // require(process.cwd()  + '/bin/install.js');
+      });
+    } else {
+      process.chdir( '../' );
+    }
   }
 });
 
