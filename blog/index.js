@@ -124,7 +124,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.dest.mkdir(this.capitalizedName);
 
       this.template('_README.md', this.projectFolder + 'README.md');
-      this.template('_bower.json', this.projectFolder + '_bower.json');
+      this.template('_bower.json', this.projectFolder + 'bower.json');
 
       // local config
       this.template('_config-local.js', this.projectFolder + 'config/local.js');
