@@ -64,7 +64,6 @@ var WejsGenerator = yeoman.generators.Base.extend({
       default :  1630
     },
 
-
     // main database
     {
       type    : 'input',
@@ -157,12 +156,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
     process.chdir( this.projectFolder );
 
     if (this.name !== 'temp test') {
-      this.npmInstall([],{},function() {
-        console.log('done loading install ...', process.cwd())
-
-        // self.spawnCommand('node ./bin/install.js');
-        // require(process.cwd()  + '/bin/install.js');
-      });
+      this.npmInstall();
     } else {
       process.chdir( '../' );
     }
