@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%- sails.config.clientside.publicVars.appName %> | <%- title %></title>
+
+    <% if (typeof metadata !== 'undefined' || metadata) { %>
+      <% include ../partials/metadata %>
+    <% } else { %>
+      <% include ../partials/default-metadata %>
+    <% } %>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <meta name="csrf-token" content="<%= _csrf %>" />
+
+    <link href='/public/plugin/we-plugin-core/assets/css/app.css' rel='stylesheet' type="text/css">
+
+    <%- sails.services.theme.getlinkCssTags() %>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="/core/images/favicon.png">
+
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+    <noscript>
+      <div class="container">
+        <%- body %>
+      </div>
+    </noscript>
+
+    <%- sails.services.theme.getJsScriptTag() %>
+    <!-- Load ember.js models -->
+    <script type="text/javascript" src="/api/v1/models/emberjs"></script>
+  </body>
+</html>

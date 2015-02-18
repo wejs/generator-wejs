@@ -1,0 +1,17 @@
+{
+  "name": "we-theme-<%= _.slugify(name) %>",
+  "version": "0.0.1",
+  "description": "We.js theme",
+  "homepage": "https://yourthemehomepage.here",
+  "repository": {
+    "type": "git",
+    "url": "putyourthemerepositoryhere"
+  },
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

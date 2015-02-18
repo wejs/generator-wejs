@@ -1,0 +1,34 @@
+{{partial 'partials/header' }}
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="articles-actions">
+        {{#can 'article_create'}}
+          {{#link-to 'articles.create'}}
+            {{t 'article.create'}}
+          {{/link-to}}
+        {{/can}}
+      </div>
+
+      {{render 'articles.list' records}}
+
+      <div class="records-footer">
+        {{#if records.isFulfilled}}
+          <div class="articles-pagination">
+            <ul class="pager">
+              <li class="next">
+                {{#link-to 'articles' (query-params skip=limit)}}
+                  {{t 'articles.link.older'}}
+                {{/link-to}}
+              </li>
+            </ul>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+{{!--
+    {{partial 'partials/sidebar' }} --}}
+  </div>
+</div>

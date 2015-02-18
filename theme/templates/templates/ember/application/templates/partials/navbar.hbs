@@ -1,0 +1,54 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      {{#link-to 'home' classNames="navbar-brand"}}
+        <img class="img-responsive navbar-logo" {{bind-attr src=configs.client.publicVars.appLogo}}>
+        {{configs.client.publicVars.appName}}
+      {{/link-to}}
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      {{render 'user/usermenu' currentUser controller='UserMenu'}}
+
+      <ul class="nav navbar-nav navbar-right">
+        </li>
+        {{#unless isAuthenticated}}
+          {{#if userOauthServer}}
+            <li>
+              {{#link-to 'authLogin' classNames="navbar-login-buttom navbar-btn"}}
+                <i class="glyphicon glyphicon-log-in"></i>
+                 {{t 'Login'}}
+              {{/link-to}}
+            </li>
+          {{else}}
+            {{we-auth-modal-login tagName="li"}}
+          {{/if}}
+          <li>
+            {{#link-to 'authRegister' classNames=" navbar-login-buttom navbar-btn"}}
+              <i class="glyphicon glyphicon-plus"></i>
+              <i class="glyphicon glyphicon-user"></i>
+               {{t 'Register'}}
+            {{/link-to}}
+          </div>
+        {{/unless}}
+      </ul>
+
+      {{we-menu menuName="main" classNames="nav navbar-nav navbar-right"}}
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>

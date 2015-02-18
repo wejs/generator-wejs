@@ -1,0 +1,75 @@
+<!-- Page Header -->
+<header class="intro-header no-bg"></header>
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+ 
+{{#can 'user_update' 'user' 'user'}}
+  <div class="user-admin-actions-area well">
+    <div class="actions">
+      <span class="actions-title">{{t 'Actions'}}: </span>
+
+      <button {{action 'save'}} type="button" class="btn btn-xs btn-success">
+        <span class="glyphicon glyphicon-saved"></span> {{t 'Save'}}
+      </button>
+
+      <button {{action 'cancel'}} type="button" class="btn btn-xs btn-default">
+        <span class="glyphicon glyphicon-unchecked"></span> {{t 'Cancel'}}
+      </button>
+
+      <button {{action 'edit'}} type="button" class="btn btn-xs btn-primary">
+        <span class="glyphicon glyphicon-edit"></span> {{t 'Edit'}}
+      </button>
+
+    </div>
+  </div>
+{{/can}}
+
+<div class="user-full">
+  <div class="panel panel-default">
+    <div class="header panel-body">
+      <div class="user-area-data row">
+        <div class="user-area-data-left col-md-2" >
+          <span class="avatar-large">{{we-avatar userId=user.id size="responsive"}}</span>
+
+          {{#if isEditing}}
+            <div class="form-group">
+              {{view "select" name="language" value=user.language content=defaultlanguages classNames="form-control input-md"}}
+            </div>
+          {{else}}
+            <div class="language-area text-center">{{user.language}}</div>
+          {{/if}}
+
+        </div>
+        <div class="user-area-data-rigth col-md-10">
+
+          {{we-editable-text tagName='h1' name='displayName' value=user.displayName isEditing=isEditing}}
+
+          {{we-editable-html name='biography' value=user.biography isEditing=isEditing}}
+
+          <div class="actions">
+            {{#if showSocialActions}}
+              <span class="social">
+                {{view App.ContactButtomView contactStatus=contactStatus}}
+                {{we-follow model='user' modelId=user.id flagText="Seguir" unFlagText="Seguindo"}}
+              </span>
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {{outlet}}
+
+  <div class="footer">
+
+  </div>
+</div>
+
+  </div>
+</div>
