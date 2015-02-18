@@ -38,7 +38,7 @@
     "we-plugin-admin": "^0.2.0",
     "we-plugin-article": "^0.2.2",
     "we-plugin-attribute": "^0.2.0",
-    "we-plugin-auth": "^0.2.5",
+    "we-plugin-auth": "^0.2.6",
     "we-plugin-comment": "^0.2.3",
     "we-plugin-core": "^0.2.7",
     "we-plugin-file": "^0.2.0",
