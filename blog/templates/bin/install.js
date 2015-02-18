@@ -7,10 +7,10 @@ var loadSails = require('./loadSails.js');
 var isInstaled = require('./isInstaled.js');
 
 // // skip if are instaled
-// if (!isInstaled()) {
-//   console.log('Already instaled, skipping installation');
-//   return process.exit();
-// }
+if (!isInstaled()) {
+  console.log('Already instaled, skipping installation');
+  return process.exit();
+}
 
 // askTheUserIfWhantsReinstall
 console.log('-');
