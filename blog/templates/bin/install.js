@@ -1,10 +1,18 @@
 var async = require('async');
 var exec = require('child_process').exec;
 var sget = require('sget');
+var fs = require('fs');
 var createUserFN = require('../node_modules/we-plugin-user/bin/createUserFN.js');
 var loadSails = require('./loadSails.js');
-// askTheUserIfWhantsReinstall
+var isInstaled = require('./isInstaled.js');
 
+// // skip if are instaled
+// if (!isInstaled()) {
+//   console.log('Already instaled, skipping installation');
+//   return process.exit();
+// }
+
+// askTheUserIfWhantsReinstall
 console.log('-');
 console.log('--');
 console.log('--- We.js install, reinstall and reset ----');
@@ -59,12 +67,19 @@ function doTheWork() {
           console.log(stdout);
           done(stderr);
         });
+      },
+      function SetInstalationFlag(done) {
+        var instalationFIleValue = 'module.exports.installation = { done: true };';
+        fs.writeFile(process.cwd() + '/config/installation.js', instalationFIleValue, function(err) {
+          if (err) return done(err); 
+          done();
+        });
       }
     ], doneAll)
   })
 }
 
-function doneAll(err){
+function doneAll(err) {
   if ( err ) {
     sails.log.error('Error:', err);
   } else {
