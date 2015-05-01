@@ -47,10 +47,7 @@ yo wejs:blog
 ```
 
 ### For generate one we.js plugin
-
-```bash
-yo wejs:plugin
-```
+TODO!
 
 ### For generate one we.js theme
 TODO!
