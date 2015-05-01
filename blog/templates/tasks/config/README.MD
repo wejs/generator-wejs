@@ -1,1 +1,0 @@
-Folder to add custom config tasks .. see sails.js or we.js core tasks

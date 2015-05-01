@@ -124,7 +124,6 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
       this.template('_README.md', this.projectFolder + 'README.md');
       this.template('_bower.json', this.projectFolder + 'bower.json');
-
       // local config
       this.template('_config-local.js', this.projectFolder + 'config/local.js');
 
@@ -133,12 +132,12 @@ var WejsGenerator = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
-      this.directory('api', this.capitalizedName + '/api');
-      this.directory('assets', this.capitalizedName + '/assets');
+
       this.directory('bin', this.capitalizedName + '/bin');
       this.directory('client', this.capitalizedName + '/client');
       this.directory('config', this.capitalizedName + '/config');
       this.directory('files', this.capitalizedName + '/files');
+      this.directory('server', this.capitalizedName + '/assets');
       this.directory('tasks', this.capitalizedName + '/tasks');
       this.directory('test', this.capitalizedName + '/test');
 
@@ -152,7 +151,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    var self = this
+    var self = this;
     process.chdir( this.projectFolder );
 
     if (this.name !== 'temp test') {

@@ -1,4 +1,0 @@
---reporter spec
---colors
---timeout 5000
---require test/testHelper.js

@@ -1,1 +1,1 @@
-Folder to add custom register tasks .. see sails.js or we.js core tasks
+Folder to add custom register tasks ..

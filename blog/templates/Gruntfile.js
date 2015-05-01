@@ -12,51 +12,12 @@
  * Check out the `tasks` directory instead.
  */
 var _ = require('lodash');
+var projectFolder = process.cwd();
+
 
 module.exports = function(grunt) {
+  var wg = require('we-core/lib/grunt/index.js')(projectFolder);
 
-  var weGruntTasks = require('we-grunt-tasks');
-
-
-  // Load the include-all library in order to require all of our grunt
-  // configurations and task registrations dynamically.
-  //var includeAll = weGruntTasks.includeAll;
-
-  /**
-   * Loads Grunt configuration modules from the specified
-   * relative path. These modules should export a function
-   * that, when run, should either load/configure or register
-   * a Grunt task.
-   */
-  var loadTasks = weGruntTasks.loadTasks;
-  var loadProjectTask = weGruntTasks.loadSubProjectTasks;
-
-  /**
-   * Invokes the function from a Grunt configuration module with
-   * a single argument - the `grunt` object.
-   */
-  function invokeConfigFn(tasks) {
-    for (var taskName in tasks) {
-      if (tasks.hasOwnProperty(taskName)) {
-        tasks[taskName](grunt);
-      }
-    }
-  }
-
-  // Load task functions
-  var taskConfigurations = loadTasks('./tasks/config', grunt),
-    registerDefinitions = loadTasks('./tasks/register', grunt);
-
-  taskConfigurations = _.merge(taskConfigurations, loadProjectTask('./tasks/config', grunt));
-  registerDefinitions = _.merge(registerDefinitions, loadProjectTask('./tasks/register', grunt));
-
-  // (ensure that a default task exists)
-  if (!registerDefinitions.default) {
-    registerDefinitions.default = function (grunt) { grunt.registerTask('default', []); };
-  }
-
-  // Run task functions to configure Grunt.
-  invokeConfigFn(taskConfigurations);
-  invokeConfigFn(registerDefinitions);
-
-};
+  wg.loadDefaultTasks();
+  wg.initGrunt(grunt);
+}

@@ -1,4 +1,4 @@
-# We.js generator | generator-wejs [![Build Status](https://secure.travis-ci.org/wejs/generator-wejs.png?branch=master)](https://travis-ci.org/wejs/generator-wejs)
+# We.js generator v0.3.x | generator-wejs [![Build Status](https://secure.travis-ci.org/wejs/generator-wejs.png?branch=master)](https://travis-ci.org/wejs/generator-wejs)
 
 > A [Yeoman](http://yeoman.io) generator for generate [we.js](https://github.com/wejs) projects, plugins, themes and clientside modules
 
