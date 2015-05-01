@@ -14,19 +14,20 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "keywords": [
     "yeoman-generator"
   ],
   "dependencies": {
+    "yo": "1.4.6",
     "yeoman-generator": "^0.17.0",
     "chalk": "^0.5.0",
     "yosay": "^0.3.0",
     "underscore.string": "^2.3.3"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "2.2.4"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

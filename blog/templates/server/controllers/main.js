@@ -11,6 +11,6 @@ module.exports = {
 
     res.locals.template = 'home/index';
 
-    res.view({ title: 'Express' });
+    res.view({ title: we.config.appName });
   }
-}
+};

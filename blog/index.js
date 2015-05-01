@@ -137,7 +137,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.directory('client', this.capitalizedName + '/client');
       this.directory('config', this.capitalizedName + '/config');
       this.directory('files', this.capitalizedName + '/files');
-      this.directory('server', this.capitalizedName + '/assets');
+      this.directory('server', this.capitalizedName + '/server');
       this.directory('tasks', this.capitalizedName + '/tasks');
       this.directory('test', this.capitalizedName + '/test');
 

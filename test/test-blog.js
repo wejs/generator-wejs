@@ -20,17 +20,15 @@ describe('wejs:blog', function () {
 
   it('creates files', function () {
     assert.file([
-      'TempTest/api/controllers/MainController.js',
-      'TempTest/api/responses/badRequest.js',
-      'TempTest/api/responses/forbidden.js',
-      'TempTest/api/responses/notFound.js',
+      'TempTest/server/controllers/main.js',
       'TempTest/config/local.js',
       'TempTest/config/locales/pt-br.json',
-      'TempTest/config/theme.js',
+      'TempTest/config/clientside.js',
+      'TempTest/config/i18n.js',
+      'TempTest/config/themes.js',
       'TempTest/client/app/emberApp.js',
-      'TempTest/test/bootstrap.js',
-      'TempTest/test/integration/api/ACL.test.js',
-      'TempTest/test/mocha.opts',
+      // 'TempTest/test/bootstrap.js',
+      // 'TempTest/test/mocha.opts',
       'TempTest/Gruntfile.js',
       'TempTest/.jshintrc',
       'TempTest/.gitignore',

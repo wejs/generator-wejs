@@ -36,11 +36,11 @@ module.exports.clientside = {
             model: 'page',
             modelId: '3'
           },
-          {
-            text: 'Forum',
-            type: 'page',
-            model: 'groups'
-          },
+          // {
+          //   text: 'Forum',
+          //   type: 'page',
+          //   model: 'groups'
+          // },
           {
             text: 'Github',
             external: true,
