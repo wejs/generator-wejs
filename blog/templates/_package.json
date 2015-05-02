@@ -13,7 +13,7 @@
   "dependencies": {
     "async": "^0.9.0",
     "lodash": "^3.3.1",
-    "we-core": "0.3.6",
+    "we-core": "0.3.7",
     "we-theme-admin-default": "wejs/we-theme-admin-default",
     "we-theme-site-wejs": "0.3.3"
   },
