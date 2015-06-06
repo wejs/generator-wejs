@@ -63,18 +63,11 @@ after clone and install npm packages:
 npm test
 ```
 
-##### For run only 'userFeature' test use:
+##### For run only 'wejs:plugin' test use:
 
 ```sh
-NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js -g 'wejs:plugin'
+NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/test-*.js -g 'wejs:plugin'
 ```
-
-##### For run the javascript linter
-
-```sh
-npm run lint
-```
-
 
 ## Links
 

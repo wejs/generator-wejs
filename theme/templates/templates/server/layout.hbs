@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+
+    {{{render-metadata-tags}}}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="csrf-token" content="{{_csrf}}" />
+
+    <script type="text/javascript" src="/public/project/client/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="/public/project/client/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+    {{{render-import-polymer-app}}}
+
+    {{{render-stylesheet-tags}}}
+  </head>
+  <body unresolved class="fullbleed layout vertical">
+    <noscript>
+      {{{body}}}
+    </noscript>
+
+    {{{render-bootstrap-config}}}
+    <wejs-app title="{{title}}" id="app"></wejs-app>
+  </body>
+</html>
