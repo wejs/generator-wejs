@@ -11,7 +11,7 @@ describe('wejs:plugin', function () {
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       //.withArguments(['test'])
-      .withPrompt({
+      .withPrompts({
         name: 'test'
       })
       .on('end', done);

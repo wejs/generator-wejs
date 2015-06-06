@@ -8,7 +8,7 @@ var http;
 var we;
 var agent;
 
-describe('<%= _.slugify(pluginName) %>Feature', function() {
+describe('<%= pluginName %>Feature', function() {
   var salvedUser, salvedUserPassword, authenticatedRequest;
 
   before(function (done) {

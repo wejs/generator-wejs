@@ -1,6 +1,6 @@
 {
-  "name": "<%= _.slugify(pluginName) %>",
-  "description": "We.js <%= _.slugify(pluginName) %> plugin",
+  "name": "<%= pluginName %>",
+  "description": "We.js <%= pluginName %> plugin",
   "version": "0.3.0",
   "main": "lib/index.js",
   "scripts": {

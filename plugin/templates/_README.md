@@ -1,4 +1,4 @@
-# <%= _.slugify(pluginName) %>
+# <%= pluginName %>
 
 > [write something about your plugin here]
 
