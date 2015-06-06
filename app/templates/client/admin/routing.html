@@ -1,0 +1,78 @@
+<script type="text/javascript" src="../bower_components/page/page.js"></script>
+<script>
+  window.addEventListener('WebComponentsReady', function() {
+    var app = document.querySelector('#app');
+
+    // We use Page.js for routing. This is a Micro
+    // client-side router inspired by the Express router
+    // More info: https://visionmedia.github.io/page.js/
+    page('*', function (ctx, next) {
+      console.log('transition start [');
+
+      app.isHomePage = false;
+      ctx.pageContent = '';
+
+      next();
+    });
+
+    page('/', function (ctx, next) {
+      app.route = 'home';
+      ctx.pageContent = '<wejs-static-home-page></wejs-static-home-page>';
+      ctx.fullLayout = true;
+
+      next();
+    });
+
+    page('/docs/:project', function (ctx, next) {
+      app.route = 'wejsdocs.'+ctx.params.project;
+      var url = '/docs/'+ ctx.params.project;
+
+      ctx.model = $.get(url).then(function (r) {
+        ctx.pageContent = r.html;
+        next();
+      });
+    });
+
+    page('/docs/:project/:file', function (ctx, next) {
+      app.route = 'wejsdocs.'+ctx.params.project + '.' + ctx.params.file;
+
+      var url = '/docs/'+ ctx.params.project + '/' + ctx.params.file;
+      ctx.model = $.get(url).then(function (r) {
+        ctx.pageContent = r.html;
+        next();
+      });
+    });
+
+    page('/admin/user', function (ctx, next) {
+      app.route = 'users';
+
+
+      next();
+    });
+
+    page('/admin/user/:id', function (ctx, next) {
+      app.route = 'user-info';
+      app.params = ctx.params;
+
+      next();
+    });
+
+    page('*', function (ctx) {
+      if (!document.querySelector('#content')) return;
+      if (ctx.fullLayout) {
+        document.querySelector('#content').innerHTML = ctx.pageContent;
+      } else {
+        document.querySelector('#content').innerHTML =
+          '<section><paper-material elevation="0">' +
+            ctx.pageContent +
+          '</paper-material></section>';
+      }
+
+      console.log('] transition done');
+    });
+
+    page({
+      hashbang: false
+    });
+  });
+</script>

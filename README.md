@@ -53,11 +53,12 @@ yo wejs:plugin
 ```
 
 ### For generate one we.js theme
-TODO!
+
+```sh
+yo wejs:theme
+```
 
 ### How to test
-
-after clone and install npm packages:
 
 ```sh
 npm test

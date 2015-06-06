@@ -1,6 +1,28 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= projectName %>",
+  "version": "0.3.0",
+  "private": true,
+  "authors": [
+    "albertosouza <alberto.souza.99@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-elements": "PolymerElements/iron-elements#1.0.0",
+    "paper-elements": "PolymerElements/paper-elements#1.0.1",
+    "platinum-elements": "PolymerElements/platinum-elements#1.0.0",
+    "page": "visionmedia/page.js#~1.6.3",
+    "jquery": "~2.1.4"
+  },
+  "resolutions": {
+    "polymer": "^1.0.0",
+    "webcomponentsjs": "^0.7.2"
+  }
 }
-

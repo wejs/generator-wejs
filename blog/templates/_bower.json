@@ -1,8 +1,0 @@
-{
-  "name": "we-blog-<%= _.slugify(appname) %>",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {},
-  "license": "MIT",
-  "devDependencies": {}
-}

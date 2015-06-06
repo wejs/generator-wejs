@@ -1,0 +1,28 @@
+/**
+ * Example config, copy this file to locals.js
+ */
+module.exports = {
+  appName: 'We blog',
+  passport: {
+    cookieDomain : null
+  },
+
+  acl: {
+    disabled: true
+  },
+
+  database: {
+    prod: {
+      dialect: 'mysql',
+      database: 'test',
+      username: 'root',
+      password: ''
+    },
+    dev: {
+      dialect: 'mysql',
+      database: 'test',
+      username: 'root',
+      password: ''
+    }
+  }
+}
