@@ -1,0 +1,31 @@
+{
+  "name": "<%= _.slugify(pluginName) %>",
+  "description": "We.js <%= _.slugify(pluginName) %> plugin",
+  "version": "0.3.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint .",
+    "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
+    "prepublish": "npm prune"
+  },
+  "dependencies": {
+    "async": "^1.2.0",
+    "lodash": "^3.9.3"
+  },
+  "devDependencies": {
+    "fs-extra": "^0.18.2",
+    "istanbul": "^0.3.14",
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.3.4",
+    "supertest": "^1.0.1",
+    "we-core": "^0.3.26",
+    "we-theme-admin-default": "^0.3.1",
+    "we-theme-site-wejs": "^0.3.11",
+    "we-test-tools": "^0.3.3"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  },
+  "license": "MIT"
+}

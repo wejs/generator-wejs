@@ -1,0 +1,1 @@
+Plugin controller folder, see: http://wejs.org/docs/we/features.controllers
