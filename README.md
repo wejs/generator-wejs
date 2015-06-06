@@ -47,15 +47,38 @@ yo wejs:blog
 ```
 
 ### For generate one we.js plugin
-TODO!
+
+```sh
+yo wejs:plugin
+```
 
 ### For generate one we.js theme
 TODO!
 
+### How to test
+
+after clone and install npm packages:
+
+```sh
+npm test
+```
+
+##### For run only 'userFeature' test use:
+
+```sh
+NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js -g 'wejs:plugin'
+```
+
+##### For run the javascript linter
+
+```sh
+npm run lint
+```
+
+
 ## Links
 
-> * We.js: https://github.com/wejs
-> * We.js online example: http://wejs.org
+> * We.js site: http://wejs.org
 
 ## Copyright and license
 
