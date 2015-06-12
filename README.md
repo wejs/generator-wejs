@@ -37,13 +37,10 @@ npm install -g generator-wejs
 
 ## How to generate things?
 
-### For generate one we.js social network project
-TODO!
-
-### For generate one we.js blog project
+### For generate one polymer application
 
 ```sh
-yo wejs:blog
+yo wejs:app
 ```
 
 ### For generate one we.js plugin
@@ -57,6 +54,14 @@ yo wejs:plugin
 ```sh
 yo wejs:theme
 ```
+
+### For generate one we.js social network project
+TODO!
+
+### For generate one we.js blog project
+
+TODO!
+
 
 ### How to test
 

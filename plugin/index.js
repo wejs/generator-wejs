@@ -47,12 +47,12 @@ var WejsGenerator = yeoman.generators.Base.extend({
       );
 
       this.copy('plugin.js', this.projectFolder +  'plugin.js');
-      this.copy('.gitignore', this.projectFolder +  '.gitignore');
-      this.copy('.jscsrc', this.projectFolder + '.jscsrc');
-      this.copy('.jshintignore', this.projectFolder +  '.jshintignore');
-      this.copy('.jshintrc', this.projectFolder +  '.jshintrc');
-      this.copy('.npmignore', this.projectFolder +  '.npmignore');
-      this.copy('.travis.yml', this.projectFolder +  '.travis.yml');
+      this.copy('gitignore', this.projectFolder +  '.gitignore');
+      this.copy('jscsrc', this.projectFolder + '.jscsrc');
+      this.copy('jshintignore', this.projectFolder +  '.jshintignore');
+      this.copy('jshintrc', this.projectFolder +  '.jshintrc');
+      this.copy('npmignore', this.projectFolder +  '.npmignore');
+      this.copy('travis.yml', this.projectFolder +  '.travis.yml');
     }
   }
 });

@@ -49,7 +49,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.directory('dist', this.projectFolder + 'dist');
       this.directory('templates', this.projectFolder + 'templates');
 
-      this.copy('.gitignore', this.projectFolder +  '.gitignore');
+      this.copy('gitignore', this.projectFolder +  '.gitignore');
     }
   }
 });
