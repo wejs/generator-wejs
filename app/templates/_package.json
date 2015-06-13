@@ -7,6 +7,7 @@
     "dev": "PORT=4000 node app.js",
     "prod": "PORT=4000 NODE_ENV=prod node app.js",
     "deps": "npm install && bower install",
+    "install": "npm run deps && we install -u",
     "start": "grunt && node app.js",
     "build": "node_modules/.bin/vulcanize client/app/app.html > client/app/prod.app.html && node_modules/.bin/vulcanize client/appAdmin/app.html > client/appAdmin/prod.app.html "
   },

@@ -20,9 +20,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       name    : 'name',
       message : 'Your theme name',
       default : this.appname // Default to current folder name
-    }
-
-    ];
+    }];
 
     this.prompt(prompts, function (props) {
       this.name = props.name;
