@@ -37,7 +37,7 @@ npm install -g generator-wejs
 
 ## How to generate things?
 
-### For generate one polymer application
+### For generate one simple app structure
 
 ```sh
 yo wejs:app
