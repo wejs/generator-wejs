@@ -7,19 +7,20 @@
     "dev": "PORT=4000 node app.js",
     "prod": "PORT=4000 NODE_ENV=prod node app.js",
     "deps": "npm install && bower install",
-    "install": "npm run deps && we install -u",
     "start": "grunt && node app.js",
-    "build": "node_modules/.bin/vulcanize client/app/app.html > client/app/prod.app.html && node_modules/.bin/vulcanize client/appAdmin/app.html > client/appAdmin/prod.app.html "
+    "build": "grunt build"
   },
   "dependencies": {
     "async": "^0.9.0",
     "lodash": "^3.3.1",
-    "we-core": "0.3.26",
+    "we-core": "0.3.33",
     "we-plugin-contact": "^0.3.2",
-    "we-plugin-doc-git": "^0.3.4",
+    "we-plugin-doc-git": "^0.3.5",
     "we-plugin-messenger": "0.3.4",
-    "we-theme-admin-default": "0.3.1",
-    "we-theme-site-wejs": "0.3.11"
+    "we-plugin-file": "^0.3.1",
+    "we-plugin-form": "^0.3.1",
+    "we-theme-admin-default": "0.3.4",
+    "we-theme-site-wejs": "0.3.13"
   },
   "devDependencies": {
     "vulcanize": "^1.8.1"
