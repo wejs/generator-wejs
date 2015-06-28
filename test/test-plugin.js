@@ -19,7 +19,6 @@ describe('wejs:plugin', function () {
 
   it('should creates plugin files', function () {
     assert.file([
-      'we-plugin-test/client/shared/libs/README.md',
       'we-plugin-test/files/public/README.md',
       'we-plugin-test/lib/index.js',
       'we-plugin-test/server/controllers',
