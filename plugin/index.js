@@ -36,7 +36,6 @@ var WejsGenerator = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
-      this.directory('client', this.projectFolder + 'client');
       this.directory('files', this.projectFolder + 'files');
       this.directory('lib', this.projectFolder + 'lib');
       this.directory('test', this.projectFolder + 'test');

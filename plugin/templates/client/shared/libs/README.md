@@ -1,1 +1,0 @@
-This folder will be public avaible as: /public/plugin/[plugin name]/client/shared/libs/[file]
