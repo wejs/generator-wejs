@@ -31,7 +31,6 @@ describe('wejs:app', function () {
       'we-project-test/.bowerrc',
       'we-project-test/app.js',
       'we-project-test/package.json',
-      'we-project-test/bower.json',
       'we-project-test/plugin.js'
     ]);
   });

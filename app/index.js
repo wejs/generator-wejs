@@ -34,7 +34,6 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.template('_README.md', this.projectFolder + 'README.md');
       // - package.json file
       this.template('_package.json', this.projectFolder + 'package.json');
-      this.template('_bower.json', this.projectFolder + 'bower.json');
     },
     projectfiles: function () {
       this.directory('bin', this.projectFolder + 'bin');
