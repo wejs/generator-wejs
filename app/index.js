@@ -9,7 +9,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'We.js simple app project generator! |o/ |o/ \n generate one testable we.js project with polymer suport!'
+      'We.js simple app project generator! |o/ |o/ \n generate one testable we.js project!'
     ));
 
     var prompts = [{

@@ -5,42 +5,16 @@
 **Build With:**
 
 - We.js
-- Polymer
-- Mysql
 
 #How to install
 
-Clone the project
-```sh
-git clone [your projectgit repository]
-cd site
-```
-
-Install **npm** and **bower** dependencies
-```sh
-npm run deps
-
-```
-#Commands
-
-#####Run project in development environment:
-```sh
-npm run dev
-```
-#####Build production app client:
-```sh
-npm run build
-```
-
-#####Run project in production environment:
-```sh
-npm run dev
-```
-
+See http://wejs.org/docs/we/getstarted
 
 # Test
 
-TODO
+```
+npm test
+```
 
 #Copyright and license
 
