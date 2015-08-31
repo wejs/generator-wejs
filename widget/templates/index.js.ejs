@@ -1,0 +1,23 @@
+/**
+ * Widget <%= Name %> main file
+ *
+ * See https://github.com/wejs/we-core/blob/master/lib/class/Widget.js for all Widget prototype functions
+ */
+
+module.exports = function <%= Name %>Widget(projectPath, Widget) {
+  var widget = new Widget('<%= Name %>', __dirname);
+
+  // Override default widget class functions after instance
+  //
+  // widget.afterSave = function <%= Name %>WidgetAfterSave(req, res, next) {
+  //   // do something after save this widget in create or edit ...
+  //   return next();
+  // };
+
+  // widget.formMiddleware = function formMiddleware(req, res, next) {
+  //
+  //   next();
+  // }
+
+  return widget;
+};
