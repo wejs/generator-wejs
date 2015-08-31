@@ -1,0 +1,32 @@
+/**
+ * <%= modelName %>
+ *
+ * @module      :: Model
+ * @description :: <%= modelName %> model
+ *
+ */
+
+module.exports = function <%= modelName %>Model(we) {
+  var model = {
+    // define you model here
+    // see http://docs.sequelizejs.com/en/latest/docs/models-definition
+    definition: {},
+    // Associations
+    // see http://docs.sequelizejs.com/en/latest/docs/associations
+    associations: {},
+    options: {
+      // title field, for default title record pages
+      // titleField: 'title',
+
+      // Class methods for use with: we.db.models.[yourmodel].[method]
+      classMethods: {},
+      // record method for use with record.[method]
+      instanceMethods: {},
+      // Sequelize hooks
+      // See http://docs.sequelizejs.com/en/latest/api/hooks
+      hooks: {}
+    }
+  };
+
+  return model;
+};
