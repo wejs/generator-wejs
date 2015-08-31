@@ -29,7 +29,6 @@ var WejsGenerator = yeoman.generators.Base.extend({
   },
   writing: {
     app: function app() {
-      this.directory('server/models', this.projectFolder + 'files');
       this.template('model.ejs', 'server/models/'+this.modelName+'.js');
     }
   }
