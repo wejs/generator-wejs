@@ -1,3 +1,4 @@
+files/uploads
 node_modules
 coverage
 config
