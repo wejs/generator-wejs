@@ -20,13 +20,12 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yo": "1.4.7",
-    "yeoman-generator": "^0.20.1",
-    "yosay": "^1.0.4",
-    "underscore.string": "^3.1.1"
+    "yeoman-generator": "^0.20.3",
+    "yosay": "^1.0.5",
+    "underscore.string": "^3.2.0"
   },
   "devDependencies": {
     "jshint": "^2.8.0",
-    "mocha": "2.2.5"
+    "mocha": "2.3.0"
   }
 }
