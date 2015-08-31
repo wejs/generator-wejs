@@ -28,8 +28,5 @@
   "devDependencies": {
     "jshint": "^2.8.0",
     "mocha": "2.2.5"
-  },
-  "peerDependencies": {
-    "yo": ">=1.0.0"
   }
 }
