@@ -46,10 +46,11 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.copy('app.js', this.projectFolder + 'app.js');
       this.copy('plugin.js', this.projectFolder +  'plugin.js');
 
-      this.copy('gitignore', this.projectFolder +  '.gitignore');
+      this.copy('jshintrc', this.projectFolder +  '.jshintrc');
 
       this.copy('bowerrc', this.projectFolder + '.bowerrc');
       this.copy('gitignore', this.projectFolder + '.gitignore');
+      this.copy('gulpfile.js', this.projectFolder + 'gulpfile.js');
 
       this.copy('config/local.example', this.projectFolder +  'config/local.js');
     }

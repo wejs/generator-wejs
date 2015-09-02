@@ -6,11 +6,11 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('wejs:app', function () {
+describe('wejs:blog', function () {
   var projectDir = path.join(os.tmpdir(), './temp-ptest');
   var p;
   before(function (done) {
-    p = helpers.run(path.join(__dirname, '../app'))
+    p = helpers.run(path.join(__dirname, '../blog'))
       .inDir(projectDir)
       .withOptions({ 'skip-install': true })
       //.withArguments(['test'])
@@ -20,13 +20,12 @@ describe('wejs:app', function () {
       .on('end', done);
   });
 
-  it('creates project files', function() {
+  it('creates blog project files', function() {
     assert.file([
       'we-project-test/server/controllers/main.js',
       'we-project-test/config/local.js',
       'we-project-test/config/log.js',
       'we-project-test/config/i18n.js',
-      'we-project-test/config/clientside.js',
       'we-project-test/.gitignore',
       'we-project-test/.bowerrc',
       'we-project-test/app.js',
