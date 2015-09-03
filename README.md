@@ -4,11 +4,10 @@
 
 ## Features
 
- - yo wejs :construction: ( for create one project )
  - yo wejs:blog :white_check_mark: ( for create blog project )
  - yo wejs:plugin :white_check_mark:
- - yo wejs:theme :construction:
- - yo wejs:emberjs :construction: ( for ember.js features )
+ - yo wejs:theme :white_check_mark:
+ - yo wejs:widget :white_check_mark:
 
 ## Requirements
 
@@ -60,7 +59,9 @@ TODO!
 
 ### For generate one we.js blog project
 
-TODO!
+```sh
+yo wejs:blog
+```
 
 
 ### How to test
