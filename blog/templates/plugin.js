@@ -8,7 +8,18 @@
 module.exports = function loadPlugin(projectPath, Plugin) {
   var plugin = new Plugin(__dirname);
 
-  // plugin.setRoutes({});
-
+  // override default home page to show articles list
+  plugin.setRoutes({
+    'get /': {
+      name: 'main.index',
+      controller: 'article',
+      model: 'article',
+      action: 'find',
+      template: 'article/find',
+      // title: 'A static title',
+      titleHandler  : 'i18n',
+      titleI18n: 'main.index',
+    }
+  });
   return plugin;
 };

@@ -30,7 +30,10 @@ describe('wejs:blog', function () {
       'we-project-test/.bowerrc',
       'we-project-test/app.js',
       'we-project-test/package.json',
-      'we-project-test/plugin.js'
+      'we-project-test/plugin.js',
+      'we-project-test/files/public/favicon.png',
+      'we-project-test/files/public/home-bg.jpg',
+      'we-project-test/files/public/logo.jpg'
     ]);
   });
 });
