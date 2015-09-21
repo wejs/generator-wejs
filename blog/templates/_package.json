@@ -16,7 +16,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "lodash": "^3.10.1",
-    "we-core": "0.3.69",
+    "we-core": "0.3.81",
     "we-plugin-article": "0.3.1",
     "we-plugin-disqus": "0.3.0",
     "we-plugin-file": "0.3.11",
