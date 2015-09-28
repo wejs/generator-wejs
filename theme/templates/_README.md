@@ -18,7 +18,7 @@ npm install
 npm link <%= themeName %>
 ```
 
-#### 3 change your settings to use this theme:
+#### 3 change your project settings to use this theme:
 
 **file:** [project]/config/themes.js
 ```js
