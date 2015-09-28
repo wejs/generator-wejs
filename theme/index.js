@@ -1,10 +1,6 @@
-'use strict';
-var util = require('util');
-var path = require('path');
 var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
-
 
 var WejsGenerator = yeoman.generators.Base.extend({
   prompting: function () {
@@ -26,9 +22,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
       this.name = props.name;
       this.themeName = 'we-theme-' + _s.slugify(props.name);
       this.projectFolder = this.themeName + '/';
-
       this.appConfigs = props;
-
       done();
     }.bind(this));
   },
@@ -43,10 +37,10 @@ var WejsGenerator = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
-      this.directory('assets', this.projectFolder + 'assets');
-      this.directory('dist', this.projectFolder + 'dist');
+      this.directory('files', this.projectFolder + 'files');
+      this.directory('src', this.projectFolder + 'src');
       this.directory('templates', this.projectFolder + 'templates');
-
+     this.copy('gulpfile.js', this.projectFolder +  'gulpfile.js');
       this.copy('gitignore', this.projectFolder +  '.gitignore');
     }
   }

@@ -1,1 +1,1 @@
-Put your server side templates here ( sails.js templates )
+Put your server side templates here

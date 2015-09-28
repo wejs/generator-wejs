@@ -19,7 +19,7 @@ module.exports = {
   // set layouts here
   layouts: {
     'default': {
-      template: __dirname + '/templates/server/layout.hbs',
+      template: __dirname + '/templates/server/layouts/default-layout.hbs',
       regions: {
         highlighted: {
           name: 'Highlighted'
@@ -30,13 +30,24 @@ module.exports = {
       }
     },
     'fullwidth': {
-      template: __dirname + '/templates/server/full-width-layout.hbs',
+      template: __dirname + '/templates/server/layouts/full-width-layout.hbs',
       regions: {
         highlighted: {
           name: 'Highlighted'
         }
       }
-    }
+    },
+    'home': {
+      template: __dirname + '/templates/server/layouts/home.hbs',
+      regions: {
+        highlighted: {
+          name: 'Highlighted'
+        },
+        afterContent: {
+          name: 'After content'
+        }
+      }
+    },
   },
   widgets: {}
 };
