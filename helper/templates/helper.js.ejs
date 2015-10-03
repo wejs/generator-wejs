@@ -1,0 +1,24 @@
+/**
+ * We {{<%= Name %>}}  helper
+ *
+ * usage:  {{<%= Name %>}}
+ */
+
+module.exports = function(we) {
+  return function helper() {
+    var options = arguments[arguments.length-1];
+
+    // // helper attibutes is avaible at
+    // // options.hash
+    // // if call {{<%= Name %>  time="value"}} the value will be at options.hash.time
+
+
+    // DO your logic here
+
+
+    // // if you return hTML use the:
+    // return new we.hbs.SafeString(html);
+    // // else return the :
+    // return html;
+  }
+}

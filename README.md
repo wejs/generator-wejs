@@ -8,6 +8,7 @@
  - yo wejs:plugin :white_check_mark:
  - yo wejs:theme :white_check_mark:
  - yo wejs:widget :white_check_mark:
+ - yo wejs:helper :white_check_mark:
 
 ## Requirements
 
@@ -63,6 +64,11 @@ TODO!
 yo wejs:blog
 ```
 
+### For generate one we.js template helper file
+
+```sh
+yo wejs:helper
+```
 
 ### How to test
 
