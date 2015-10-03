@@ -16,13 +16,13 @@
   "dependencies": {
     "async": "^1.4.2",
     "lodash": "^3.10.1",
-    "we-core": "0.3.81",
+    "we-core": "0.3.85",
     "we-plugin-article": "0.3.1",
     "we-plugin-disqus": "0.3.0",
     "we-plugin-file": "0.3.12",
-    "we-plugin-form": "0.3.16",
-    "we-plugin-menu": "0.3.2",
-    "we-plugin-vocabulary": "0.3.7",
+    "we-plugin-form": "0.3.18",
+    "we-plugin-menu": "0.3.4",
+    "we-plugin-vocabulary": "0.3.8",
     "we-theme-admin-default": "0.3.9",
     "we-theme-blog-startbootstrap-clean": "0.3.2"
   },
