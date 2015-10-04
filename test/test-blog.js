@@ -22,18 +22,18 @@ describe('wejs:blog', function () {
 
   it('creates blog project files', function() {
     assert.file([
-      'we-project-test/server/controllers/main.js',
-      'we-project-test/config/local.js',
-      'we-project-test/config/log.js',
-      'we-project-test/config/i18n.js',
-      'we-project-test/.gitignore',
-      'we-project-test/.bowerrc',
-      'we-project-test/app.js',
-      'we-project-test/package.json',
-      'we-project-test/plugin.js',
-      'we-project-test/files/public/favicon.png',
-      'we-project-test/files/public/home-bg.jpg',
-      'we-project-test/files/public/logo.jpg'
+      'we-project-blog-test/server/controllers/main.js',
+      'we-project-blog-test/config/local.js',
+      'we-project-blog-test/config/log.js',
+      'we-project-blog-test/config/i18n.js',
+      'we-project-blog-test/.gitignore',
+      'we-project-blog-test/.bowerrc',
+      'we-project-blog-test/app.js',
+      'we-project-blog-test/package.json',
+      'we-project-blog-test/plugin.js',
+      'we-project-blog-test/files/public/favicon.png',
+      'we-project-blog-test/files/public/home-bg.jpg',
+      'we-project-blog-test/files/public/logo.jpg'
     ]);
   });
 });
