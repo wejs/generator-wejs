@@ -3,6 +3,10 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
 var WejsGenerator = yeoman.generators.Base.extend({
+  constructor: function () {
+    yeoman.generators.Base.apply(this, arguments);
+    this.argument('name', { type: String, required: false });
+  },
   prompting: function () {
     var done = this.async();
 
@@ -11,20 +15,22 @@ var WejsGenerator = yeoman.generators.Base.extend({
       'We.js plugin generator! |o/ |o/ \n generate one testable we.js plugin!'
     ));
 
-    var prompts = [{
-      type    : 'input',
-      name    : 'name',
-      message : 'Your plugin name',
-      default : this.appname // Default to current folder name
-    }];
+    var prompts = [];
+
+    if (!this.name) {
+      prompts.push({
+        type    : 'input',
+        name    : 'name',
+        message : 'Your plugin name',
+        default : (this.name || this.appname) // Default to current folder name
+      });
+    }
 
     this.prompt(prompts, function (props) {
-      this.name = props.name;
-      this.pluginName = 'we-plugin-' + _s.slugify(props.name);
-
+      this.name = (this.name || props.name);
+      this.pluginName = 'we-plugin-' + _s.slugify(this.name);
       this.appConfigs = props;
       this.projectFolder = this.pluginName + '/';
-
       done();
     }.bind(this));
   },
