@@ -1,0 +1,44 @@
+{
+  "name": "<%= projectName %>",
+  "version": "0.3.0",
+  "private": true,
+  "main": "./app.js",
+  "scripts": {
+    "dev": "PORT=4000 node app.js",
+    "verbose": "PORT=4000 LOG_LV=verbose node app.js",
+    "prod": "PORT=4000 NODE_ENV=prod node app.js",
+    "deps": "npm install && bower install",
+    "start": "PORT=4000 node app.js",
+    "build": "gulp build",
+    "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
+    "prepublish": "npm prune"
+  },
+  "dependencies": {
+    "async": "1.4.2",
+    "lodash": "3.10.1",
+    "we-core": "0.3.91",
+    "we-plugin-bootstrap3": "0.3.1",
+    "we-plugin-event": "0.3.54",
+    "we-plugin-file": "0.3.14",
+    "we-plugin-form": "0.3.20",
+    "we-plugin-location": "0.3.3",
+    "we-plugin-menu": "0.3.5",
+    "we-plugin-vocabulary": "0.3.11",
+    "we-theme-admin-default": "0.3.10",
+    "we-theme-event": "0.3.3",
+    "we-theme-pratt": "0.3.0",
+    "we-theme-site-wejs": "0.3.28"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.1",
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.1",
+    "supertest": "^1.1.0",
+    "we-test-tools": "0.3.9"
+  }
+}
