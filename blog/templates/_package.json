@@ -16,7 +16,8 @@
   "dependencies": {
     "async": "^1.4.2",
     "lodash": "^3.10.1",
-    "we-core": "0.3.89",
+    "we-core": "0.3.91",
+    "we-plugin-bootstrap3": "0.3.1",
     "we-plugin-article": "0.3.1",
     "we-plugin-disqus": "0.3.0",
     "we-plugin-file": "0.3.14",
@@ -36,6 +37,6 @@
     "mocha": "^2.2.5",
     "sinon": "^1.14.1",
     "supertest": "^1.0.1",
-    "we-test-tools": "^0.3.6"
+    "we-test-tools": "^0.3.8"
   }
 }
