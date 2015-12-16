@@ -51,7 +51,7 @@ module.exports = {
           function createMainMenu(done) {
             we.db.models.menu.create({
               name: 'main',
-              class: 'nav navbar-nav navbar-collapse'
+              class: 'nav navbar-nav collapse navbar-collapse'
             }).then(function (r){
               we.log.info('New menu with name: '+r.name+' and id: '+r.id);
               // then create menu links
