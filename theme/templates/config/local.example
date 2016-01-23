@@ -1,0 +1,71 @@
+/**
+ * Example config, copy this file to locals.js
+ */
+module.exports = {
+  passport: {
+    cookieDomain : null
+  },
+
+  // hostname: 'http://wejs.org',
+
+  // i18n: {
+  //   updateFiles: false
+  // },
+
+  // email: {
+  //   // default mail options
+  //   mailOptions: {
+  //     // by default log emails in console
+  //     sendToConsole: false,
+  //     // default from and to
+  //     from: 'Alberto Souza <contato@albertosouza.net>', // sender address
+  //     subject: 'Blog # ', // Subject line
+  //   },
+  //   // connection configs
+  //   auth: {
+  //     user: 'mandrillemail@email',
+  //     pass: 'password'
+  //   },
+  //   // ignoreTLS: false,
+  //   // name: null,
+  //   // optional params
+  //   service: 'Mandrill',
+  //   type: 'SMTP',
+  //   host: 'smtp.mandrillapp.com',
+  //   port: 587,
+  //   debug: true,
+  //   // secure: 'true',
+  //   // localAddress: '',
+  //   // connectionTimeout: '',
+  //   // greetingTimeout: '',
+  //   // socketTimeout: '',
+
+  //   // authMethod: '',
+  //   // tls: ''
+  // },
+
+  acl: {
+    disabled: true
+  },
+
+  database: {
+    prod: {
+      dialect: 'mysql',
+      database: 'test',
+      username: 'root',
+      password: ''
+    },
+    dev: {
+      dialect: 'mysql',
+      database: 'test',
+      username: 'root',
+      password: ''
+    },
+    test: {
+      dialect: 'mysql',
+      database: 'test',
+      username: 'root',
+      password: ''
+    }
+  }
+}

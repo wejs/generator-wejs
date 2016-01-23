@@ -25,4 +25,33 @@ gulp.task('watch', function () {
   gulp.watch('src/less/**', ['styles']);
 });
 
-gulp.task('default', ['scripts', 'styles', 'watch']);
+gulp.task('server', function() {
+  var we = require('we-core');
+
+  we.go({
+    themes: {
+      enabled: [
+        { name: '<%= themeName %>', themeFolder: __dirname }
+      ],
+      app: '<%= themeName %>'
+    },
+    i18n: {
+      directory: 'node_modules/we-core/locales'
+    },
+    log: {
+      level: 'info'
+    }
+  }, function (err) {
+    if (err) return console.error(err);
+  });
+
+  we.hooks.on('we:before:routes:bind',  function (we, next) {
+    // set home page example route
+    we.routes['get /'].template = 'examples/index';
+    delete we.routes['get /'].pluginName;
+
+    next();
+  });
+});
+
+gulp.task('default', ['scripts', 'styles', 'watch', 'server']);

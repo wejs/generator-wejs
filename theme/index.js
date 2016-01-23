@@ -47,9 +47,12 @@ var WejsGenerator = yeoman.generators.Base.extend({
     projectfiles: function () {
       this.directory('files', this.projectFolder + 'files');
       this.directory('src', this.projectFolder + 'src');
+      this.directory('config', this.projectFolder + 'config');
+
       this.directory('templates', this.projectFolder + 'templates');
-     this.copy('gulpfile.js', this.projectFolder +  'gulpfile.js');
+      this.copy('gulpfile.js', this.projectFolder +  'gulpfile.js');
       this.copy('gitignore', this.projectFolder +  '.gitignore');
+      this.copy('npmignore', this.projectFolder +  '.npmignore');
     }
   }
 });
