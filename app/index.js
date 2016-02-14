@@ -3,9 +3,9 @@ var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var WejsGenerator = yeoman.generators.Base.extend({
+var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
 
     // This makes `appname` a required argument.
     this.argument('name', { type: String, required: false });
@@ -43,7 +43,7 @@ var WejsGenerator = yeoman.generators.Base.extend({
     app: function () {
       this.template('README.md.ejs', this.projectFolder + 'README.md');
       // - package.json file
-      this.template('package.json.ejs', this.projectFolder + 'package.json');
+      this.template('_package.json', this.projectFolder + 'package.json');
     },
     projectfiles: function () {
       this.directory('config', this.projectFolder + 'config');
