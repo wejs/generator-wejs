@@ -73,13 +73,20 @@ yo wejs:helper
 ### How to test
 
 ```sh
-npm test
+we test
 ```
 
 ##### For run only 'wejs:plugin' test use:
 
 ```sh
-NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/test-*.js -g 'wejs:plugin'
+we-test -g 'wejs:plugin'
+```
+
+
+## Magicaly update all project generators 
+
+```sh 
+npm run upp
 ```
 
 ## Links

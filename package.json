@@ -14,7 +14,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha",
+    "upp": "node bin/up-projects.js"
   },
   "keywords": [
     "yeoman-generator"
@@ -25,7 +26,9 @@
     "yosay": "^1.1.0"
   },
   "devDependencies": {
+    "async": "^1.5.2",
     "jshint": "^2.9.1",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "npm-check-updates": "^2.5.8"
   }
 }
