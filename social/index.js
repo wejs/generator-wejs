@@ -13,7 +13,7 @@ var WejsGenerator = yeoman.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'We.js simple blog project generator! |o/ |o/ \n generate one testable we.js project!'
+      'We.js Social Network project generator! |o/ |o/ \n generate one testable we.js project!'
     ));
 
     var prompts = [];
@@ -22,14 +22,14 @@ var WejsGenerator = yeoman.Base.extend({
       prompts.push({
         type    : 'input',
         name    : 'name',
-        message : 'Your blog name',
+        message : 'Your project name',
         default : (this.name || this.appname) // Default to current folder name
       });
     }
 
     this.prompt(prompts, function (props) {
       this.name = (this.name || props.name);
-      this.projectName = 'we-project-blog-' + _s.slugify(this.name);
+      this.projectName = 'we-project-social-' + _s.slugify(this.name);
 
       this.appConfigs = props;
       this.projectFolder = this.projectName + '/';

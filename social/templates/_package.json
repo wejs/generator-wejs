@@ -1,6 +1,6 @@
 {
   "name": "<%= projectName %>",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "private": true,
   "main": "./app.js",
   "scripts": {
@@ -14,27 +14,32 @@
     "prepublish": "npm prune"
   },
   "dependencies": {
-    "async": "1.5.2",
-    "lodash": "4.3.0",
-    "we-core": "^0.3.107",
-    "we-plugin-bootstrap3": "^0.3.2",
-    "we-plugin-event": "^0.3.56",
+    "async": "^1.5.2",
+    "we-core": "^0.3.119",
+    "we-plugin-bootstrap3": "0.3.2",
+    "we-plugin-comment": "^1.0.0",
     "we-plugin-file": "^1.0.2",
-    "we-plugin-form": "^0.3.27",
-    "we-plugin-location": "0.3.4",
-    "we-plugin-menu": "^0.3.10",
+    "we-plugin-flag": "^1.0.2",
+    "we-plugin-form": "^0.3.29",
+    "we-plugin-group": "^0.3.1",
+    "we-plugin-menu": "^0.3.11",
+    "we-plugin-notification": "^0.3.1",
+    "we-plugin-passport-oauth2": "^0.3.0",
+    "we-plugin-socketio": "^0.3.2",
     "we-plugin-vocabulary": "0.3.20",
-    "we-theme-admin-default": "^0.3.10",
-    "we-theme-event": "^0.3.7",
-    "we-theme-pratt": "^0.3.2",
-    "we-theme-site-wejs": "^0.3.30"
+    "we-theme-admin-default": "0.3.12",
+    "we-theme-pratt": "^0.3.4"
   },
   "devDependencies": {
-    "gulp": "3.9.1",
-    "mocha": "2.4.5",
-    "sinon": "1.17.3",
-    "supertest": "^1.1.0",
+    "gulp": "^3.9.1",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "supertest": "^1.2.0",
     "we-gulp-tasks-default": "0.3.0",
     "we-test-tools": "0.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@yourgitrepo"
   }
 }

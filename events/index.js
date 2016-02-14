@@ -3,9 +3,9 @@ var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var WejsGenerator = yeoman.generators.Base.extend({
+var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
     this.argument('name', { type: String, required: false });
   },
   prompting: function () {

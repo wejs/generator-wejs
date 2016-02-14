@@ -93,7 +93,7 @@ npm run upp
 
 > * We.js site: http://wejs.org
 
-## Copyright and license
+## License
 
-Copyright 2013-2015 Alberto Souza <alberto.souza.99@gmail.com> and [contributors](https://github.com/wejs/generator-wejs/graphs/contributors) , under [the MIT license](LICENSE).
+Under [the MIT license](LICENSE).
 
