@@ -39,6 +39,8 @@ var WejsGenerator = yeoman.Base.extend({
       this.template('controller.js.ejs', 'server/controllers/'+this.resourceName+'.js');
       this.template('resource.json.ejs', 'server/resources/'+this.resourceName+'.json');
       this.template('test.js.ejs', 'test/features/resources/'+this.resourceName+'.test.js');
+      // copy default templates for this resource
+      this.directory('crud-tpls', 'server/templates/'+this.resourceName);
     }
   }
 });
