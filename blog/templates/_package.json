@@ -22,9 +22,9 @@
     "we-plugin-disqus": "1.0.0",
     "we-plugin-file": "1.0.2",
     "we-plugin-form": "0.3.29",
-    "we-plugin-menu": "0.3.15",
+    "we-plugin-menu": "0.3.16",
     "we-plugin-vocabulary": "^0.3.20",
-    "we-theme-admin-default": "^0.3.10",
+    "we-theme-admin-default": "^1.0.0",
     "we-theme-blog-startbootstrap-clean": "^0.3.13"
   },
   "devDependencies": {
