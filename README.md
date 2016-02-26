@@ -9,6 +9,7 @@
  - yo wejs:theme :white_check_mark:
  - yo wejs:widget :white_check_mark:
  - yo wejs:helper :white_check_mark:
+ - yo wejs:resource :white_check_mark:
 
 ## Requirements
 
@@ -68,6 +69,12 @@ yo wejs:blog
 
 ```sh
 yo wejs:helper
+```
+
+### For generate resource CRUD
+
+```sh
+yo wejs:resource
 ```
 
 ### How to test
