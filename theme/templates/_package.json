@@ -17,7 +17,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-less": "^3.0.3",
     "gulp-minify-css": "^1.2.1",
-    "we-core": "^0.3.114",
+    "we-core": "^1.0.2",
     "we-plugin-bootstrap3": "^0.3.2"
   },
   "optionalDependencies": {},

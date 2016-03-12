@@ -15,18 +15,18 @@
   },
   "dependencies": {
     "async": "1.5.2",
-    "lodash": "4.5.1",
-    "we-core": "^0.3.107",
+    "lodash": "4.6.1",
+    "we-core": "^1.0.2",
     "we-plugin-bootstrap3": "^0.3.2",
     "we-plugin-event": "^0.3.56",
     "we-plugin-file": "^1.0.2",
     "we-plugin-form": "^0.3.27",
     "we-plugin-location": "0.3.5",
-    "we-plugin-menu": "^0.3.10",
-    "we-plugin-vocabulary": "0.3.21",
+    "we-plugin-menu": "^1.0.0",
+    "we-plugin-vocabulary": "0.3.22",
     "we-theme-admin-default": "^1.0.0",
     "we-theme-event": "^0.3.7",
-    "we-theme-pratt": "^0.3.2",
+    "we-theme-pratt": "^1.0.0",
     "we-theme-site-wejs": "^0.3.30"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "mocha": "2.4.5",
     "sinon": "1.17.3",
     "supertest": "^1.1.0",
-    "we-gulp-tasks-default": "0.3.0",
+    "we-gulp-tasks-default": "1.0.0",
     "we-test-tools": "0.3.11"
   }
 }

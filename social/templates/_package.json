@@ -15,27 +15,27 @@
   },
   "dependencies": {
     "async": "^1.5.2",
-    "we-core": "^0.3.119",
+    "we-core": "^1.0.2",
     "we-plugin-bootstrap3": "0.3.2",
     "we-plugin-comment": "^1.0.0",
     "we-plugin-file": "^1.0.2",
     "we-plugin-flag": "^1.0.2",
     "we-plugin-form": "^0.3.29",
     "we-plugin-group": "^0.3.1",
-    "we-plugin-menu": "^0.3.11",
-    "we-plugin-notification": "^0.3.1",
+    "we-plugin-menu": "^1.0.0",
+    "we-plugin-notification": "^1.0.0",
     "we-plugin-passport-oauth2": "^0.3.0",
     "we-plugin-socketio": "^0.3.2",
-    "we-plugin-vocabulary": "0.3.21",
+    "we-plugin-vocabulary": "0.3.22",
     "we-theme-admin-default": "1.0.0",
-    "we-theme-pratt": "^0.3.4"
+    "we-theme-pratt": "^1.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "mocha": "^2.4.5",
     "sinon": "^1.17.3",
     "supertest": "^1.2.0",
-    "we-gulp-tasks-default": "0.3.0",
+    "we-gulp-tasks-default": "1.0.0",
     "we-test-tools": "0.3.11"
   },
   "repository": {
