@@ -10,7 +10,8 @@ async.series([
       // These are set by default:
       // silent: true,
       jsonUpgraded: false,
-      upgrade: true
+      upgrade: true,
+      upgradeAll: true
     }).then(function () {
       console.log('Upgrated app project');
       done();
@@ -20,7 +21,8 @@ async.series([
     ncu.run({
       packageFile: 'blog/templates/_package.json',
       jsonUpgraded: false,
-      upgrade: true
+      upgrade: true,
+      upgradeAll: true
     }).then(function () {
       console.log('Upgrated blog project');
       done();
@@ -30,7 +32,8 @@ async.series([
     ncu.run({
       packageFile: 'events/templates/_package.json',
       jsonUpgraded: false,
-      upgrade: true
+      upgrade: true,
+      upgradeAll: true
     }).then(function () {
       console.log('Upgrated events project');
       done();
@@ -40,7 +43,8 @@ async.series([
     ncu.run({
       packageFile: 'social/templates/_package.json',
       jsonUpgraded: false,
-      upgrade: true
+      upgrade: true,
+      upgradeAll: true
     }).then(function () {
       console.log('Upgrated social project');
       done();
