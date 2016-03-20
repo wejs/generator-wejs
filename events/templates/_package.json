@@ -16,27 +16,27 @@
   "dependencies": {
     "mysql": "^2.10.2",
     "express-mysql-session": "^1.0.0-rc.0",
-    "async": "1.5.2",
+    "async": "2.0.0-rc.1",
     "lodash": "4.6.1",
-    "we-core": "^1.0.2",
+    "we-core": "^1.1.1",
     "we-plugin-bootstrap3": "^0.3.2",
-    "we-plugin-event": "^0.3.56",
-    "we-plugin-file": "^1.0.2",
-    "we-plugin-form": "^0.3.27",
+    "we-plugin-event": "^0.3.57",
+    "we-plugin-file": "^1.0.5",
+    "we-plugin-form": "^0.3.29",
     "we-plugin-location": "0.3.5",
     "we-plugin-menu": "^1.0.0",
     "we-plugin-vocabulary": "0.3.22",
     "we-theme-admin-default": "^1.0.0",
-    "we-theme-event": "^0.3.7",
-    "we-theme-pratt": "^1.0.0",
-    "we-theme-site-wejs": "^0.3.30"
+    "we-theme-event": "^0.3.8",
+    "we-theme-pratt": "^1.0.1",
+    "we-theme-site-wejs": "^0.3.31"
   },
   "devDependencies": {
     "gulp": "3.9.1",
     "mocha": "2.4.5",
     "sinon": "1.17.3",
-    "supertest": "^1.1.0",
+    "supertest": "^1.2.0",
     "we-gulp-tasks-default": "1.0.0",
-    "we-test-tools": "0.3.11"
+    "we-test-tools": "0.3.12"
   }
 }
