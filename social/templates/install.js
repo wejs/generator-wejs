@@ -17,7 +17,8 @@ module.exports = {
           password: '123', // change after install
           displayName: 'Administrator',
           language: 'en-us',
-          active: true
+          active: true,
+          roles: ['administrator']
         };
 
         we.log.info('I will create the user: ', user1);
@@ -26,20 +27,13 @@ module.exports = {
         .then(function (user) {
           we.log.info('New User with id: ', user.id);
           // set the password
-          user.updatePassword(user1.password , function(error) {
-            if (error) return done(error);
-            // add as admin
-            // check if the role exists
-            we.db.models.role.find({
-              where: { name: 'administrator' }
-            }).then(function (role) {
-              if (!role) return done('administrator role not found');
-              user.addRole(role).then(function() {
-                we.log.info('role ' +role.name+ ' set to user ' + user.username);
-                return done();
-              });
-            });
-          });
+          we.db.models.password.create({
+            userId: user.id,
+            password: user1.password,
+            confirmPassword: user1.password
+          }).then(function () {
+            return done();
+          }).catch(done);
         });
       },
       // function setDefaultRolePermissions(done) {
