@@ -21,7 +21,7 @@ var WejsGenerator = yeoman.Base.extend({
       prompts.push({
         type    : 'input',
         name    : 'name',
-        message : 'Your blog name',
+        message : 'Your theme name',
         default : (this.name || this.appname) // Default to current folder name
       });
     }
