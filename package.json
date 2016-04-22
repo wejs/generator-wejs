@@ -21,14 +21,14 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "underscore.string": "^3.2.3",
-    "yeoman-generator": "^0.22.4",
-    "yosay": "^1.1.0"
+    "underscore.string": "^3.3.4",
+    "yeoman-generator": "^0.22.6",
+    "yosay": "^1.1.1"
   },
   "devDependencies": {
-    "async": "^1.5.2",
-    "jshint": "^2.9.1",
-    "mocha": "^2.3.4",
-    "npm-check-updates": "^2.5.8"
+    "async": "^2.0.0-rc.3",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "npm-check-updates": "^2.6.3"
   }
 }
