@@ -22,13 +22,13 @@
   ],
   "dependencies": {
     "underscore.string": "^3.3.4",
-    "yeoman-generator": "^0.22.6",
+    "yeoman-generator": "^0.23.3",
     "yosay": "^1.1.1"
   },
   "devDependencies": {
-    "async": "^2.0.0-rc.3",
+    "async": "^2.0.0-rc.5",
     "jshint": "^2.9.2",
     "mocha": "^2.4.5",
-    "npm-check-updates": "^2.6.3"
+    "npm-check-updates": "^2.6.5"
   }
 }

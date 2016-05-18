@@ -15,28 +15,29 @@
   },
   "dependencies": {
     "mysql": "^2.10.2",
-    "express-mysql-session": "^1.0.0-rc.0",
-    "async": "2.0.0-rc.3",
-    "lodash": "4.11.1",
-    "we-core": "^1.2.5",
+    "express-mysql-session": "^1.0.0",
+    "async": "2.0.0-rc.5",
+    "lodash": "4.12.0",
+    "we-core": "^1.3.1",
     "we-plugin-bootstrap3": "^0.3.2",
-    "we-plugin-event": "^0.3.61",
+    "we-plugin-event": "^0.3.65",
     "we-plugin-file": "^1.0.6",
-    "we-plugin-form": "^0.3.33",
+    "we-plugin-form": "^0.3.34",
     "we-plugin-location": "0.3.5",
-    "we-plugin-menu": "^1.1.0",
+    "we-plugin-menu": "^1.2.0",
     "we-plugin-vocabulary": "0.3.23",
+    "we-plugin-widget": "1.0.0",
     "we-theme-admin-default": "^1.0.1",
-    "we-theme-event": "^0.3.10",
-    "we-theme-pratt": "^1.0.2",
+    "we-theme-event": "^0.3.12",
+    "we-theme-pratt": "^1.0.6",
     "we-theme-site-wejs": "^0.3.31"
   },
   "devDependencies": {
     "gulp": "3.9.1",
     "mocha": "2.4.5",
-    "sinon": "1.17.3",
+    "sinon": "1.17.4",
     "supertest": "^1.2.0",
     "we-gulp-tasks-default": "1.1.0",
-    "we-test-tools": "0.3.12"
+    "we-test-tools": "0.3.15"
   }
 }
