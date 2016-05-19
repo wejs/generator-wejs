@@ -1,23 +1,20 @@
-/*global describe, beforeEach, it*/
-'use strict';
-
 var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-assert');
+var helpers = require('yeoman-test');
 var os = require('os');
 
 describe('wejs', function () {
   var projectDir = path.join(os.tmpdir(), './temp-ptest');
-  var p;
   before(function (done) {
-    p = helpers.run(path.join(__dirname, '../app'))
-      .inDir(projectDir)
-      .withOptions({ 'skip-install': true })
-      //.withArguments(['test'])
-      .withPrompts({
-        name: 'test'
-      })
-      .on('end', done);
+    helpers.run(path.join( __dirname, '../app'))
+    .inDir(projectDir)
+    .withOptions({ 'skip-install': true })
+    .withPrompts({ name: 'test' })
+    .toPromise()
+    .then(function(){
+      console.log('rodo')
+      done();
+    });
   });
 
   it('creates blog project files', function() {

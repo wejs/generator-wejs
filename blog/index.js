@@ -9,9 +9,6 @@ var WejsGenerator = yeoman.Base.extend({
     this.argument('name', { type: String, required: false });
   },
   prompting: function () {
-    var done = this.async();
-
-    // Have Yeoman greet the user.
     this.log(yosay(
       'We.js simple blog project generator! |o/ |o/ \n generate one testable we.js project!'
     ));
@@ -27,14 +24,13 @@ var WejsGenerator = yeoman.Base.extend({
       });
     }
 
-    this.prompt(prompts, function (props) {
+    return this.prompt(prompts)
+    .then(function (props) {
       this.name = (this.name || props.name);
       this.projectName = 'we-project-blog-' + _s.slugify(this.name);
 
       this.appConfigs = props;
       this.projectFolder = this.projectName + '/';
-
-      done();
     }.bind(this));
   },
   writing: {

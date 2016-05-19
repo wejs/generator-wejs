@@ -8,9 +8,6 @@ var WejsGenerator = yeoman.Base.extend({
     this.argument('name', { type: String, required: false });
   },
   prompting: function () {
-    var done = this.async();
-
-    // Have Yeoman greet the user.
     this.log(yosay(
       'Wejs theme generator! ;)'
     ));
@@ -26,12 +23,12 @@ var WejsGenerator = yeoman.Base.extend({
       });
     }
 
-    this.prompt(prompts, function (props) {
+    return this.prompt(prompts)
+    .then(function (props) {
       this.name = (this.name || props.name);
       this.themeName = 'we-theme-' + _s.slugify(this.name);
       this.projectFolder = this.themeName + '/';
       this.appConfigs = props;
-      done();
     }.bind(this));
   },
 

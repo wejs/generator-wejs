@@ -8,9 +8,6 @@ var WejsGenerator = yeoman.Base.extend({
     this.argument('name', { type: String, required: false });
   },
   prompting: function () {
-    var done = this.async();
-
-    // Have Yeoman greet the user.
     this.log(yosay(
       'We.js widget generator! |o/ |o/ \n generate one widget files in your we.js project or plugin!'
     ));
@@ -26,12 +23,12 @@ var WejsGenerator = yeoman.Base.extend({
       });
     }
 
-    this.prompt(prompts, function (props) {
+    return this.prompt(prompts)
+    .then(function (props) {
       this.name = (this.name || props.name);
       this.Name = _s.slugify(this.name);
       this.widgetDirName = 'server/widgets/' + this.Name;
       this.appConfigs = props;
-      done();
     }.bind(this));
   },
   writing: {

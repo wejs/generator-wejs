@@ -8,8 +8,6 @@ var WejsGenerator = yeoman.Base.extend({
     this.argument('name', { type: String, required: false });
   },
   prompting: function () {
-    var done = this.async();
-    // Have Yeoman greet the user.
     this.log(yosay(
       'We.js resource generator! |o/ |o/ \n generate one model, controller, resource and test for your resource!'
     ));
@@ -25,12 +23,11 @@ var WejsGenerator = yeoman.Base.extend({
       });
     }
 
-
-    this.prompt(prompts, function (props) {
+    return this.prompt(prompts)
+    .then(function (props) {
       this.name = (this.name || props.name);
       this.resourceName = _s.slugify(this.name);
       this.appConfigs = props;
-      done();
     }.bind(this));
   },
   writing: {
