@@ -1,8 +1,8 @@
 {
   "name": "<%= pluginName %>",
   "description": "We.js <%= pluginName %> plugin",
-  "version": "0.3.0",
-  "main": "lib/index.js",
+  "version": "1.0.0",
+  "main": "plugin.js",
   "scripts": {
     "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
     "prepublish": "npm prune"
@@ -14,13 +14,7 @@
     "rimraf": "^2.3.4",
     "supertest": "^1.0.1",
     "we-core": "wejs/we-core",
-    "we-plugin-form": "wejs/we-plugin-form",
-    "we-theme-admin-default": "wejs/we-theme-admin-default",
-    "we-theme-site-wejs": "wejs/we-theme-site-wejs",
     "we-test-tools": "wejs/we-test-tools"
-  },
-  "publishConfig": {
-    "registry": "http://registry.npmjs.org"
   },
   "license": "MIT"
 }

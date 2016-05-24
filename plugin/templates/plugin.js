@@ -8,7 +8,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
   // set plugin configs
   // plugin.setConfigs({
   // });
-  // ser plugin routes
+  // set plugin routes
   // plugin.setRoutes({
   // });
   return plugin;
