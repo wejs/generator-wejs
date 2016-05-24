@@ -49,6 +49,17 @@ async.series([
       console.log('Upgrated social project');
       done();
     }).catch(done);
+  },
+  function updatePlugin(done) {
+    ncu.run({
+      packageFile: 'plugin/templates/_package.json',
+      jsonUpgraded: false,
+      upgrade: true,
+      upgradeAll: true
+    }).then(function () {
+      console.log('Upgrated plugin project');
+      done();
+    }).catch(done);
   }
 ], function doneAll(err) {
   if (err) console.error(err);
