@@ -18,7 +18,7 @@
     "express-mysql-session": "^1.0.0",
     "lodash": "4.13.1",
     "mysql": "^2.10.2",
-    "we-core": "^1.4.0",
+    "we-core": "^1.4.1",
     "we-plugin-acl": "^1.0.0",
     "we-plugin-auth": "^1.0.0",
     "we-plugin-bootstrap3": "^0.3.2",
@@ -31,7 +31,7 @@
     "we-plugin-url-alias": "^1.0.0",
     "we-plugin-user": "^1.0.0",
     "we-plugin-view": "^1.0.0",
-    "we-plugin-vocabulary": "0.3.23",
+    "we-plugin-vocabulary": "1.0.0",
     "we-plugin-widget": "^1.0.1",
     "we-theme-admin-default": "^1.0.1",
     "we-theme-event": "^0.3.12",
@@ -44,6 +44,6 @@
     "sinon": "1.17.4",
     "supertest": "^1.2.0",
     "we-gulp-tasks-default": "1.1.0",
-    "we-test-tools": "0.3.16"
+    "we-test-tools": "0.3.17"
   }
 }
