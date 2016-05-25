@@ -1,4 +1,4 @@
-#We.js <%= projectName %> project
+# We.js <%= projectName %> project
 
 > [write something about yout project here]
 
@@ -6,7 +6,7 @@
 
 - We.js
 
-#How to install
+## How to install
 
 1. Clone this project
 2. Create one database for this project
@@ -19,12 +19,12 @@ npm install
 ```
 6. start with:
 ```sh
-npm run dev
+we go
 ```
 
 See http://wejs.org for we.js docs
 
-# After deploy, generate one build with:
+## After deploy, generate one build with:
 
 ```sh
 npm run build
@@ -32,12 +32,12 @@ npm run build
 
 This command will optimize your assets for production env.
 
-# Test
+## Test
 
 ```
 npm test
 ```
 
-#Copyright and license
+## License
 
 MIT
