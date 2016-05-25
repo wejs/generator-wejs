@@ -12,7 +12,6 @@ describe('wejs', function () {
     .withPrompts({ name: 'test' })
     .toPromise()
     .then(function(){
-      console.log('rodo')
       done();
     });
   });
@@ -24,7 +23,6 @@ describe('wejs', function () {
       'we-project-test/config/log.js',
       'we-project-test/config/i18n.js',
       'we-project-test/.gitignore',
-      'we-project-test/.bowerrc',
       'we-project-test/app.js',
       'we-project-test/package.json',
       'we-project-test/plugin.js',

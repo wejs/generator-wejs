@@ -24,7 +24,6 @@ describe('wejs:blog', function () {
       'we-project-blog-test/config/log.js',
       'we-project-blog-test/config/i18n.js',
       'we-project-blog-test/.gitignore',
-      'we-project-blog-test/.bowerrc',
       'we-project-blog-test/app.js',
       'we-project-blog-test/package.json',
       'we-project-blog-test/plugin.js',
