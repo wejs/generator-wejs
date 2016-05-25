@@ -46,6 +46,9 @@ var WejsGenerator = yeoman.Base.extend({
       this.directory('server', this.projectFolder + 'server');
 
       this.copy('app.js', this.projectFolder + 'app.js');
+
+      this.copy('Procfile', this.projectFolder + 'Procfile');
+
       this.copy('plugin.js', this.projectFolder +  'plugin.js');
       this.copy('install.js', this.projectFolder +  'install.js');
 

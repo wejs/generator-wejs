@@ -45,8 +45,10 @@ module.exports = {
   // },
 
   acl: {
-    disabled: true
+    disabled: false
   },
+
+  enableRequestLog: false,
 
   database: {
     prod: {
