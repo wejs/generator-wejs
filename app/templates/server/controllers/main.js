@@ -2,4 +2,12 @@
  * Main project controller
  */
 
-module.exports = {};
+module.exports = {
+  index: function index(req, res) {
+    res.locals.data = {
+      page: 'home'
+    };
+
+    res.ok();
+  }
+};

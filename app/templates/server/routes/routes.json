@@ -1,8 +1,6 @@
 {
   "get /": {
     "controller": "main",
-    "action": "index",
-    "template"   : "home/index",
-    "layoutName" : "home"
+    "action": "index"
   }
 }

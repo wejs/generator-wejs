@@ -10,7 +10,7 @@ var WejsGenerator = yeoman.Base.extend({
   },
   prompting: function () {
     this.log(yosay(
-      'We.js simple app project generator! |o/ |o/ \n generate one testable we.js project!'
+      'We.js clean app project generator! |o/ |o/ \n generate one testable we.js project!'
     ));
 
     var prompts = [];
@@ -42,18 +42,14 @@ var WejsGenerator = yeoman.Base.extend({
     projectfiles: function () {
       this.directory('config', this.projectFolder + 'config');
       this.directory('files', this.projectFolder + 'files');
-      this.directory('test', this.projectFolder + 'test');
       this.directory('server', this.projectFolder + 'server');
-
-      this.copy('app.js', this.projectFolder + 'app.js');
-      this.copy('plugin.js', this.projectFolder +  'plugin.js');
-      this.copy('install.js', this.projectFolder +  'install.js');
-
+      this.directory('test', this.projectFolder + 'test');
+      this.copy('gitignore', this.projectFolder + '.gitignore');
       this.copy('jshintrc', this.projectFolder +  '.jshintrc');
 
-      this.copy('bowerrc', this.projectFolder + '.bowerrc');
-      this.copy('gitignore', this.projectFolder + '.gitignore');
-      this.copy('gulpfile.js', this.projectFolder + 'gulpfile.js');
+      this.copy('app.js', this.projectFolder + 'app.js');
+
+      this.copy('plugin.js', this.projectFolder +  'plugin.js');
 
       this.copy('config/local.example', this.projectFolder +  'config/local.js');
     }
