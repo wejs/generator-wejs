@@ -8,54 +8,11 @@ var WejsGenerator = yeoman.Base.extend({
     this.argument('name', { type: String, required: false });
   },
   prompting: function () {
-    this.log(yosay(
-      'We.js Social Network project generator! |o/ |o/ \n generate one testable we.js project!'
-    ));
-
-    var prompts = [];
-
-    if (!this.name) {
-      prompts.push({
-        type    : 'input',
-        name    : 'name',
-        message : 'Your project name',
-        default : (this.name || this.appname) // Default to current folder name
-      });
-    }
-
-    return this.prompt(prompts)
-    .then(function (props) {
-      this.name = (this.name || props.name);
-      this.projectName = 'we-project-social-' + _s.slugify(this.name);
-
-      this.appConfigs = props;
-      this.projectFolder = this.projectName + '/';
-    }.bind(this));
+    console.log('TODO!');
   },
   writing: {
-    app: function () {
-      this.template('_README.md', this.projectFolder + 'README.md');
-      // - package.json file
-      this.template('_package.json', this.projectFolder + 'package.json');
-    },
-    projectfiles: function () {
-      this.directory('config', this.projectFolder + 'config');
-      this.directory('files', this.projectFolder + 'files');
-      this.directory('test', this.projectFolder + 'test');
-      this.directory('server', this.projectFolder + 'server');
-
-      this.copy('app.js', this.projectFolder + 'app.js');
-      this.copy('plugin.js', this.projectFolder +  'plugin.js');
-      this.copy('install.js', this.projectFolder +  'install.js');
-
-      this.copy('jshintrc', this.projectFolder +  '.jshintrc');
-
-      this.copy('bowerrc', this.projectFolder + '.bowerrc');
-      this.copy('gitignore', this.projectFolder + '.gitignore');
-      this.copy('gulpfile.js', this.projectFolder + 'gulpfile.js');
-
-      this.copy('config/local.example', this.projectFolder +  'config/local.js');
-    }
+    app: function () {},
+    projectfiles: function () {}
   }
 });
 
