@@ -20,13 +20,11 @@
     "we-core": "1.4.1"
   },
   "devDependencies": {
-    "gulp": "3.9.1",
     "istanbul": "^0.4.3",
     "mocha": "2.5.2",
     "rimraf": "^2.5.2",
     "sinon": "1.17.4",
     "supertest": "^1.2.0",
-    "we-gulp-tasks-default": "1.1.0",
     "we-test-tools": "0.3.17"
   }
 }
