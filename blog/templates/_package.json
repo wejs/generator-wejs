@@ -15,7 +15,7 @@
   "dependencies": {
     "express-mysql-session": "^1.0.0",
     "mysql": "^2.10.2",
-    "we-core": "^1.4.1",
+    "we-core": "^1.4.2",
     "we-plugin-acl": "^1.0.0",
     "we-plugin-article": "^0.3.14",
     "we-plugin-auth": "^1.0.0",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "gulp": "3.9.1",
-    "mocha": "2.5.2",
+    "mocha": "2.5.3",
     "sinon": "1.17.4",
     "supertest": "^1.2.0",
     "we-gulp-tasks-default": "1.1.0",
