@@ -11,14 +11,23 @@ module.exports = function (we) {
     // define you model here
     // see http://docs.sequelizejs.com/en/latest/docs/models-definition
     definition: {
+      <% if(modelAttrs){ %><%- modelAttrs %><% } else { %>
       // // Examples:
-      // attrString: { type: we.db.Sequelize.STRING },
+      // attrString: {
+      //   type: we.db.Sequelize.STRING,
+      //   allowNull: false
+      // },
       // attrText: { type: we.db.Sequelize.TEXT, formFieldType: 'text' },
       // attrHtml: {
       //  type: we.db.Sequelize.TEXT,
       //  formFieldType: 'html',
       //  formFieldHeight: 200
-      //}
+      // },
+      // published: {
+      //  type: we.db.Sequelize.BOOLEAN,
+      //  defaultValue: false
+      // }
+      <% } %>
     },
     // Associations
     // see http://docs.sequelizejs.com/en/latest/docs/associations

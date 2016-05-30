@@ -1,11 +1,12 @@
 var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+var utils = require('../utils.js');
 
 var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
     yeoman.Base.apply(this, arguments);
-    this.argument('name', { type: String, required: false });
+    this.argument('name', { type: String, required: true });
   },
   prompting: function () {
     this.log(yosay(
@@ -32,7 +33,9 @@ var WejsGenerator = yeoman.Base.extend({
   },
   writing: {
     app: function app() {
-      this.template('model.ejs', 'server/models/'+this.modelName+'.js');
+      this.modelAttrs = utils.getModelAttrsFromArgs(this.args);
+
+      this.template('model.js', 'server/models/'+this.modelName+'.js');
     }
   }
 });

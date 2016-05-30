@@ -1,11 +1,12 @@
 var _s = require('underscore.string');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+var utils = require('../utils.js');
 
 var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
     yeoman.Base.apply(this, arguments);
-    this.argument('name', { type: String, required: false });
+    this.argument('name', { type: String, required: true });
   },
   prompting: function () {
     this.log(yosay(
@@ -32,10 +33,12 @@ var WejsGenerator = yeoman.Base.extend({
   },
   writing: {
     app: function app() {
-      this.template('model.js.ejs', 'server/models/'+this.resourceName+'.js');
-      this.template('controller.js.ejs', 'server/controllers/'+this.resourceName+'.js');
-      this.template('resource.json.ejs', 'server/resources/'+this.resourceName+'.json');
-      this.template('test.js.ejs', 'test/features/resources/'+this.resourceName+'.test.js');
+      this.modelAttrs = utils.getModelAttrsFromArgs(this.args);
+
+      this.template('model.js', 'server/models/'+this.resourceName+'.js');
+      this.template('controller.js', 'server/controllers/'+this.resourceName+'.js');
+      this.template('resource.json', 'server/resources/'+this.resourceName+'.json');
+      this.template('test.js', 'test/features/resources/'+this.resourceName+'.test.js');
       // copy default templates for this resource
       this.directory('crud-tpls', 'server/templates/'+this.resourceName);
     }

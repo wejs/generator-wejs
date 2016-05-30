@@ -7,18 +7,20 @@
   "repository": "wejs/generator-wejs",
   "author": {
     "name": "Alberto Souza",
-    "email": "alberto.souza.dev@gmail.com",
+    "email": "contato@albertosouza.net",
     "url": "https://github.com/albertosouza"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
+    "test": "mocha",
     "upp": "node bin/up-projects.js"
   },
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "scaffold",
+    "we.js"
   ],
   "dependencies": {
     "underscore.string": "^3.3.4",
