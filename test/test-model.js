@@ -8,10 +8,7 @@ describe('wejs:model', function () {
     helpers.run(path.join(__dirname, '../model'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
-      //.withArguments(['test'])
-      .withPrompts({
-        name: 'test'
-      })
+      .withArguments(['test'])
       .on('end', done);
   });
 

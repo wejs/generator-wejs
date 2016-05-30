@@ -8,10 +8,7 @@ describe('wejs:resource', function () {
     helpers.run(path.join(__dirname, '../resource'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
-      //.withArguments(['test'])
-      .withPrompts({
-        name: 'test'
-      })
+      .withArguments(['test'])
       .on('end', done);
   });
 
