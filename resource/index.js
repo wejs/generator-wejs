@@ -6,7 +6,10 @@ var utils = require('../utils.js');
 var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
     yeoman.Base.apply(this, arguments);
+
     this.argument('name', { type: String, required: true });
+
+    this.option('tpl');
   },
   prompting: function () {
     this.log(yosay(
@@ -39,8 +42,11 @@ var WejsGenerator = yeoman.Base.extend({
       this.template('controller.js', 'server/controllers/'+this.resourceName+'.js');
       this.template('resource.json', 'server/resources/'+this.resourceName+'.json');
       this.template('test.js', 'test/features/resources/'+this.resourceName+'.test.js');
-      // copy default templates for this resource
-      this.directory('crud-tpls', 'server/templates/'+this.resourceName);
+
+      if (this.options.tpl) {
+        // copy default templates for this resource
+        this.directory('crud-tpls', 'server/templates/'+this.resourceName);
+      }
     }
   }
 });
