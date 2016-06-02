@@ -34,8 +34,9 @@ var WejsGenerator = yeoman.Base.extend({
   writing: {
     app: function app() {
       this.modelAttrs = utils.getModelAttrsFromArgs(this.args);
+      this.modelAssociations = utils.getModelAssocsFromArgs(this.args);
 
-      this.template('model.js', 'server/models/'+this.modelName+'.js');
+      this.template('model.json', 'server/models/'+this.modelName+'.json');
     }
   }
 });

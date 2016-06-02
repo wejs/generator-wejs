@@ -1,0 +1,12 @@
+{
+  "attributes": {
+    <% if(modelAttrs){ %><%- modelAttrs %><% } %>
+  },
+  "associations": {
+    <% if(modelAssociations){ %><%- modelAssociations %><% } %>
+  },
+  "hooks": {
+    "afterCreate": [""]
+  }
+}
+
