@@ -10,8 +10,9 @@ utils.getModelAttrsFromArgs = function getModelAttrsFromArgs(args) {
   var text = '';
 
   args
-  .filter(function (a){
-    if (a.indexOf(':')>0) return true;
+  .filter(function (a) {
+    if (a == args[0]) return false;
+    return true;
   })
   .filter(function (a){
     var aItens = a.split(':');
@@ -72,7 +73,7 @@ utils.renderModelAttribute = function renderModelAttribute(aItens) {
       }
     }
   } else {
-    return '"type": "STRING"\n'+indent;
+    return '  "type": "STRING"\n'+indent;
   }
 
   return text;
