@@ -14,7 +14,7 @@ describe('wejs:resource', function () {
 
   it('should creates resource files', function () {
     assert.file([
-      'server/models/test.js',
+      'server/models/test.json',
       'server/controllers/test.js',
       'server/resources/test.json',
       'test/features/resources/test.test.js',
