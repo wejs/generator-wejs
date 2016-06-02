@@ -24,12 +24,15 @@ var WejsGenerator = yeoman.Base.extend({
       var self = this;
       var done = this.async();
 
-      buildSwaggerFile(we, function (err, ymlText) {
+      buildSwaggerFile(we, function (err, ymlText, jsonText) {
         if(err) return doneAll(err);
 
         self.ymlText = ymlText;
+        self.jsonText = jsonText;
 
         self.template('swagger.yaml', 'api/swagger/swagger.yaml');
+        self.template('swagger.json', 'api/swagger/swagger.json');
+
         done();
       });
     }
@@ -184,9 +187,10 @@ function buildSwaggerFile (we, cb) {
         jsonFile.definitions = getSwaggerDefinitions(we);
       }
 
+      var jsonText = JSON.stringify(jsonFile, null, 2);
       var ymlText = YAML.stringify(jsonFile);
 
-      cb(null, ymlText);
+      cb(null, ymlText, jsonText);
     });
   })
 }
