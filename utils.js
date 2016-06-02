@@ -1,9 +1,24 @@
-
+var path = require('path');
 var indent = '    ';
+
 var utils = {
   databaseAssociationTypes: [
     'belongsTo', 'hasMany', 'hasOne'
-  ]
+  ],
+  getWe: function getWe() {
+    try {
+      var projectFolder = process.cwd();
+      var We = require( path.resolve( projectFolder, 'node_modules/we-core' ));
+      return new We();
+    } catch(e) {
+      if (e.code == 'MODULE_NOT_FOUND') {
+        console.error('we-core not found, this generator only works in project root folder');
+        process.exit();
+      } else {
+        throw e;
+      }
+    }
+  }
 };
 
 utils.getModelAttrsFromArgs = function getModelAttrsFromArgs(args) {

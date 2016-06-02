@@ -38,43 +38,46 @@ npm install -g generator-wejs
 
 ## How to generate things?
 
-### For generate one simple app structure
+### Generate one simple app structure
 
 ```sh
 yo wejs:app
 ```
 
-### For generate one we.js plugin
+### Generate one we.js plugin
 
 ```sh
 yo wejs:plugin
 ```
 
-### For generate one we.js theme
+### Generate one we.js theme
 
 ```sh
 yo wejs:theme
 ```
 
-### For generate one we.js social network project
-TODO!
-
-### For generate one we.js blog project
+### Generate one we.js blog project
 
 ```sh
 yo wejs:blog
 ```
 
-### For generate one we.js template helper file
+### Generate one we.js template helper file
 
 ```sh
 yo wejs:helper
 ```
 
-### For generate resource CRUD
+### Generate resource CRUD
 
 ```sh
-yo wejs:resource
+yo wejs:resource attr1:type attr2:type
+```
+
+### Generate Swagger documentation
+
+```sh
+yo wejs:doc
 ```
 
 ### How to test
