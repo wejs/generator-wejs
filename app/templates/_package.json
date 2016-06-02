@@ -17,7 +17,7 @@
     "express-mysql-session": "^1.0.0",
     "async": "^2.0.0-rc.5",
     "lodash": "^4.13.1",
-    "we-core": "1.4.2"
+    "we-core": "1.5.0"
   },
   "devDependencies": {
     "istanbul": "^0.4.3",
