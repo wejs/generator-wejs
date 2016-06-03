@@ -8,6 +8,18 @@ module.exports = {
 
   // hostname: 'http://wejs.org',
 
+  security: {
+    // see https://github.com/expressjs/cors#configuration-options for  all CORS configuration options
+    // This may be override by every route configs
+    CORS: {
+      // allow CORS requests by default
+      origin: function(origin, cb){ cb(null, true) },
+      // default methods
+      methods: ['GET', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
+    }
+  },
+
   // i18n: {
   //   updateFiles: false
   // },
