@@ -202,9 +202,9 @@ function convertPathToSwaggerRoute(p, we) {
     if (!part) return '';
     if (typeof part == 'object') {
       if (part.name.indexOf('Id') > -1) {
-        // is id
-        var id = part.name.replace(':', '').split('(')[0];
-        return '{'+id+'}';
+        return '{'+ parseParam(part) +'}';
+      } else {
+        return '{'+ parseParam(part) +'}';
       }
     }
 
@@ -212,9 +212,25 @@ function convertPathToSwaggerRoute(p, we) {
   }).join('/');
 }
 
+function parseParam(pathPart) {
+  var param = 'id';
+
+  if (typeof pathPart == 'object' && pathPart.name) {
+    param = pathPart.name.replace(':', '');
+    if (param.indexOf('(') >-1) {
+      param = ( param.split('(')[0] );
+    }
+  } else {
+    console.log('unknow param:', pathPart);
+  }
+
+  return param;
+}
+
 function getPathParams(p, we, method, configs) {
   var pParts = we.router.parseRouteToMap(p);
   var bodyParams = [];
+  var cfgs;
 
 // name: user
 // in: body
@@ -232,7 +248,7 @@ function getPathParams(p, we, method, configs) {
   .map(function (part) {
     if (part.name.indexOf('Id') > -1) {
 
-      var name = part.name.replace(':', '').split('(')[0];
+      var name = parseParam(part);
       var type = 'string';
 
       if (part.name.indexOf('([0-9]+)') >-1) type = 'integer'
@@ -243,18 +259,30 @@ function getPathParams(p, we, method, configs) {
         required: true,
         type: 'integer'
       }
+    } else {
+      return {
+        name: ( parseParam(part) ),
+        in: 'path',
+        required: true,
+        type: 'integer'
+      }
     }
   });
 
 
-  if (method == 'post' || method == 'put' && configs.model) {
-    bodyParams.push({
+  if ( (method == 'post' || method == 'put') && configs.model) {
+    cfgs = {
       name: configs.model,
       in: 'body',
       description: configs.action+' '+configs.model,
-      required: true,
-      schema: { '$ref': '#/definitions/' + configs.model }
-    });
+      required: true
+    }
+
+    if (configs.model) {
+      cfgs.schema = { '$ref': '#/definitions/' + configs.model };
+    }
+
+    bodyParams.push(cfgs);
   }
 
   return pathParams.concat(bodyParams);
