@@ -30,7 +30,7 @@
     "yosay": "^1.1.1"
   },
   "devDependencies": {
-    "async": "^2.0.0-rc.5",
+    "async": "^2.0.0-rc.6",
     "jshint": "^2.9.2",
     "mocha": "^2.5.3",
     "npm-check-updates": "^2.6.5",
