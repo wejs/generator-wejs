@@ -39,17 +39,17 @@ async.series([
       done();
     }).catch(done);
   },
-  function updateSocial(done) {
-    ncu.run({
-      packageFile: 'social/templates/_package.json',
-      jsonUpgraded: false,
-      upgrade: true,
-      upgradeAll: true
-    }).then(function () {
-      console.log('Upgrated social project');
-      done();
-    }).catch(done);
-  },
+  // function updateSocial(done) {
+  //   ncu.run({
+  //     packageFile: 'social/templates/_package.json',
+  //     jsonUpgraded: false,
+  //     upgrade: true,
+  //     upgradeAll: true
+  //   }).then(function () {
+  //     console.log('Upgrated social project');
+  //     done();
+  //   }).catch(done);
+  // },
   function updatePlugin(done) {
     ncu.run({
       packageFile: 'plugin/templates/_package.json',
