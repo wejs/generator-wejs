@@ -54,23 +54,7 @@ function buildSwaggerFile (we, cb) {
     we.pluginManager.getPluginsToUpdate(function (err) {
       if (err) return doneAll(err);
 
-      var jsonFile = {
-        swagger: '2.0',
-        info: {
-          version: '0.0.1', // todo get from package.json
-          title: we.config.appName
-        },
-        host: we.config.hostname.replace('http://','').replace('https://', ''),
-        basePath: '/',
-        schemes: [ 'http', 'https' ],
-        consumes: ['application/json'],
-        produces: we.config.responseTypes.map(function(t){
-          return mime.lookup(t);
-        }),
-
-        paths: {},
-        definitions: {}
-      };
+      var jsonFile = getStartFileData(we);
 
       // get route lists
       var routes = Object.keys(we.routes);
@@ -122,7 +106,7 @@ function buildSwaggerFile (we, cb) {
               }
             };
 
-            if (we.routes[routes[i]].action == 'create') {
+            if (we.routes[routes[i]].action == 'create' && we.routes[routes[i]].model) {
               jsonFile.paths[p][method].responses['201'].schema = {
                 '$ref': '#/definitions/'+we.routes[routes[i]].model
               }
@@ -139,7 +123,7 @@ function buildSwaggerFile (we, cb) {
               }
             };
 
-            if (we.routes[routes[i]].action == 'edit') {
+            if (we.routes[routes[i]].action == 'edit' && we.routes[routes[i]].model) {
               jsonFile.paths[p][method].responses['200'].schema = {
                 '$ref': '#/definitions/'+we.routes[routes[i]].model
               }
@@ -168,14 +152,14 @@ function buildSwaggerFile (we, cb) {
               }
             };
 
-            if (we.routes[routes[i]].action == 'find') {
+            if (we.routes[routes[i]].action == 'find', we.routes[routes[i]].model) {
               jsonFile.paths[p][method].responses['200'].schema = {
                 type: 'array',
                 items: {
                   '$ref': '#/definitions/'+we.routes[routes[i]].model
                 }
               }
-            } else if (we.routes[routes[i]].action == 'findOne') {
+            } else if (we.routes[routes[i]].action == 'findOne', we.routes[routes[i]].model) {
               jsonFile.paths[p][method].responses['200'].schema = {
                 '$ref': '#/definitions/'+we.routes[routes[i]].model
               }
@@ -195,7 +179,34 @@ function buildSwaggerFile (we, cb) {
   })
 }
 
-function convertPathToSwaggerRoute(p, we) {
+function getStartFileData (we) {
+  return {
+    swagger: '2.0',
+    info: {
+      version: ((we.packageJSON)? we.packageJSON.version: '0.0.1'),
+      title: we.config.appName,
+      description: we.config.appDescription,
+      termsOfService: we.config.termsOfService
+    },
+    host: we.config.hostname.replace('http://','').replace('https://', ''),
+    basePath: '/',
+    schemes: [ 'http', 'https' ],
+    consumes: ['application/json'],
+    produces: we.config.responseTypes.map(function(t){
+      return mime.lookup(t);
+    }),
+
+    paths: {},
+    definitions: {},
+
+    externalDocs: {
+      description: 'We.js site and documentation',
+      url: 'https://wejs.org'
+    }
+  }
+}
+
+function convertPathToSwaggerRoute (p, we) {
   var pParts = we.router.parseRouteToMap(p);
 
   return pParts.map(function (part){
@@ -231,13 +242,6 @@ function getPathParams(p, we, method, configs) {
   var pParts = we.router.parseRouteToMap(p);
   var bodyParams = [];
   var cfgs;
-
-// name: user
-// in: body
-// description: user to add to the system
-// required: true
-// schema:
-//   $ref: '#/definitions/User'
 
   var pathParams = pParts
   .filter(function(part){
@@ -313,7 +317,12 @@ function getSwaggerDefinitions(we) {
 
     attrNames.forEach(function (mcdna) {
       if (mcdna == 'metadata') return;
-      if (String(mcd.definition[mcdna].type) == 'VIRTUAL') return;
+      // mysql enum fields return error here, dont use it enum ...
+      try {
+        if (String(mcd.definition[mcdna].type) == 'VIRTUAL') return;
+      } catch (e) {
+        return;
+      }
 
       definitions[mcd.name].properties[mcdna] = {
         type: resolveModelAttrType(mcd.definition[mcdna].type)
