@@ -26,8 +26,7 @@ describe('wejs', function () {
       'we-project-test/app.js',
       'we-project-test/package.json',
       'we-project-test/plugin.js',
-      'we-project-test/files/public/favicon.png',
-      'we-project-test/files/public/logo.jpg'
+      'we-project-test/files/public/favicon.png'
     ]);
   });
 });
