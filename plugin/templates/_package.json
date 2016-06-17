@@ -9,8 +9,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "express-mysql-session": "^1.0.0",
-    "mysql": "^2.11.0",
+    "express-mysql-session": "^1.1.1",
+    "mysql": "^2.11.1",
     "fs-extra": "^0.30.0",
     "mocha": "^2.5.3",
     "rimraf": "^2.5.2",

@@ -13,11 +13,11 @@
     "prepublish": "npm prune"
   },
   "dependencies": {
-    "mysql": "^2.11.0",
-    "express-mysql-session": "^1.0.0",
+    "mysql": "^2.11.1",
+    "express-mysql-session": "^1.1.1",
     "async": "^2.0.0-rc.6",
     "lodash": "^4.13.1",
-    "we-core": "1.5.1"
+    "we-core": "1.7.1"
   },
   "devDependencies": {
     "istanbul": "^0.4.3",
