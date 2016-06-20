@@ -9,8 +9,7 @@
     "prod": "node app.js --prod",
     "start": "node app.js",
     "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
-    "coverage": "NODE_ENV=test LOG_LV=info node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/bootstrap.js test/**/*.test.js",
-    "prepublish": "npm prune"
+    "coverage": "NODE_ENV=test LOG_LV=info node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/bootstrap.js test/**/*.test.js"
   },
   "dependencies": {
     "mysql": "^2.11.1",
@@ -26,5 +25,8 @@
     "sinon": "1.17.4",
     "supertest": "^1.2.0",
     "we-test-tools": "0.3.17"
+  },
+  "wejs": {
+    "plugins": {}
   }
 }

@@ -9,8 +9,7 @@
     "prod": "node app.js --prod",
     "deps": "npm install && bower install",
     "start": "node app.js",
-    "build": "gulp build",
-    "prepublish": "npm prune"
+    "build": "gulp build"
   },
   "dependencies": {
     "express-mysql-session": "^1.1.1",
@@ -45,5 +44,28 @@
     "supertest": "^1.2.0",
     "we-gulp-tasks-default": "1.1.0",
     "we-test-tools": "^0.3.17"
+  },
+  "wejs": {
+    "plugins": {
+      "we-plugin-acl": true,
+      "we-plugin-article": true,
+      "we-plugin-auth": true,
+      "we-plugin-bootstrap3": true,
+      "we-plugin-disqus": true,
+      "we-plugin-editor-summernote": true,
+      "we-plugin-email": true,
+      "we-plugin-file": true,
+      "we-plugin-file-local": true,
+      "we-plugin-form": true,
+      "we-plugin-google-analytics": true,
+      "we-plugin-menu": true,
+      "we-plugin-portfolio": true,
+      "we-plugin-rss": true,
+      "we-plugin-url-alias": true,
+      "we-plugin-user": true,
+      "we-plugin-view": true,
+      "we-plugin-vocabulary": true,
+      "we-plugin-widget": true
+    }
   }
 }
