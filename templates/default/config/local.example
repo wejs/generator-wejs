@@ -2,10 +2,6 @@
  * Example config, copy this file to locals.js
  */
 module.exports = {
-  passport: {
-    cookieDomain : null
-  },
-
   // hostname: 'http://wejs.org',
 
   security: {
