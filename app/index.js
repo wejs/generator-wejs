@@ -5,7 +5,6 @@ var yosay = require('yosay');
 var path = require('path');
 var questions = require('../questions');
 var _ = require('lodash');
-var fs = require('fs');
 
 var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
@@ -29,10 +28,18 @@ var WejsGenerator = yeoman.Base.extend({
 
     this.argument('name', { type: String, required: false });
 
-    this.option('db-dialect');
-    this.option('db-name');
-    this.option('db-username');
-    this.option('db-password');
+    this.option('db-dialect', {
+      desc: 'Database ex: postgres or mysql'
+    });
+    this.option('db-name', {
+      desc: 'Database name'
+    });
+    this.option('db-username', {
+      desc: 'Database user name'
+    });
+    this.option('db-password', {
+      desc: 'Database user password'
+    });
   },
   prompting: function () {
     this.log(yosay(

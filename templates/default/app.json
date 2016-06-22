@@ -1,0 +1,29 @@
+{
+  "name": "<%= appConfigs.name %>",
+  "description": "<%= appConfigs.description %>",
+  "repository": "<%= appConfigs.repository %>",
+  "logo": "https://wejs.org/public/plugin/we-core/files/images/logo.png",
+  "keywords": ["nodejs", "we.js"],
+  "image": "heroku/nodejs",
+  "env": {
+    "APP_NAME": {
+      "description": "The project app name or blog title.",
+      "value": "<%= appConfigs.name %>",
+      "required": true
+    },
+    "APP_DESCRIPTION": {
+      "description": "Project description",
+      "value": "<%= appConfigs.description %>",
+      "required": true
+    },
+
+    "NODE_ENV": {
+      "description": "The node.js enviroment, keep production.",
+      "value": "production",
+      "required": true
+    }
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ]
+}
