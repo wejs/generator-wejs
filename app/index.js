@@ -27,7 +27,9 @@ var WejsGenerator = yeoman.Base.extend({
     this.wejsPLuginsToInstall = {}
 
     this.argument('name', { type: String, required: false });
-
+    this.option('skip-install', {
+      desc: 'Skip npm installations'
+    });
     this.option('db-dialect', {
       desc: 'Database ex: postgres or mysql'
     });
@@ -39,6 +41,9 @@ var WejsGenerator = yeoman.Base.extend({
     });
     this.option('db-password', {
       desc: 'Database user password'
+    });
+    this.option('not-create-first-user', {
+      desc: 'Skip user creation'
     });
   },
   prompting: function () {
@@ -83,6 +88,8 @@ var WejsGenerator = yeoman.Base.extend({
     }
   },
   install: function() {
+    if (this.appConfigs.skipInstall) return;
+
     switch (this.appConfigs.dbDialect) {
       case 'postgres':
         this.npmModulesToInstall.push('pg')

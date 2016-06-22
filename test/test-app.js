@@ -8,25 +8,33 @@ describe('wejs', function () {
   before(function (done) {
     helpers.run(path.join( __dirname, '../app'))
     .inDir(projectDir)
-    .withOptions({ 'skip-install': true })
-    .withPrompts({ name: 'test' })
+    .withOptions({
+      'skip-install': true,
+      'not-create-first-user': true,
+      'db-dialect': 'mysql',
+      'db-name': 'test',
+      'db-username': 'root',
+      'db-password': ''
+    })
+    .withPrompts({ name: 'testap' })
     .toPromise()
     .then(function(){
       done();
-    });
+    })
+    .catch(done)
   });
 
-  it('creates blog project files', function() {
+  it('creates app project files', function() {
     assert.file([
-      'we-project-test/server/controllers/main.js',
-      'we-project-test/config/local.js',
-      'we-project-test/config/log.js',
-      'we-project-test/config/i18n.js',
-      'we-project-test/.gitignore',
-      'we-project-test/app.js',
-      'we-project-test/package.json',
-      'we-project-test/plugin.js',
-      'we-project-test/files/public/favicon.png'
+      'we-project-testap/server/controllers/main.js',
+      'we-project-testap/config/local.js',
+      'we-project-testap/config/log.js',
+      'we-project-testap/config/i18n.js',
+      'we-project-testap/.gitignore',
+      'we-project-testap/app.js',
+      'we-project-testap/package.json',
+      'we-project-testap/plugin.js',
+      'we-project-testap/files/public/favicon.png'
     ]);
   });
 });
