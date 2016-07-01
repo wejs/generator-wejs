@@ -66,6 +66,7 @@ var WejsGenerator = yeoman.Base.extend({
     writeFiles: function () {
       if (this.appConfigs.createFirstUser && this.appConfigs.createFirstUser == 'yes') {
         this.wejsPLuginsToInstall['we-plugin-user'] = true;
+        this.wejsPLuginsToInstall['we-plugin-auth'] = true;
       }
 
       this.template('README.md.ejs', this.projectFolder + 'README.md');

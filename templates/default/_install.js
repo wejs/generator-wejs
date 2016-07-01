@@ -23,18 +23,25 @@ module.exports = {
 
       we.log.info('I will create the user: ', user1);
 
-      we.db.models.user.create(user1)
-      .then(function (user) {
+      we.db.models.user.findOrCreate({
+        where: { email: user1.email },
+        defaults: user1
+      })
+      .spread(function (user, created) {
         we.log.info('New User with id: ', user.id);
+        // install we-plugin-auth for use password
+        if (!we.db.models.password) return done();
         // set the password
-        we.db.models.password.create({
+        return we.db.models.password.create({
           userId: user.id,
           password: user1.password,
           confirmPassword: user1.password
-        }).then(function () {
+        })
+        .then(function () {
           return done();
-        }).catch(done);
-      });
+        })
+      })
+      .catch(done);
     });
 <% } %>
 <% if (appConfigs.addDefaultMenus) { %>
