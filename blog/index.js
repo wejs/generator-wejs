@@ -4,6 +4,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var questions = require('../questions');
 var path = require('path');
+var _ = require('lodash');
 
 var WejsGenerator = yeoman.Base.extend({
   constructor: function () {
@@ -83,7 +84,7 @@ var WejsGenerator = yeoman.Base.extend({
       this.name = (this.name || props.name);
       this.projectName = 'we-p-blog-' + _s.slugify(this.name);
 
-      this.appConfigs = props;
+      this.appConfigs = _.merge(this.options, props)
       this.projectFolder = this.projectName + '/';
     }.bind(this));
   },
