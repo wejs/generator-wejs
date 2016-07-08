@@ -1,6 +1,6 @@
 {
   "name": "<%= projectName %>",
-  "description": "tel something about your module here",
+  "description": "tel something about your project here",
   "version": "1.0.0",
   "private": true,
   "main": "./app.js",

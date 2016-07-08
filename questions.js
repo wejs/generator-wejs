@@ -15,7 +15,7 @@ module.exports = function() {
     prompts.push({
       type    : 'input',
       name    : 'name',
-      message : 'Your app name',
+      message : 'Your project name',
       default : (this.name || this.appname) // Default to current folder name
     });
   }
@@ -108,7 +108,6 @@ module.exports = function() {
       when: createFirstUser
     });
   }
-
 
   return prompts;
 }
