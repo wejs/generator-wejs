@@ -5,7 +5,7 @@ module.exports = {
    * @param  {Object}   we    we.js object
    * @param  {Function} done  callback
    */
-  install: function install(we, done) {
+  install: function install (we, done) {
     we.log.info('Starting project install...');
 
     we.utils.async.series([
