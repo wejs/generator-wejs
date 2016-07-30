@@ -2,4 +2,8 @@
  * Main project controller
  */
 
-module.exports = {};
+module.exports = {
+  index: function(req, res) {
+    res.ok();
+  }
+};
