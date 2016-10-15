@@ -180,6 +180,9 @@ function buildSwaggerFile (we, cb) {
 }
 
 function getStartFileData (we) {
+
+  console.log('>', we.config.responseTypes);
+
   return {
     swagger: '2.0',
     info: {
@@ -192,9 +195,7 @@ function getStartFileData (we) {
     basePath: '/',
     schemes: [ 'http', 'https' ],
     consumes: ['application/json'],
-    produces: we.config.responseTypes.map(function(t){
-      return mime.lookup(t);
-    }),
+    produces: we.config.responseTypes,
 
     paths: {},
     definitions: {},
