@@ -181,8 +181,6 @@ function buildSwaggerFile (we, cb) {
 
 function getStartFileData (we) {
 
-  console.log('>', we.config.responseTypes);
-
   return {
     swagger: '2.0',
     info: {
