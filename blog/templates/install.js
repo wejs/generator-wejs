@@ -5,18 +5,17 @@ module.exports = {
    * @param  {Object}   we    we.js object
    * @param  {Function} done  callback
    */
-  install: function install(we, done) {
+  install: function install (we, done) {
     we.log.info('Starting project install...');
 
     we.utils.async.series([
+<% if (appConfigs.createFirstUser && (appConfigs.createFirstUser == 'yes')) { %>
       function registerUser1(done) {
         var user1 = {
-          username: 'administrator',
-          biography: 'The administrator user account!',
-          email: 'contato@albertosouza.net',
-          password: '123', // change after install
-          displayName: 'Administrator',
-          language: 'en-us',
+          username: '<%= appConfigs.userName %>',
+          email: '<%= appConfigs.userEmail %>',
+          password: '<%= appConfigs.userPassword %>', // change after install
+          displayName: '<%= appConfigs.userDisplayName %>',
           active: true,
           roles: ['administrator']
         };
@@ -36,10 +35,7 @@ module.exports = {
           }).catch(done);
         });
       },
-      // function setDefaultRolePermissions(done) {
-      //   var setRolePermissions = require('./bin/install/4_setRolePermissions.js');
-      //   setRolePermissions(we, done);
-      // },
+<% } %>
       function createDefaultMenus(done) {
         we.utils.async.series([
           function createMainMenu(done) {

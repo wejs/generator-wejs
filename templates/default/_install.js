@@ -10,7 +10,7 @@ module.exports = {
 
     var fns = [];
 
-<% if (appConfigs.createFirstUser) { %>
+<% if (appConfigs.createFirstUser && (appConfigs.createFirstUser == 'yes')) { %>
     fns.push(function registerUser1(done) {
       var user1 = {
         username: '<%= appConfigs.userName %>',

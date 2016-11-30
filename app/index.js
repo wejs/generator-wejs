@@ -56,7 +56,7 @@ var WejsGenerator = yeoman.Base.extend({
     return this.prompt(prompts)
     .then(function (props) {
       this.name = (this.name || props.name);
-      this.projectName = 'we-project-' + _s.slugify(this.name);
+      this.projectName = _s.slugify(this.name);
 
       this.appConfigs = _.merge(this.options, props);
       this.projectFolder = this.projectName + '/';

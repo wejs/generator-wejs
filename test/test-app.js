@@ -26,15 +26,15 @@ describe('wejs', function () {
 
   it('creates app project files', function() {
     assert.file([
-      'we-project-testap/server/controllers/main.js',
-      'we-project-testap/config/local.js',
-      'we-project-testap/config/log.js',
-      'we-project-testap/config/i18n.js',
-      'we-project-testap/.gitignore',
-      'we-project-testap/app.js',
-      'we-project-testap/package.json',
-      'we-project-testap/plugin.js',
-      'we-project-testap/files/public/favicon.png'
+      'testap/server/controllers/main.js',
+      'testap/config/local.js',
+      'testap/config/log.js',
+      'testap/config/i18n.js',
+      'testap/.gitignore',
+      'testap/app.js',
+      'testap/package.json',
+      'testap/plugin.js',
+      'testap/files/public/favicon.png'
     ]);
   });
 });
