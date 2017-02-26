@@ -14,41 +14,40 @@ var WejsGenerator = yeoman.Base.extend({
       'async',
       'lodash',
       'we-core',
-      'we-theme-admin-default',
       'we-theme-blog-startbootstrap-clean'
     ];
 
     this.devNpmModulesToInstall = [
       'gulp',
-      'istanbul',
       'mocha',
-      'rimraf',
       'sinon',
       'supertest',
-      'we-test-tools',
-      'we-gulp-tasks-default'
+      'we-gulp-tasks-default',
+      'we-test-tools'
     ];
 
     this.wejsPLuginsToInstall = {
-      'we-plugin-user': true,
-      'we-plugin-auth': true,
+      'we-admin-blog': true,
       'we-plugin-acl': true,
       'we-plugin-article': true,
+      'we-plugin-auth': true,
       'we-plugin-bootstrap3': true,
       'we-plugin-disqus': true,
       'we-plugin-editor-summernote': true,
-      'we-plugin-email': true,
       'we-plugin-file': true,
-      'we-plugin-file-local': true,
       'we-plugin-form': true,
       'we-plugin-google-analytics': true,
       'we-plugin-menu': true,
-      'we-plugin-portfolio': true,
       'we-plugin-rss': true,
       'we-plugin-url-alias': true,
+      'we-plugin-user': true,
       'we-plugin-view': true,
       'we-plugin-vocabulary': true,
-      'we-plugin-widget': true
+      'we-plugin-widget': true,
+      'we-plugin-file-local': true,
+      'we-plugin-user-settings': true,
+      'we-passport-oauth2-password': true,
+      'we-plugin-i18n-api': true
     }
 
     this.argument('name', { type: String, required: false });
