@@ -1,357 +1,72 @@
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
-var utils = require('../utils');
+const Generator = require('yeoman-generator'),
+  yosay = require('yosay'),
+  DocBuilder = require('../lib/DocBuilder'),
+  utils = require('../utils');
 
-var YAML = require('json2yaml');
-var mime = require('mime');
-var we, methods = ['get', 'post', 'put', 'delete'];
+let we;
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+
     this.argument('name', { type: String, required: false });
 
     we = utils.getWe();
-  },
-  prompting: function () {
+
+    this.doneAll = function doneAll(err) {
+      if ( err ) we.log.error('Error:', err);
+      we.exit(process.exit);
+    };
+  }
+
+  prompting() {
     this.log(yosay(
-      'Swagger Documentation generator!'
+      'Swagger documentation generator!'
     ));
-  },
-
-  writing: {
-    app: function () {
-      var self = this;
-      var done = this.async();
-
-      buildSwaggerFile(we, function (err, ymlText, jsonText) {
-        if(err) return doneAll(err);
-
-        self.ymlText = ymlText;
-        self.jsonText = jsonText;
-
-        self.template('swagger.yaml', 'api/swagger/swagger.yaml');
-        self.template('swagger.json', 'api/swagger/swagger.json');
-
-        done();
-      });
-    }
-  },
-
-  install: function () {
-    doneAll();
-  }
-});
-
-
-module.exports = WejsGenerator;
-
-function buildSwaggerFile (we, cb) {
-
-  we.bootstrap(function (err, we) {
-    if (err) return doneAll(err);
-
-    we.pluginManager.getPluginsToUpdate(function (err) {
-      if (err) return doneAll(err);
-
-      var jsonFile = getStartFileData(we);
-
-      // get route lists
-      var routes = Object.keys(we.routes);
-      var route, p, wejsP, method;
-
-      for (var i = 0; i < routes.length; i++) {
-
-        route = routes[i].split(' ');
-        wejsP = ((route.length > 1)? route[1]: route[0]);
-
-        p = convertPathToSwaggerRoute(wejsP, we);
-
-        if (p.indexOf('/admin') === 0) continue; // skip admin pages
-
-        if (!jsonFile.paths[p]) jsonFile.paths[p] = {};
-
-        if (methods.indexOf(route[0]) > -1) {
-          method = route[0];
-        } else {
-          method = 'get';
-        }
-
-        var name = method+ '_' + we.routes[routes[i]].controller + '_' +we.routes[routes[i]].action;
-
-        if (we.routes[routes[i]].parent) {
-          name = we.routes[routes[i]].parent+ '_' + name;
-        }
-
-        if (we.routes[routes[i]].name) {
-          name = we.routes[routes[i]].name+ '_' + name;
-        }
-
-        name = method +'::' + p
-
-        jsonFile.paths[p][method] = {
-          operationId: name,
-          parameters: getPathParams(wejsP, we, method, we.routes[routes[i]]),
-          responses: {}
-        };
-
-        switch(method) {
-          case 'post':
-            jsonFile.paths[p][method].responses = {
-              '201': {
-                description: 'Success'
-              },
-              'default': {
-                description: 'Success'
-              }
-            };
-
-            if (we.routes[routes[i]].action == 'create' && we.routes[routes[i]].model) {
-              jsonFile.paths[p][method].responses['201'].schema = {
-                '$ref': '#/definitions/'+we.routes[routes[i]].model
-              }
-            }
-
-            break;
-          case 'put':
-            jsonFile.paths[p][method].responses = {
-              '200': {
-                description: 'Success'
-              },
-              'default': {
-                description: 'Success'
-              }
-            };
-
-            if (we.routes[routes[i]].action == 'edit' && we.routes[routes[i]].model) {
-              jsonFile.paths[p][method].responses['200'].schema = {
-                '$ref': '#/definitions/'+we.routes[routes[i]].model
-              }
-            }
-
-            break;
-          case 'delete':
-            jsonFile.paths[p][method].responses = {
-              '204': {
-                description: 'Success'
-              },
-              'default': {
-                description: 'Success'
-              }
-            };
-            break;
-          default:
-            // get
-            jsonFile.paths[p][method].responses = {
-              '200': {
-                description: 'Success',
-
-              },
-              'default': {
-                description: 'Success'
-              }
-            };
-
-            if (we.routes[routes[i]].action == 'find', we.routes[routes[i]].model) {
-              jsonFile.paths[p][method].responses['200'].schema = {
-                type: 'array',
-                items: {
-                  '$ref': '#/definitions/'+we.routes[routes[i]].model
-                }
-              }
-            } else if (we.routes[routes[i]].action == 'findOne', we.routes[routes[i]].model) {
-              jsonFile.paths[p][method].responses['200'].schema = {
-                '$ref': '#/definitions/'+we.routes[routes[i]].model
-              }
-            }
-        }
-
-        jsonFile.paths['/swagger'] = { 'x-swagger-pipe': 'swagger_raw' };
-
-        jsonFile.definitions = getSwaggerDefinitions(we);
-      }
-
-      var jsonText = JSON.stringify(jsonFile, null, 2);
-      var ymlText = YAML.stringify(jsonFile);
-
-      cb(null, ymlText, jsonText);
-    });
-  })
-}
-
-function getStartFileData (we) {
-
-  return {
-    swagger: '2.0',
-    info: {
-      version: ((we.packageJSON)? we.packageJSON.version: '0.0.1'),
-      title: we.config.appName,
-      description: we.config.appDescription,
-      termsOfService: we.config.termsOfService
-    },
-    host: we.config.hostname.replace('http://','').replace('https://', ''),
-    basePath: '/',
-    schemes: [ 'http', 'https' ],
-    consumes: ['application/json'],
-    produces: we.config.responseTypes,
-
-    paths: {},
-    definitions: {},
-
-    externalDocs: {
-      description: 'We.js site and documentation',
-      url: 'https://wejs.org'
-    }
-  }
-}
-
-function convertPathToSwaggerRoute (p, we) {
-  var pParts = we.router.parseRouteToMap(p);
-
-  return pParts.map(function (part){
-    if (!part) return '';
-    if (typeof part == 'object') {
-      if (part.name.indexOf('Id') > -1) {
-        return '{'+ parseParam(part) +'}';
-      } else {
-        return '{'+ parseParam(part) +'}';
-      }
-    }
-
-    return part;
-  }).join('/');
-}
-
-function parseParam(pathPart) {
-  var param = 'id';
-
-  if (typeof pathPart == 'object' && pathPart.name) {
-    param = pathPart.name.replace(':', '');
-    if (param.indexOf('(') >-1) {
-      param = ( param.split('(')[0] );
-    }
-  } else {
-    console.log('unknow param:', pathPart);
   }
 
-  return param;
-}
-
-function getPathParams(p, we, method, configs) {
-  var pParts = we.router.parseRouteToMap(p);
-  var bodyParams = [];
-  var cfgs;
-
-  var pathParams = pParts
-  .filter(function(part){
-    if (!part) return false;
-    if (typeof part != 'object') return false;
-    return true;
-  })
-  .map(function (part) {
-    if (part.name.indexOf('Id') > -1) {
-
-      var name = parseParam(part);
-      var type = 'string';
-
-      if (part.name.indexOf('([0-9]+)') >-1) type = 'integer'
-
-      return {
-        name: name,
-        in: 'path',
-        required: true,
-        type: 'integer'
-      }
-    } else {
-      return {
-        name: ( parseParam(part) ),
-        in: 'path',
-        required: true,
-        type: 'integer'
-      }
-    }
-  });
-
-
-  if ( (method == 'post' || method == 'put') && configs.model) {
-    cfgs = {
-      name: configs.model,
-      in: 'body',
-      description: configs.action+' '+configs.model,
-      required: true
-    }
-
-    if (configs.model) {
-      cfgs.schema = { '$ref': '#/definitions/' + configs.model };
-    }
-
-    bodyParams.push(cfgs);
+  bootstrapApp() {
+    const done = this.async();
+    we.bootstrap(done);
   }
 
-  return pathParams.concat(bodyParams);
-}
+  buildProjectDocumentation() {
+    const done = this.async(),
+      self = this;
 
-function getSwaggerDefinitions(we) {
-  var definitions = {};
+    this.log('method 1 just ran');
 
-  var modelNames = Object.keys(we.db.modelsConfigs);
+    let docB = new DocBuilder(we);
 
-  modelNames.filter(function (mc) {
-     if (!we.db.modelsConfigs[mc].definition) return false;
-     return true;
-  })
-  .map(function chageValueToDefinition(mc) {
-    definitions[mc] = {
-      type: 'object',
-      properties: {}
-    };
+    docB.generate()
+    .then((r)=> {
+      // write the files:
+      self.ymlText = r.ymlText;
+      self.jsonText = r.jsonText;
 
-    return {
-      name: mc,
-      definition: we.db.modelsConfigs[mc].definition
-    };
-  })
-  .forEach(function setDefinition(mcd) {
-    var attrNames = Object.keys(mcd.definition);
 
-    attrNames.forEach(function (mcdna) {
-      if (mcdna == 'metadata') return;
-      // mysql enum fields return error here, dont use it enum ...
-      try {
-        if (String(mcd.definition[mcdna].type) == 'VIRTUAL') return;
-      } catch (e) {
-        return;
-      }
+      this.fs.copyTpl(
+        this.templatePath('swagger.yaml'),
+        this.destinationPath('api/swagger/swagger.yaml'),
+        { ymlText: self.ymlText }
+      );
 
-      definitions[mcd.name].properties[mcdna] = {
-        type: resolveModelAttrType(mcd.definition[mcdna].type)
-      }
+      this.fs.copyTpl(
+        this.templatePath('swagger.json'),
+        this.destinationPath('api/swagger/swagger.json'),
+        { jsonText: self.jsonText }
+      );
 
+      done();
     })
-  });
-
-  return definitions;
-}
-
-function resolveModelAttrType(attr) {
-  var attrS = String(attr);
-
-  if ( (attrS.indexOf('VAR') > -1) || (attrS.indexOf('TEX')  > -1)) {
-    return 'string';
+    .catch(this.doneAll);
   }
 
-  if ( (attrS.indexOf('INT') >-1) || (attrS.indexOf('NUM') > -1)) {
-    return 'number';
+  method2() {
+    this.log('method 2 just ran');
   }
 
-  if (attrS.indexOf('BOO')) {
-    return 'boolean';
+  install() {
+    this.doneAll();
   }
-
-  return 'string'
-}
-
-function doneAll(err) {
-  if ( err ) we.log.error('Error:', err);
-  we.exit(function(){ process.exit(); });
-}
+};

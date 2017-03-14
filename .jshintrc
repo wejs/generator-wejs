@@ -1,13 +1,12 @@
-{ "asi": true
+{ "asi": false
 , "boss": true
 , "browser": true
-, "camelcase": true
+, "camelcase": false
 , "curly": false
-, "devel": false
 , "devel": true
 , "eqeqeq": false
 , "eqnull": true
-, "es5": false
+, "esversion": 6
 , "evil": false
 , "immed": false
 , "indent": 2
@@ -15,9 +14,9 @@
 , "latedef": false
 , "laxbreak": true
 , "laxcomma": true
-, "maxcomplexity": 6
+, "maxcomplexity": 20
 , "maxdepth": 4
-, "maxstatements": 25
+, "maxstatements": 30
 , "maxlen": 120
 , "newcap": true
 , "node": true
@@ -32,9 +31,6 @@
   , "beforeEach"
   , "after"
   , "afterEach"
-  , "App"
-  , "Ember"
-  , "DS"
   ]
 , "smarttabs": true
 , "strict": false
