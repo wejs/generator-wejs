@@ -62,10 +62,17 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    // html doc:
     this.fs.copy(
       this.templatePath('html'),
       this.destinationPath('doc/api/html')
     );
+    this.fs.copyTpl(
+      this.templatePath('index.html'),
+      this.destinationPath('doc/api/html/index.html'),
+      { jsonText: this.jsonText }
+    );
+
   }
 
   end() {
