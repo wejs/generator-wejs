@@ -44,16 +44,15 @@ module.exports = class extends Generator {
       self.ymlText = r.ymlText;
       self.jsonText = r.jsonText;
 
-
       this.fs.copyTpl(
         this.templatePath('swagger.yaml'),
-        this.destinationPath('api/swagger/swagger.yaml'),
+        this.destinationPath('doc/api/swagger.yaml'),
         { ymlText: self.ymlText }
       );
 
       this.fs.copyTpl(
         this.templatePath('swagger.json'),
-        this.destinationPath('api/swagger/swagger.json'),
+        this.destinationPath('doc/api/swagger.json'),
         { jsonText: self.jsonText }
       );
       return null;
@@ -62,7 +61,14 @@ module.exports = class extends Generator {
     .catch(this.doneAll);
   }
 
-  install() {
+  writing() {
+    this.fs.copy(
+      this.templatePath('html'),
+      this.destinationPath('doc/api/html')
+    );
+  }
+
+  end() {
     this.doneAll();
   }
 };

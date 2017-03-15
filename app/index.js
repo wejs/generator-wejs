@@ -1,3 +1,9 @@
+/**
+ * We.js yeoman app generator
+ *
+ * Generate one app in current folder based on user input configuration
+ */
+
 const _s = require('underscore.string'),
   Generator = require('yeoman-generator'),
   yosay = require('yosay'),

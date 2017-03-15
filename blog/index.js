@@ -1,14 +1,19 @@
-'use strict';
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
-var questions = require('../questions');
-var path = require('path');
-var _ = require('lodash');
+/**
+ * We.js  blog generator
+ *
+ * Generate one we.js blog project
+ */
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay'),
+  questions = require('../questions'),
+  path = require('path'),
+  _ = require('lodash');
+
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
 
     this.npmModulesToInstall = [
       'async',
@@ -48,7 +53,7 @@ var WejsGenerator = yeoman.Base.extend({
       'we-plugin-user-settings': true,
       'we-passport-oauth2-password': true,
       'we-plugin-i18n-api': true
-    }
+    };
 
     this.argument('name', { type: String, required: false });
 
@@ -70,79 +75,126 @@ var WejsGenerator = yeoman.Base.extend({
     this.option('not-create-first-user', {
       desc: 'Skip user creation'
     });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js simple blog project generator! |o/ |o/ \n generate one testable we.js project!'
     ));
 
-    var prompts = questions.bind(this)();
+    const prompts = questions.bind(this)();
 
     return this.prompt(prompts)
-    .then(function (props) {
+    .then( (props)=> {
       this.name = (this.name || props.name);
       this.projectName = 'we-p-blog-' + _s.slugify(this.name);
 
-      this.appConfigs = _.merge(this.options, props)
+      this.appConfigs = _.merge(this.options, props);
       this.projectFolder = this.projectName + '/';
-    }.bind(this));
-  },
-  writing: {
-    writeFiles: function () {
+    });
+  }
 
-      this.template('_README.md', this.projectFolder + 'README.md');
-      // - package.json file
-      this.template('_package.json', this.projectFolder + 'package.json');
+  writeFiles() {
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath(this.projectFolder + 'README.md'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath(this.projectFolder + 'package.json'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('_local.js'),
+      this.destinationPath(this.projectFolder + 'config/local.js'),
+      this
+    );
+  }
 
-      this.template('_local.js', this.projectFolder + 'config/local.js');
-    },
-    copyfiles: function () {
-      this.directory('config', this.projectFolder + 'config');
-      this.directory('files', this.projectFolder + 'files');
-      this.directory('test', this.projectFolder + 'test');
-      this.directory('server', this.projectFolder + 'server');
+  copyfiles() {
+    this.fs.copy(
+      this.templatePath('config'),
+      this.destinationPath(this.projectFolder + 'config')
+    );
 
-      this.copy('app.js', this.projectFolder + 'app.js');
+    this.fs.copy(
+      this.templatePath('files'),
+      this.destinationPath(this.projectFolder + 'files')
+    );
 
-      this.copy('Procfile', this.projectFolder + 'Procfile');
+    this.fs.copy(
+      this.templatePath('server'),
+      this.destinationPath(this.projectFolder + 'server')
+    );
 
-      this.copy('plugin.js', this.projectFolder +  'plugin.js');
-      this.copy('install.js', this.projectFolder +  'install.js');
+    this.fs.copy(
+      this.templatePath('app.js'),
+      this.destinationPath(this.projectFolder + 'app.js')
+    );
 
-      this.copy('jshintrc', this.projectFolder +  '.jshintrc');
+    this.fs.copy(
+      this.templatePath('Procfile'),
+      this.destinationPath(this.projectFolder + 'Procfile')
+    );
 
-      this.copy('bowerrc', this.projectFolder + '.bowerrc');
-      this.copy('gitignore', this.projectFolder + '.gitignore');
-      this.copy('gulpfile.js', this.projectFolder + 'gulpfile.js');
-    }
-  },
-  install: function() {
+    this.fs.copy(
+      this.templatePath('plugin.js'),
+      this.destinationPath(this.projectFolder + 'plugin.js')
+    );
+
+    this.fs.copy(
+      this.templatePath('install.js'),
+      this.destinationPath(this.projectFolder + 'install.js')
+    );
+
+    this.fs.copy(
+      this.templatePath('jshintrc'),
+      this.destinationPath(this.projectFolder + '.jshintrc')
+    );
+
+    this.fs.copy(
+      this.templatePath('bowerrc'),
+      this.destinationPath(this.projectFolder + '.bowerrc')
+    );
+
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath(this.projectFolder + '.gitignore')
+    );
+
+    this.fs.copy(
+      this.templatePath('gulpfile.js'),
+      this.destinationPath(this.projectFolder + '.gulpfile.js')
+    );
+  }
+
+  install() {
     if (this.appConfigs.skipInstall) return;
 
     switch (this.appConfigs.dbDialect) {
       case 'postgres':
-        this.npmModulesToInstall.push('pg')
-        this.npmModulesToInstall.push('pg-hstore')
+        this.npmModulesToInstall.push('pg');
+        this.npmModulesToInstall.push('pg-hstore');
         break;
       default:
-        this.npmModulesToInstall.push('mysql')
-        this.npmModulesToInstall.push('express-mysql-session')
+        this.npmModulesToInstall.push('mysql');
+        this.npmModulesToInstall.push('express-mysql-session');
     }
     // enter in folder
     process.chdir(path.resolve(this.projectFolder) );
 
     this.npmModulesToInstall = this.npmModulesToInstall
-      .concat(Object.keys(this.wejsPLuginsToInstall))
+      .concat(Object.keys(this.wejsPLuginsToInstall));
 
     this.log('Installing the dependencies: ' + this.npmModulesToInstall.join(' '));
     // modules
     this.npmInstall(this.npmModulesToInstall, { 'save': true });
     // dev modules
     this.npmInstall(this.devNpmModulesToInstall, { 'saveDev': true });
-  },
-  end: function() {
+  }
+
+  end() {
     this.log('DONE');
   }
-});
-
-module.exports = WejsGenerator;
+};
