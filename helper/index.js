@@ -1,18 +1,25 @@
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+/**
+ * we-plugin-view helper generator
+ *
+ * Add custom functions to templates
+ */
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay');
+
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: false });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js template helper generator! |o/ |o/ \n generate one helper file in your we.js project or plugin!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
     if (!this.name) {
       prompts.push({
@@ -24,20 +31,21 @@ var WejsGenerator = yeoman.Base.extend({
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
+    .then( (props)=> {
       this.name = (this.name || props.name);
       this.Name = _s.slugify(this.name);
 
       this.helpersDirName = 'server/helpers/' + this.Name;
 
       this.appConfigs = props;
-    }.bind(this));
-  },
-  writing: {
-    app: function app() {
-      this.template('helper.js.ejs', this.helpersDirName + '.js');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  app() {
+    this.fs.copyTpl(
+      this.templatePath('helper.js.ejs'),
+      this.destinationPath(this.helpersDirName + '.js'),
+      this
+    );
+  }
+};

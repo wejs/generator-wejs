@@ -1,21 +1,22 @@
-var yeoman = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 var yosay = require('yosay');
 var path = require('path');
 var _ = require('lodash');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
-    this.sourceRoot(path.resolve(__dirname, '../templates/default'))
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+    this.sourceRoot(path.resolve(__dirname, '../templates/default'));
     this.devNpmModulesToInstall = [];
     this.npmModulesToInstall = [];
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js heroku configuration generator!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
     if (!this.options.name) {
       prompts.push({
@@ -66,31 +67,40 @@ var WejsGenerator = yeoman.Base.extend({
     .then(function (props) {
       this.appConfigs = _.merge(this.options, props);
     }.bind(this));
-  },
-  writing: {
-    configs: function configs() {
-      if (this.appConfigs.haveViews) {
-        this.copy('gulpfile.js', 'gulpfile.js');
+  }
 
-        this.devNpmModulesToInstall.push('we-gulp-tasks-default');
-        this.devNpmModulesToInstall.push('gulp');
-      }
 
-      this.copy('Procfile', 'Procfile');
+  configs() {
+    if (this.appConfigs.haveViews) {
+      this.copy('gulpfile.js', 'gulpfile.js');
 
-      this.copy('config/database.js', 'config/database.js');
-      this.copy('app.json', 'app.json');
+      this.devNpmModulesToInstall.push('we-gulp-tasks-default');
+      this.devNpmModulesToInstall.push('gulp');
     }
-  },
-  install: function() {
+
+    this.fs.copy(
+      this.templatePath('Procfile'),
+      this.destinationPath('Procfile')
+    );
+    this.fs.copy(
+      this.templatePath('config/database.js'),
+      this.destinationPath('config/database.js')
+    );
+    this.fs.copy(
+      this.templatePath('app.json'),
+      this.destinationPath('app.json')
+    );
+  }
+
+  install() {
     switch (this.appConfigs.dbDialect) {
       case 'postgres':
-        this.npmModulesToInstall.push('pg')
-        this.npmModulesToInstall.push('pg-hstore')
+        this.npmModulesToInstall.push('pg');
+        this.npmModulesToInstall.push('pg-hstore');
         break;
       default:
-        this.npmModulesToInstall.push('mysql')
-        this.npmModulesToInstall.push('express-mysql-session')
+        this.npmModulesToInstall.push('mysql');
+        this.npmModulesToInstall.push('express-mysql-session');
     }
 
     this.log('running npm install if is need ...');
@@ -103,19 +113,18 @@ var WejsGenerator = yeoman.Base.extend({
       // dev modules
       this.npmInstall(this.npmModulesToInstall, { 'save': true });
     }
-  },
-  end: function() {
+  }
+
+  end() {
     if (this.appConfigs.repository) {
       this.log(
         'Add in your README.md file:\n'+
         '[![Deploy to Heroku]('+
         'https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template='+
         this.appConfigs.repository+')'
-      )
+      );
     }
 
     this.log('DONE');
   }
-});
-
-module.exports = WejsGenerator;
+};
