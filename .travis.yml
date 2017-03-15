@@ -9,3 +9,7 @@ notifications:
   email:
     - alberto@wejs.org
 
+# whitelist
+branches:
+  only:
+    - master
