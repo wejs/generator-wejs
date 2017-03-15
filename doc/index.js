@@ -56,14 +56,10 @@ module.exports = class extends Generator {
         this.destinationPath('api/swagger/swagger.json'),
         { jsonText: self.jsonText }
       );
-
-      done();
+      return null;
     })
+    .then(done)
     .catch(this.doneAll);
-  }
-
-  method2() {
-    this.log('method 2 just ran');
   }
 
   install() {
