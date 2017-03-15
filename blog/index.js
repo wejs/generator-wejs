@@ -1,5 +1,5 @@
 /**
- * We.js  blog generator
+ * We.js blog generator
  *
  * Generate one we.js blog project
  */

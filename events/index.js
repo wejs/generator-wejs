@@ -1,19 +1,19 @@
-'use strict';
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: false });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js multi events portal generator! |o/ |o/ \n generate one testable we.js events portal project!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
     if (!this.name) {
       prompts.push({
@@ -25,39 +25,73 @@ var WejsGenerator = yeoman.Base.extend({
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
+    .then( (props)=> {
       this.name = (this.name || props.name);
-      this.projectName = 'we-project-events-' + _s.slugify(this.name);
+      this.projectName = 'we-events-' + _s.slugify(this.name);
 
       this.appConfigs = props;
       this.projectFolder = this.projectName + '/';
-    }.bind(this));
-  },
-  writing: {
-    app: function () {
-      this.template('_README.md', this.projectFolder + 'README.md');
-      // - package.json file
-      this.template('_package.json', this.projectFolder + 'package.json');
-    },
-    projectfiles: function () {
-      this.directory('config', this.projectFolder + 'config');
-      this.directory('files', this.projectFolder + 'files');
-      this.directory('test', this.projectFolder + 'test');
-      this.directory('server', this.projectFolder + 'server');
-
-      this.copy('app.js', this.projectFolder + 'app.js');
-      this.copy('plugin.js', this.projectFolder +  'plugin.js');
-      this.copy('install.js', this.projectFolder +  'install.js');
-
-      this.copy('jshintrc', this.projectFolder +  '.jshintrc');
-
-      this.copy('bowerrc', this.projectFolder + '.bowerrc');
-      this.copy('gitignore', this.projectFolder + '.gitignore');
-      this.copy('gulpfile.js', this.projectFolder + 'gulpfile.js');
-
-      this.copy('config/local.example', this.projectFolder +  'config/local.js');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  app() {
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath(this.projectFolder + 'README.md'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath(this.projectFolder + 'package.json'),
+      this
+    );
+  }
+
+  projectfiles() {
+    this.fs.copy(
+      this.templatePath('config'),
+      this.destinationPath(this.projectFolder + 'config')
+    );
+    this.fs.copy(
+      this.templatePath('server'),
+      this.destinationPath(this.projectFolder + 'server')
+    );
+    this.fs.copy(
+      this.templatePath('files'),
+      this.destinationPath(this.projectFolder + 'files')
+    );
+
+    this.fs.copy(
+      this.templatePath('app.js'),
+      this.destinationPath(this.projectFolder + 'app.js')
+    );
+    this.fs.copy(
+      this.templatePath('plugin.js'),
+      this.destinationPath(this.projectFolder + 'plugin.js')
+    );
+    this.fs.copy(
+      this.templatePath('install.js'),
+      this.destinationPath(this.projectFolder + 'install.js')
+    );
+    this.fs.copy(
+      this.templatePath('jshintrc'),
+      this.destinationPath(this.projectFolder + '.jshintrc')
+    );
+    this.fs.copy(
+      this.templatePath('bowerrc'),
+      this.destinationPath(this.projectFolder + '.bowerrc')
+    );
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath(this.projectFolder + '.gitignore')
+    );
+    this.fs.copy(
+      this.templatePath('gulpfile.js'),
+      this.destinationPath(this.projectFolder + '.gulpfile.js')
+    );
+    this.fs.copy(
+      this.templatePath('config/local.example'),
+      this.destinationPath(this.projectFolder + 'config/local.js')
+    );
+  }
+};
