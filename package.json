@@ -1,6 +1,6 @@
 {
   "name": "generator-wejs",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "We.js Yeoman generator for generate plugins, themes and projects",
   "license": "MIT",
   "main": "app/index.js",
