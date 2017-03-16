@@ -1,39 +1,41 @@
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: true });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js model instance method generator! \n generate one model instance method in your we.js project or plugin!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
-    if (!this.name) {
+    if (!this.options.name) {
       prompts.push({
         type    : 'input',
         name    : 'name',
         message : 'Model instance method file name',
-        default : (this.name || this.appname) // Default to current folder name
+        default : (this.options.name || this.options.appname) // Default to current folder name
       });
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
-      this.name = (this.name || props.name);
+    .then( (props)=> {
+      this.name = (this.options.name || props.name);
       this.instanceMethodName = _s.strip(this.name);
-    }.bind(this));
-  },
-  writing: {
-    app: function app() {
-      this.template('instanceMethod.js', 'server/models/instanceMethods/'+this.instanceMethodName+'.js');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('instanceMethod.js'),
+      this.destinationPath('server/models/instanceMethods/'+this.instanceMethodName+'.js'),
+      this
+    );
+  }
+};

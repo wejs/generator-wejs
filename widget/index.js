@@ -1,43 +1,53 @@
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: false });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js widget generator! |o/ |o/ \n generate one widget files in your we.js project or plugin!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
-    if (!this.name) {
+    if (!this.options.name) {
       prompts.push({
         type    : 'input',
         name    : 'name',
         message : 'Your widget name',
-        default : (this.name || this.appname) // Default to current folder name
+        default : (this.options.name || this.options.appname) // Default to current folder name
       });
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
-      this.name = (this.name || props.name);
+    .then( (props)=> {
+      this.name = (this.options.name || props.name);
       this.Name = _s.slugify(this.name);
       this.widgetDirName = 'server/widgets/' + this.Name;
       this.appConfigs = props;
-    }.bind(this));
-  },
-  writing: {
-    app: function app() {
-      this.template('form.hbs.ejs', this.widgetDirName + '/form.hbs');
-      this.template('view.hbs.ejs', this.widgetDirName + '/view.hbs');
-      this.template('index.js.ejs', this.widgetDirName + '/index.js');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('form.hbs.ejs'),
+      this.destinationPath(this.widgetDirName + '/form.hbs'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('view.hbs.ejs'),
+      this.destinationPath(this.widgetDirName + '/view.hbs'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('index.js.ejs'),
+      this.destinationPath(this.widgetDirName + '/index.js'),
+      this
+    );
+  }
+};

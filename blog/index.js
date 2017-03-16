@@ -86,7 +86,7 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts)
     .then( (props)=> {
-      this.name = (this.name || props.name);
+      this.name = (this.options.name || props.name);
       this.projectName = 'we-p-blog-' + _s.slugify(this.name);
 
       this.appConfigs = _.merge(this.options, props);

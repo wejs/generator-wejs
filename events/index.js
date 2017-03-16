@@ -15,18 +15,18 @@ module.exports = class extends Generator {
 
     const prompts = [];
 
-    if (!this.name) {
+    if (!this.options.name) {
       prompts.push({
         type    : 'input',
         name    : 'name',
         message : 'Your project name',
-        default : (this.name || this.appname) // Default to current folder name
+        default : (this.options.name || this.options.appname) // Default to current folder name
       });
     }
 
     return this.prompt(prompts)
     .then( (props)=> {
-      this.name = (this.name || props.name);
+      this.name = (this.options.name || props.name);
       this.projectName = 'we-events-' + _s.slugify(this.name);
 
       this.appConfigs = props;

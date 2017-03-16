@@ -1,62 +1,123 @@
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: false });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js plugin generator! |o/ |o/ \n generate one testable we.js plugin!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
-    if (!this.name) {
+    if (!this.options.name) {
       prompts.push({
         type    : 'input',
         name    : 'name',
         message : 'Your plugin name',
-        default : (this.name || this.appname) // Default to current folder name
+        default : (this.options.name || this.options.appname) // Default to current folder name
       });
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
-      this.name = (this.name || props.name);
+    .then( (props)=> {
+      this.name = (this.options.name || props.name);
       this.pluginName = 'we-plugin-' + _s.slugify(this.name);
       this.appConfigs = props;
       this.projectFolder = this.pluginName + '/';
-    }.bind(this));
-  },
-  writing: {
-    app: function app() {
-      this.template('_README.md', this.projectFolder + 'README.md');
-      // - package.json file
-      this.template('_package.json', this.projectFolder + 'package.json');
-    },
-
-    projectfiles: function () {
-      this.directory('files', this.projectFolder + 'files');
-      this.directory('lib', this.projectFolder + 'lib');
-      this.directory('test', this.projectFolder + 'test');
-      this.directory('server', this.projectFolder + 'server');
-
-      this.template(
-        '_test.js', this.projectFolder + 'test/features/' + this.pluginName + '/' + this.pluginName + '.test.js'
-      );
-
-      this.copy('plugin.js', this.projectFolder +  'plugin.js');
-      this.copy('gitignore', this.projectFolder +  '.gitignore');
-      this.copy('jscsrc', this.projectFolder + '.jscsrc');
-      this.copy('jshintignore', this.projectFolder +  '.jshintignore');
-      this.copy('jshintrc', this.projectFolder +  '.jshintrc');
-      this.copy('npmignore', this.projectFolder +  '.npmignore');
-      this.copy('travis.yml', this.projectFolder +  '.travis.yml');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath(this.projectFolder + 'README.md'),
+      this
+    );
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath(this.projectFolder + 'package.json'),
+      this
+    );
+
+    this.fs.copy(
+      this.templatePath('files'),
+      this.destinationPath(this.projectFolder + 'files'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('lib'),
+      this.destinationPath(this.projectFolder + 'lib'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('test'),
+      this.destinationPath(this.projectFolder + 'test'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('server'),
+      this.destinationPath(this.projectFolder + 'server'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('server/emails/.gitkeep'),
+      this.destinationPath(this.projectFolder + 'server/emails/.gitkeep'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('server/templates/.gitkeep'),
+      this.destinationPath(this.projectFolder + 'server/templates/.gitkeep'),
+      this
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_test.js'),
+      this.destinationPath(
+        this.projectFolder + 'test/features/' + this.pluginName + '/' + this.pluginName + '.test.js'
+      ),
+      this
+    );
+
+    this.fs.copy(
+      this.templatePath('plugin.js'),
+      this.destinationPath(this.projectFolder + 'plugin.js'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath(this.projectFolder + '.gitignore'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('jscsrc'),
+      this.destinationPath(this.projectFolder + '.jscsrc'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('jshintignore'),
+      this.destinationPath(this.projectFolder + '.jshintignore'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('jshintrc'),
+      this.destinationPath(this.projectFolder + '.jshintrc'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('npmignore'),
+      this.destinationPath(this.projectFolder + '.npmignore'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('travis.yml'),
+      this.destinationPath(this.projectFolder + '.travis.yml'),
+      this
+    );
+  }
+};

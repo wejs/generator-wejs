@@ -1,39 +1,41 @@
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+const _s = require('underscore.string'),
+  Generator = require('yeoman-generator'),
+  yosay = require('yosay');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: true });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'We.js model hook generator! \n generate one model hook in your we.js project or plugin!'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
     if (!this.name) {
       prompts.push({
         type    : 'input',
         name    : 'name',
         message : 'Model hook file name',
-        default : (this.name || this.appname) // Default to current folder name
+        default : (this.options.name || this.options.appname) // Default to current folder name
       });
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
-      this.name = (this.name || props.name);
+    .then( (props)=> {
+      this.name = (this.options.name || props.name);
       this.hookName = _s.strip(this.name);
-    }.bind(this));
-  },
-  writing: {
-    app: function app() {
-      this.template('modelHook.js', 'server/models/hooks/'+this.hookName+'.js');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('modelHook.js'),
+      this.destinationPath('server/models/hooks/'+this.hookName+'.js'),
+      this
+    );
+  }
+};

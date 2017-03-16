@@ -1,7 +1,7 @@
-const Generator = require('yeoman-generator');
-var yosay = require('yosay');
-var path = require('path');
-var _ = require('lodash');
+const Generator = require('yeoman-generator'),
+  yosay = require('yosay'),
+  path = require('path'),
+  _ = require('lodash');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -86,9 +86,10 @@ module.exports = class extends Generator {
       this.templatePath('config/database.js'),
       this.destinationPath('config/database.js')
     );
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('app.json'),
-      this.destinationPath('app.json')
+      this.destinationPath('app.json'),
+      this
     );
   }
 

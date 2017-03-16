@@ -1,57 +1,95 @@
-var _s = require('underscore.string');
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
+const Generator = require('yeoman-generator'),
+  yosay = require('yosay'),
+  _s = require('underscore.string');
 
-var WejsGenerator = yeoman.Base.extend({
-  constructor: function () {
-    yeoman.Base.apply(this, arguments);
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
     this.argument('name', { type: String, required: false });
-  },
-  prompting: function () {
+  }
+
+  prompting() {
     this.log(yosay(
       'Wejs theme generator! ;)'
     ));
 
-    var prompts = [];
+    const prompts = [];
 
-    if (!this.name) {
+    if (!this.options.name) {
       prompts.push({
         type    : 'input',
         name    : 'name',
         message : 'Your theme name',
-        default : (this.name || this.appname) // Default to current folder name
+        default : (this.options.name || this.options.appname) // Default to current folder name
       });
     }
 
     return this.prompt(prompts)
-    .then(function (props) {
-      this.name = (this.name || props.name);
+    .then( (props)=> {
+      this.name = (this.options.name || props.name);
       this.themeName = 'we-theme-' + _s.slugify(this.name);
       this.projectFolder = this.themeName + '/';
       this.appConfigs = props;
-    }.bind(this));
-  },
-
-  writing: {
-    app: function () {
-      this.template('_README.md', this.projectFolder + 'README.md');
-      // theme main file
-      this.template('_theme.js', this.projectFolder + 'theme.js');
-      // - package.json file
-      this.template('_package.json', this.projectFolder + 'package.json');
-    },
-
-    projectfiles: function () {
-      this.directory('files', this.projectFolder + 'files');
-      this.directory('src', this.projectFolder + 'src');
-      this.directory('config', this.projectFolder + 'config');
-
-      this.directory('templates', this.projectFolder + 'templates');
-      this.copy('gulpfile.js', this.projectFolder +  'gulpfile.js');
-      this.copy('gitignore', this.projectFolder +  '.gitignore');
-      this.copy('npmignore', this.projectFolder +  '.npmignore');
-    }
+    });
   }
-});
 
-module.exports = WejsGenerator;
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath(this.projectFolder + 'README.md'),
+      this
+    );
+    // theme main file
+    this.fs.copyTpl(
+      this.templatePath('_theme.js'),
+      this.destinationPath(this.projectFolder + 'theme.js'),
+      this
+    );
+    // - package.json file
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath(this.projectFolder + 'package.json'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('files'),
+      this.destinationPath(this.projectFolder + 'files'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('src'),
+      this.destinationPath(this.projectFolder + 'src'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('config'),
+      this.destinationPath(this.projectFolder + 'config'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('templates'),
+      this.destinationPath(this.projectFolder + 'templates'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('templates/email/.gitkeep'),
+      this.destinationPath(this.projectFolder + 'templates/email/.gitkeep'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('gulpfile.js'),
+      this.destinationPath(this.projectFolder + 'gulpfile.js'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath(this.projectFolder + '.gitignore'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('npmignore'),
+      this.destinationPath(this.projectFolder + '.npmignore'),
+      this
+    );
+  }
+};
