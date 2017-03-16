@@ -144,9 +144,10 @@ module.exports = class extends Generator {
       this.destinationPath(this.projectFolder + 'plugin.js')
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('install.js'),
-      this.destinationPath(this.projectFolder + 'install.js')
+      this.destinationPath(this.projectFolder + 'install.js'),
+      this
     );
 
     this.fs.copy(

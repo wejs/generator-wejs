@@ -11,12 +11,12 @@ module.exports = function() {
 
   var prompts = [];
 
-  if (!this.name) {
+  if (!this.options.name) {
     prompts.push({
       type    : 'input',
       name    : 'name',
       message : 'Your project name',
-      default : (this.name || this.appname) // Default to current folder name
+      default : (this.options.name || this.options.appname) // Default to current folder name
     });
   }
 
@@ -110,8 +110,7 @@ module.exports = function() {
   }
 
   return prompts;
-}
-
+};
 
 function createFirstUser (answers) {
   return (answers.createFirstUser && (answers.createFirstUser == 'yes'));
