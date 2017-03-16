@@ -46,6 +46,7 @@ module.exports = class extends Generator {
       'we-plugin-rss': true,
       'we-plugin-url-alias': true,
       'we-plugin-user': true,
+      'we-plugin-email': true,
       'we-plugin-view': true,
       'we-plugin-vocabulary': true,
       'we-plugin-widget': true,
