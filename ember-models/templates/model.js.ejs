@@ -1,0 +1,10 @@
+import DS from 'ember-data';
+import Inflector from 'ember-inflector';
+
+const inflector = Inflector.inflector;
+inflector.irregular('<%- modelName %>', '<%- modelName %>');
+inflector.uncountable('<%- modelName %>');
+
+export default DS.Model.extend({
+<%- fields %>
+});
