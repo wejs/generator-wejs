@@ -101,6 +101,9 @@ module.exports = {
     TEXT(we, fieldName, field, Model) {
       return this.VARCHAR(we, fieldName, field, Model);
     },
+    LONGTEXT(we, fieldName, field, Model) {
+      return this.VARCHAR(we, fieldName, field, Model);
+    },
 
     /**
      * DATETIME field conversor
