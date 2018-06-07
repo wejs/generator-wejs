@@ -104,6 +104,9 @@ module.exports = {
     LONGTEXT(we, fieldName, field, Model) {
       return this.VARCHAR(we, fieldName, field, Model);
     },
+    DATE(we, fieldName, field, Model) {
+      return this.VARCHAR(we, fieldName, field, Model);
+    },
 
     /**
      * DATETIME field conversor
@@ -113,7 +116,7 @@ module.exports = {
      * @param {Object} field
      * @param {Object} Model     Sequelize model
      */
-    DATE(we, fieldName, field) {
+    DATETIME(we, fieldName, field) {
       let opts = [];
 
       if (field.defaultValue) {
@@ -131,9 +134,6 @@ module.exports = {
       }
 
       return f;
-    },
-    DATETIME(we, fieldName, field, Model) {
-      return this.DATE(we, fieldName, field, Model);
     },
 
     /**
