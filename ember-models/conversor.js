@@ -71,6 +71,9 @@ module.exports = {
     BLOB() {
       return this.VIRTUAL(...arguments);
     },
+    POINT() {
+      return this.VIRTUAL(...arguments);
+    },
     /**
      * VARCHAR field conversor
      *
