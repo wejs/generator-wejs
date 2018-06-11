@@ -39,6 +39,10 @@ module.exports = {
   convertField(we, fieldName, field, Model) {
     let fieldType = String(Model.definition[fieldName].type);
 
+    if (field.formFieldType == 'file/image') {
+      return this.field.IMAGE(we, fieldName, field, Model);
+    }
+
     if (fieldType.split && (fieldType.split('(').length > 1) ) {
       fieldType = fieldType.split('(')[0];
     }
@@ -235,6 +239,22 @@ module.exports = {
     },
     BELONGSTOMANY() {
       return this.HASMANY(...arguments);
+    },
+
+    /**
+     * FILE and IMAGE fields
+     * Plugin: we-plugin-file
+     *
+     * @param {Object} we        We.js instance
+     * @param {String} fieldName
+     * @param {Object} field
+     * @param {Object} Model     Sequelize model
+     */
+    FILE(we, fieldName) {
+      return '  '+fieldName+': DS.attr(\'array\')';
+    },
+    IMAGE() {
+      return this.FILE(...arguments);
     }
   },
 

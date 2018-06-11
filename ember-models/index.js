@@ -12,18 +12,7 @@ let we;
 
 const modelsToSkip = [
   'password',
-  'passport',
-  'comment',
-  'menu',
-  'slide',
-  'user',
-  'email-template',
-  'sitecontact-form',
-  'term',
-  'vocabulary',
-  'link',
-  'sitecontact',
-  'url-alia'
+  'passport'
 ];
 
 module.exports = class extends Generator {
