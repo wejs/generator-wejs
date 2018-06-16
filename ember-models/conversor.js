@@ -39,6 +39,10 @@ module.exports = {
   convertField(we, fieldName, field, Model) {
     let fieldType = String(Model.definition[fieldName].type);
 
+    if (field.emberConfiguration) {
+      return '  '+fieldName+': '+field.emberConfiguration;
+    }
+
     if (field.formFieldType == 'file/image') {
       return this.field.IMAGE(we, fieldName, field, Model);
     }
