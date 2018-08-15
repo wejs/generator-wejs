@@ -47,6 +47,10 @@ module.exports = {
       return this.field.IMAGE(we, fieldName, field, Model);
     }
 
+    if (field.formFieldType == 'file/file') {
+      return this.field.FILE(we, fieldName, field, Model);
+    }
+
     if (fieldType.split && (fieldType.split('(').length > 1) ) {
       fieldType = fieldType.split('(')[0];
     }
