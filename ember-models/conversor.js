@@ -207,6 +207,12 @@ module.exports = {
     BIGINT() {
       return this.INTEGER(...arguments);
     },
+    DECIMAL() {
+      return this.INTEGER(...arguments);
+    },
+    'DOUBLE PRECISION'() {
+      return this.INTEGER(...arguments);
+    },
 
     BELONGSTO(we, fieldName, field) {
       let opts = [
