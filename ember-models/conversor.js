@@ -19,6 +19,18 @@ module.exports = {
       }
     }
 
+    // created At
+    let r1 = this.field.DATETIME(we, 'createdAt', { type: 'DATETIME'}, Model);
+    if (r1) {
+      fieldsList.push(r1);
+    }
+
+    // updated At
+    let r2 = this.field.DATETIME(we, 'updatedAt', { type: 'DATETIME'}, Model);
+    if (r2) {
+      fieldsList.push(r2);
+    }
+
     // Associations:
     if (mc && mc.associations) {
       for(let fieldName in mc.associations) {
@@ -40,7 +52,7 @@ module.exports = {
     let fieldType = String(Model.definition[fieldName].type);
 
     if (field.emberConfiguration) {
-      return '  '+fieldName+': '+field.emberConfiguration;
+      return this.field.IMAGE(we, fieldName, field, Model);
     }
 
     if (field.formFieldType == 'file/image') {
