@@ -1,12 +1,12 @@
 language: node_js
 
 node_js:
-  - v4
-
-services:
-  - mysql
+  - v6
 
 addons:
+  apt:
+    packages:
+    - graphicsmagick
   code_climate:
 
 env:
@@ -15,9 +15,6 @@ env:
 notifications:
   email:
     - alberto@wejs.org
-
-before_script:
-  - mysql -e 'create database test;'
 
 after_success:
 - npm install coveralls

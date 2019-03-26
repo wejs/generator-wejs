@@ -1,10 +1,9 @@
-var assert = require('assert');
-var request = require('supertest');
-var helpers = require('we-test-tools').helpers;
-var stubs = require('we-test-tools').stubs;
-var http;
-var we;
-var agent;
+const assert = require('assert');
+  request = require('supertest');
+  helpers = require('we-test-tools').helpers;
+  stubs = require('we-test-tools').stubs;
+
+let http, we, agent;
 
 describe('<%= pluginName %>Feature', function() {
   var salvedUser, salvedUserPassword, authenticatedRequest;
@@ -35,7 +34,7 @@ describe('<%= pluginName %>Feature', function() {
       .end(function (err) {
         done(err);
       });
-    })
+    });
   });
 
   describe('API', function () {

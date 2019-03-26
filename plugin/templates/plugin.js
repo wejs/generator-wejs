@@ -4,12 +4,15 @@
  * see http://wejs.org/docs/we/plugin
  */
 module.exports = function loadPlugin(projectPath, Plugin) {
-  var plugin = new Plugin(__dirname);
+  const plugin = new Plugin(__dirname);
+
   // set plugin configs
   // plugin.setConfigs({
   // });
+
   // set plugin routes
   // plugin.setRoutes({
   // });
+
   return plugin;
 };

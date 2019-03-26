@@ -50,26 +50,24 @@ module.exports = class extends Generator {
       this.destinationPath(this.projectFolder + 'files'),
       this
     );
-    this.fs.copy(
-      this.templatePath('lib'),
-      this.destinationPath(this.projectFolder + 'lib'),
-      this
-    );
+
     this.fs.copy(
       this.templatePath('test'),
       this.destinationPath(this.projectFolder + 'test'),
       this
     );
+    this.fs.copyTpl(
+      this.templatePath('_bootstrap.js'),
+      this.destinationPath(this.projectFolder + '/test/bootstrap.js'),
+      this
+    );
+
     this.fs.copy(
       this.templatePath('server'),
       this.destinationPath(this.projectFolder + 'server'),
       this
     );
-    this.fs.copy(
-      this.templatePath('server/emails/.gitkeep'),
-      this.destinationPath(this.projectFolder + 'server/emails/.gitkeep'),
-      this
-    );
+
     this.fs.copy(
       this.templatePath('server/templates/.gitkeep'),
       this.destinationPath(this.projectFolder + 'server/templates/.gitkeep'),

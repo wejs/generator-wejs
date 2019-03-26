@@ -1,5 +1,9 @@
 test
 files/uploads
+config
+files/public
+locales
+test
 .jscsrc
 .jshintignore
 .jshintrc
