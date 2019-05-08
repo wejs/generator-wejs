@@ -18,9 +18,7 @@ describe('wejs:plugin', function () {
   it('should creates plugin files', function () {
     assert.file([
       'we-plugin-test/files/public/README.md',
-      'we-plugin-test/lib/index.js',
       'we-plugin-test/server/controllers',
-      'we-plugin-test/server/emails',
       'we-plugin-test/server/models',
       'we-plugin-test/server/templates',
       'we-plugin-test/test/features/we-plugin-test/we-plugin-test.test.js',

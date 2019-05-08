@@ -93,11 +93,6 @@ module.exports = class extends Generator {
       this
     );
     this.fs.copy(
-      this.templatePath('jscsrc'),
-      this.destinationPath(this.projectFolder + '.jscsrc'),
-      this
-    );
-    this.fs.copy(
       this.templatePath('jshintignore'),
       this.destinationPath(this.projectFolder + '.jshintignore'),
       this
