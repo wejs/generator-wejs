@@ -16,4 +16,4 @@ module.exports.database = {
     username: 'root',
     password: ''
   }
-}
+};

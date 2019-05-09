@@ -147,6 +147,10 @@ module.exports = class extends Generator {
     if (this.appConfigs.skipInstall) return;
 
     switch (this.appConfigs.dbDialect) {
+      case 'sqlite':
+        this.npmModulesToInstall.push('sqlite3');
+        this.npmModulesToInstall.push('connect-sqlite3');
+        break;
       case 'postgres':
         this.npmModulesToInstall.push('pg');
         this.npmModulesToInstall.push('pg-hstore');

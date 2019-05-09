@@ -5,4 +5,4 @@ module.exports.log = {
   prettyPrint: true,
   depth: 5,
   showLevel: true
-}
+};

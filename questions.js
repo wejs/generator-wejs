@@ -1,15 +1,5 @@
 module.exports = function() {
-
-  // {
-  //   type: 'input',
-  //   name: 'favorite',
-  //   message: 'Bacon lover, what is your favorite type of bacon?',
-  //   when: function (answers) {
-  //     return answers.bacon;
-  //   }
-  // },
-
-  var prompts = [];
+  let prompts = [];
 
   if (!this.options.name) {
     prompts.push({
@@ -25,7 +15,7 @@ module.exports = function() {
       type: 'list',
       name: 'dbDialect',
       message: 'Choice one database for your project',
-      choices: ['mysql', 'postgres']
+      choices: ['sqlite', 'mysql', 'postgres']
     });
   }
 

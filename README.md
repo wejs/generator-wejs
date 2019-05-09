@@ -1,4 +1,4 @@
-# We.js generator v0.3.x | generator-wejs [![Build Status](https://secure.travis-ci.org/wejs/generator-wejs.png?branch=master)](https://travis-ci.org/wejs/generator-wejs)
+# We.js generator | generator-wejs [![Build Status](https://secure.travis-ci.org/wejs/generator-wejs.png?branch=master)](https://travis-ci.org/wejs/generator-wejs)
 
 > A [Yeoman](http://yeoman.io) generator for generate [we.js](https://github.com/wejs) projects, plugins, themes and clientside modules
 
@@ -92,7 +92,6 @@ we test
 we-test -g 'wejs:plugin'
 ```
 
-
 ## Magicaly update all project generators 
 
 ```sh 
@@ -103,7 +102,11 @@ npm run upp
 
 > * We.js site: http://wejs.org
 
+## Sponsors
+
+- Linky - https://linkysystems.com
+
 ## License
 
-Under [the MIT license](LICENSE).
+MIT License Copyright © 2015-present, Alberto Souza
 

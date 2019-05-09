@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-  index: function index(req, res) {
+  index(req, res) {
     res.locals.data = {
       page: 'home'
     };

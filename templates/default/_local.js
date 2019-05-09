@@ -9,10 +9,24 @@ module.exports = {
     // This may be override by every route configs
     CORS: {
       // allow CORS requests by default
-      origin: function(origin, cb){ cb(null, true) },
+      origin: function(origin, cb){ cb(null, true); },
       // default methods
-      methods: ['GET', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
+      methods: [
+        'GET',
+        'OPTIONS',
+        'POST',
+        'PATCH',
+        'UPDATE',
+        'DELETE'
+      ],
+      allowedHeaders: [
+        'Content-Type',
+        'Authorization',
+        'Accept',
+        'Access-Control-Allow-Credentials'
+      ],
+
+      credentials: true
     }
   },
 
