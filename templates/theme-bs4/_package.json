@@ -1,5 +1,6 @@
 {
   "name": "<%= themeName %>",
+  "private": true,
   "version": "0.0.1",
   "description": "We.js <%= themeName %> theme",
   "homepage": "https://yourthemehomepage.here",
@@ -7,20 +8,20 @@
     "type": "git",
     "url": "putyourthemerepositoryhere"
   },
+  "author": "Someone <someone@example.com>",
   "main": "theme.js",
   "scripts": {
-    "start": "gulp server"
+    "start": "gulp"
   },
   "dependencies": {},
   "devDependencies": {
-    "express-mysql-session": "^1.0.0",
-    "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-less": "^3.0.3",
-    "gulp-minify-css": "^1.2.1",
-    "mysql": "^2.10.2",
-    "we-core": "^1.0.2",
-    "we-plugin-bootstrap3": "^0.3.2"
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "bootstrap": "^4.3.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2",
+    "popper.js": "^1.15.0"
   },
   "optionalDependencies": {},
   "engines": {

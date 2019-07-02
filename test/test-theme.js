@@ -1,33 +1,67 @@
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var os = require('os');
+const path = require('path'),
+ assert = require('yeoman-assert'),
+ helpers = require('yeoman-test'),
+ os = require('os');
 
-describe('wejs:theme', function () {
+describe('wejs:theme:bs3', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../theme'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
-      .withOptions({ 'skip-install': true })
+      .withOptions({
+        'skip-install': true
+      })
       .withPrompts({
-        name: 'test'
+        name: 'test-bs3',
+        baseTheme: 'bs3'
       })
       .on('end', done);
   });
 
   it('should creates theme files', function () {
     assert.file([
-      'we-theme-test/files/public/README.md',
-      'we-theme-test/files/public/script.js',
-      'we-theme-test/files/public/style.css',
-      'we-theme-test/src/js',
-      'we-theme-test/src/less',
-      'we-theme-test/templates/email',
-      'we-theme-test/templates/server',
-      'we-theme-test/templates/server/layouts/default-layout.hbs',
-      'we-theme-test/README.md',
-      'we-theme-test/theme.js',
-      'we-theme-test/gulpfile.js',
-      'we-theme-test/package.json'
+      'we-t-test-bs3/files/public/README.md',
+      'we-t-test-bs3/files/public/script.js',
+      'we-t-test-bs3/files/public/style.css',
+      'we-t-test-bs3/src/js',
+      'we-t-test-bs3/src/less',
+      'we-t-test-bs3/templates/server',
+      'we-t-test-bs3/templates/server/layouts/default-layout.hbs',
+      'we-t-test-bs3/README.md',
+      'we-t-test-bs3/theme.js',
+      'we-t-test-bs3/gulpfile.js',
+      'we-t-test-bs3/package.json'
+    ]);
+  });
+});
+
+describe('wejs:theme:bs4', function () {
+  before(function (done) {
+    helpers.run(path.join(__dirname, '../theme'))
+      .inDir(path.join(os.tmpdir(), './temp-test'))
+      .withOptions({
+        'skip-install': true
+      })
+      .withPrompts({
+        name: 'test-bs4',
+        baseTheme: 'bs4'
+      })
+      .on('end', done);
+  });
+
+  it('should creates theme files', function () {
+    assert.file([
+      'we-t-test-bs4/files/public/README.md',
+      'we-t-test-bs4/files/public/script.js',
+      'we-t-test-bs4/files/public/style.css',
+      'we-t-test-bs4/src/js',
+      'we-t-test-bs4/src/scss',
+      'we-t-test-bs4/src/scss/style.scss',
+      'we-t-test-bs4/templates/server',
+      'we-t-test-bs4/templates/server/layouts/default-layout.hbs',
+      'we-t-test-bs4/README.md',
+      'we-t-test-bs4/theme.js',
+      'we-t-test-bs4/gulpfile.js',
+      'we-t-test-bs4/package.json'
     ]);
   });
 });

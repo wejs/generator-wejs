@@ -2,4 +2,3 @@ test
 node_modules
 bower_components
 config/local.js
-public/examples
