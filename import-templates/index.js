@@ -43,11 +43,14 @@ module.exports = class extends Generator {
         .then( (props)=> {
 
           this.themeSelected = props.themeSelected;
-          this.themeFolder = we.view
+          this.themeFolder = path.join(
+            we.view
               .themes[ props.themeSelected ]
-              .config.themeFolder;
+              .config.themeFolder,
+            'templates/server'
+          );
 
-          this.sourceRoot( this.themeFolder+'/x' );
+          this.sourceRoot( this.themeFolder );
         })
         .then(resolve)
         .catch(reject);
