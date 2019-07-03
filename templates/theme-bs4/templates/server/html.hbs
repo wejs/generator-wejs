@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{locale}}">
 <head>
-  <title>{{title}} {{req.we.config.appName}}</title>
+  <title>
+    {{title}} {{#if title}}|{{/if}}
+    {{#if req.we.systemSettings.siteName}}
+      {{req.we.systemSettings.siteName}}
+    {{else}}
+      {{req.we.config.appName}}
+    {{/if}}
+  </title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  {{we-event event="we-html-head-start"}}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {{#if _csrf}}<meta name="csrf-token" content="{{_csrf}}" />{{/if}}
+
+  {{#if req.we.systemSettings.iconUrl}}
+    <link rel="shortcut icon" href="{{req.we.systemSettings.iconUrl}}">
+  {{/if}}
 
   {{{render-metadata-tags}}}
   {{{render-stylesheet-tags}}}
   {{{render-javascript-tags 'header'}}}
+  {{we-event event="we-html-head-end"}}
+
 </head>
-<body>
+<body class="fixed-left widescreen body-{{controller}}-{{action}} {{#each req.userRoleNames}}ur-{{this}} {{/each}}">
   {{we-event event="we-html-body-start"}}
-  {{{template 'partials/header'}}}
+
   {{{layoutHtml}}}
-  {{{template 'partials/footer'}}}
+
+  {{{render-bootstrap-config}}}
+
+  <script type="text/javascript" >if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+   $(function() {
+     $('body').addClass('is-mobile');
+   });
+  }</script>
+
+  {{{render-javascript-tags 'footer'}}}
+  {{{render-client-component-templates}}}
+
+  {{template 'partials/footer'}}
   {{we-event event="we-html-body-end"}}
 </body>
 </html>

@@ -47,10 +47,7 @@ function sassprod() {
 exports.sassprod = sassprod;
 
 function watch_css() {
-  return gulp.watch([
-    scssFiles,
-    './src/scss/**/*.scss',
-  ], gulp.series(sassdev, sassprod));
+  return gulp.watch('./src/scss/**/*.scss', gulp.series(sassdev, sassprod));
 }
 exports.watch_css = watch_css;
 

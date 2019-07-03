@@ -1,0 +1,18 @@
+{{#unless req.user.id}}
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="nav-item active">
+      {{#link-to 'auth.login' class="nav-link active"}}{{t 'Login'}}{{/link-to}}
+    </li>
+    <li role="presentation" class="nav-item">
+      {{#link-to 'auth.signup' class="nav-link"}}{{t 'Register'}}{{/link-to}}
+    </li>
+    <li role="presentation" class="nav-item">
+      {{#link-to 'auth.forgotPassword' class="nav-link"}}{{t 'auth.forgot-password'}}{{/link-to}}
+    </li>
+  </ul>
+  <div class="tab-content">
+    {{{form 'login' user}}}
+  </div>
+{{else}}
+  <p>{{{t 'auth.login.authenticated.msg'}}}</p>
+{{/unless}}

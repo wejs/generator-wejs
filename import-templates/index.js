@@ -23,7 +23,7 @@ module.exports = class extends Generator {
 
   prompting() {
     this.log(yosay(
-      'Import all plugin templates to project'
+      'Import all plugin templates to theme'
     ));
 
     return new Promise( (resolve, reject)=> {
@@ -77,7 +77,7 @@ module.exports = class extends Generator {
     for (let name in pluginTemplates) {
       this.fs.copy(
         pluginTemplates[name],
-        this.destinationPath( path.join(this.themeFolder, name+'.tpl') )
+        this.destinationPath( path.join(this.themeFolder, name+'.hbs') )
       );
     }
   }
