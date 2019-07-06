@@ -34,6 +34,8 @@ module.exports = {
   //   updateFiles: false
   // },
 
+  // // Local email configuration, in some we.js projects this may be set in admin with systemSettings
+  //
   // email: {
   //   // default mail options
   //   mailOptions: {
@@ -72,24 +74,10 @@ module.exports = {
 
   enableRequestLog: false,
 
+  // Local database configuration, see database.js file for configuration options with env var
   database: {
-    prod: {
-      dialect: '<%= appConfigs.dbDialect %>',
-      database: '<%= appConfigs.dbName %>',
-      username: '<%= appConfigs.dbUsername %>',
-      password: '<%= appConfigs.dbPassword %>'
-    },
-    dev: {
-      dialect: '<%= appConfigs.dbDialect %>',
-      database: '<%= appConfigs.dbName %>',
-      username: '<%= appConfigs.dbUsername %>',
-      password: '<%= appConfigs.dbPassword %>'
-    },
-    test: {
-      dialect: 'mysql',
-      database: 'test',
-      username: 'root',
-      password: ''
-    }
+    prod: {},
+    dev: {},
+    test: {}
   }
 }

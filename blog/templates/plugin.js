@@ -6,7 +6,7 @@
  * @return {Object}             intance of we.js Plugin class
  */
 module.exports = function loadPlugin(projectPath, Plugin) {
-  var plugin = new Plugin(__dirname);
+  const plugin = new Plugin(__dirname);
 
   plugin.setRoutes({
     // home page route

@@ -5,44 +5,8 @@ module.exports = function() {
     prompts.push({
       type    : 'input',
       name    : 'name',
-      message : 'Your project name',
+      message : 'Project name',
       default : (this.options.name || this.options.appname) // Default to current folder name
-    });
-  }
-
-  if (!this.options.dbDialect) {
-    prompts.push({
-      type: 'list',
-      name: 'dbDialect',
-      message: 'Choice one database for your project',
-      choices: ['sqlite', 'mysql', 'postgres']
-    });
-  }
-
-  if (!this.options.dbName) {
-    prompts.push({
-      type    : 'input',
-      name    : 'dbName',
-      message : 'Database name',
-      default : 'test'
-    });
-  }
-
-  if (!this.options.dbUsername) {
-    prompts.push({
-      type    : 'input',
-      name    : 'dbUsername',
-      message : 'Database user name',
-      default : 'root'
-    });
-  }
-
-  if (!this.options.dbPassword) {
-    prompts.push({
-      type    : 'password',
-      name    : 'dbPassword',
-      message : 'Database password',
-      default : ''
     });
   }
 

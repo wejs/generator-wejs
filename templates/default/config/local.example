@@ -58,6 +58,7 @@ module.exports = {
 
   enableRequestLog: false,
 
+  // see sequelize database configuration for more options:
   database: {
     prod: {
       dialect: 'mysql',

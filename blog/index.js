@@ -9,11 +9,14 @@ const _s = require('underscore.string'),
   yosay = require('yosay'),
   questions = require('../questions'),
   path = require('path'),
+  utils = require('../utils.js'),
   _ = require('lodash');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
+
+    this.sourceRoot(path.resolve(__dirname, '../templates/default'));
 
     this.npmModulesToInstall = [
       'async',
@@ -35,10 +38,10 @@ module.exports = class extends Generator {
       'we-admin-blog': true,
       'we-plugin-acl': true,
       'we-plugin-article': true,
+      'we-plugin-page': true,
       'we-plugin-auth': true,
-      'we-plugin-bootstrap3': true,
       'we-plugin-disqus': true,
-      'we-plugin-editor-summernote': true,
+      'we-plugin-editor-tinymce': true,
       'we-plugin-file': true,
       'we-plugin-form': true,
       'we-plugin-google-analytics': true,
@@ -53,26 +56,19 @@ module.exports = class extends Generator {
       'we-plugin-file-local': true,
       'we-plugin-user-settings': true,
       'we-passport-oauth2-password': true,
-      'we-plugin-i18n-api': true
+      'we-plugin-i18n-api': true,
+      'we-plugin-site-contact': true,
+      'we-plugin-slideshow': true
     };
 
-    this.argument('name', { type: String, required: false });
+    this.argument('name', {
+      type: String, required: false
+    });
 
     this.option('skip-install', {
       desc: 'Skip npm installations'
     });
-    this.option('db-dialect', {
-      desc: 'Database ex: postgres or mysql'
-    });
-    this.option('db-name', {
-      desc: 'Database name'
-    });
-    this.option('db-username', {
-      desc: 'Database user name'
-    });
-    this.option('db-password', {
-      desc: 'Database user password'
-    });
+
     this.option('not-create-first-user', {
       desc: 'Skip user creation'
     });
@@ -92,30 +88,40 @@ module.exports = class extends Generator {
 
       this.appConfigs = _.merge(this.options, props);
       this.projectFolder = this.projectName + '/';
+
+      this.appConfigs.randomString = utils.getRandomString();
     });
   }
 
   writeFiles() {
     this.fs.copyTpl(
-      this.templatePath('_README.md'),
+      this.templatePath('README.md.ejs'),
       this.destinationPath(this.projectFolder + 'README.md'),
       this
     );
+
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath(this.projectFolder + 'package.json'),
       this
     );
+
     this.fs.copyTpl(
       this.templatePath('_local.js'),
       this.destinationPath(this.projectFolder + 'config/local.js'),
+      this
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_database.js'),
+      this.destinationPath(this.projectFolder + 'config/database.js'),
       this
     );
   }
 
   copyfiles() {
     this.fs.copy(
-      this.templatePath('config'),
+      path.join(__dirname, 'templates', 'config'),
       this.destinationPath(this.projectFolder + 'config')
     );
 
@@ -130,6 +136,11 @@ module.exports = class extends Generator {
     );
 
     this.fs.copy(
+      this.templatePath('test'),
+      this.destinationPath(this.projectFolder + 'test')
+    );
+
+    this.fs.copy(
       this.templatePath('app.js'),
       this.destinationPath(this.projectFolder + 'app.js')
     );
@@ -140,12 +151,12 @@ module.exports = class extends Generator {
     );
 
     this.fs.copy(
-      this.templatePath('plugin.js'),
+      path.join(__dirname, 'templates', 'plugin.js'),
       this.destinationPath(this.projectFolder + 'plugin.js')
     );
 
     this.fs.copyTpl(
-      this.templatePath('install.js'),
+      path.join(__dirname, 'templates', 'install.js'),
       this.destinationPath(this.projectFolder + 'install.js'),
       this
     );
@@ -174,15 +185,8 @@ module.exports = class extends Generator {
   install() {
     if (this.appConfigs.skipInstall) return;
 
-    switch (this.appConfigs.dbDialect) {
-      case 'postgres':
-        this.npmModulesToInstall.push('pg');
-        this.npmModulesToInstall.push('pg-hstore');
-        break;
-      default:
-        this.npmModulesToInstall.push('mysql');
-        this.npmModulesToInstall.push('express-mysql-session');
-    }
+    utils.setDbDialectModules(this);
+
     // enter in folder
     process.chdir(path.resolve(this.projectFolder) );
 
@@ -190,6 +194,7 @@ module.exports = class extends Generator {
       .concat(Object.keys(this.wejsPLuginsToInstall));
 
     this.log('Installing the dependencies: ' + this.npmModulesToInstall.join(' '));
+
     // modules
     this.npmInstall(this.npmModulesToInstall, { 'save': true });
     // dev modules

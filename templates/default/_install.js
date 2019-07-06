@@ -5,14 +5,14 @@ module.exports = {
    * @param  {Object}   we    we.js object
    * @param  {Function} done  callback
    */
-  install: function install (we, done) {
+  install(we, done) {
     we.log.info('Starting project install...');
 
-    var fns = [];
+    let fns = [];
 
 <% if (appConfigs.createFirstUser && (appConfigs.createFirstUser == 'yes')) { %>
     fns.push(function registerUser1(done) {
-      var user1 = {
+      let user1 = {
         username: '<%= appConfigs.userName %>',
         email: '<%= appConfigs.userEmail %>',
         password: '<%= appConfigs.userPassword %>', // change after install
@@ -27,7 +27,7 @@ module.exports = {
         where: { email: user1.email },
         defaults: user1
       })
-      .spread(function (user, created) {
+      .spread( (user, created)=> {
         we.log.info('New User with id: ', user.id);
         // install we-plugin-auth for use password
         if (!we.db.models.password) return done();
@@ -37,7 +37,7 @@ module.exports = {
           password: user1.password,
           confirmPassword: user1.password
         })
-        .then(function () {
+        .then( ()=> {
           return done();
         })
       })

@@ -4,6 +4,7 @@
 
 ## Features
 
+ - yo wejs:app :white_check_mark:
  - yo wejs:blog :white_check_mark: ( for create blog project )
  - yo wejs:plugin :white_check_mark:
  - yo wejs:theme :white_check_mark:

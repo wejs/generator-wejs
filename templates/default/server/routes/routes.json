@@ -1,6 +1,0 @@
-{
-  "get /": {
-    "controller": "main",
-    "action": "index"
-  }
-}

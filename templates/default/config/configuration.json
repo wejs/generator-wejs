@@ -1,0 +1,103 @@
+{
+  "roles": {
+    "administrator": {
+      "name": "administrator",
+      "permissions": [],
+      "canAddInUsers": true,
+      "isSystemRole": true
+    },
+    "authenticated": {
+      "name": "authenticated",
+      "permissions": [
+        "findOne_group",
+        "find_group",
+        "create_group",
+        "find_post",
+        "create_post",
+        "upload_image",
+        "find_image",
+        "upload_file",
+        "find_file",
+        "find_user",
+        "find_comment",
+        "create_comment",
+        "find_content",
+        "find_article",
+        "find_slideshow",
+        "find_slide",
+        "find_term",
+        "find_vocabulary",
+        "create_contact_message",
+        "find_group.post",
+        "use_follow",
+        "use_flag",
+        "find_gallery",
+        "find_gallery-content"
+      ],
+      "isSystemRole": true
+    },
+    "unAuthenticated": {
+      "name": "unAuthenticated",
+      "permissions": [
+        "find_group",
+        "find_post",
+        "find_image",
+        "find_file",
+        "find_group.post",
+        "find_user",
+        "find_content",
+        "find_article",
+        "find_slideshow",
+        "find_slide",
+        "find_term",
+        "find_vocabulary",
+        "find_comment",
+        "create_contact_message",
+        "find_gallery",
+        "find_gallery-content"
+      ],
+      "isSystemRole": true
+    },
+    "owner": {
+      "name": "owner",
+      "permissions": [
+        "update_comment",
+        "update_post",
+        "delete_comment",
+        "delete_post",
+        "update_user"
+      ],
+      "isSystemRole": true
+    },
+    "editor": {
+      "name": "editor",
+      "canAddInUsers": true,
+      "permissions": [
+        "upload_image",
+        "upload_file",
+        "update_comment",
+        "manage_all_comments",
+        "find_content",
+        "create_content",
+        "update_content",
+        "delete_content",
+        "find_article",
+        "create_article",
+        "update_article",
+        "delete_article",
+        "access_articles_unpublished",
+        "access_contents_unpublished",
+        "find_slideshow",
+        "find_slide",
+        "update_slide",
+        "delete_slide",
+        "create_term",
+        "update_term",
+        "delete_term",
+        "find_url-alia",
+        "create_url-alia",
+        "update_url-alia"
+      ]
+    }
+  }
+}

@@ -1,14 +1,15 @@
-var path = require('path');
-var indent = '    ';
+const path = require('path'),
+  crypto = require("crypto"),
+  indent = '    ';
 
-var utils = {
+const utils = {
   databaseAssociationTypes: [
     'belongsTo', 'hasMany', 'hasOne'
   ],
-  getWe: function getWe() {
+  getWe() {
     try {
-      var projectFolder = process.cwd();
-      var We = require( path.resolve( projectFolder, 'node_modules/we-core' ));
+      let projectFolder = process.cwd();
+      let We = require( path.resolve( projectFolder, 'node_modules/we-core' ));
       return new We();
     } catch(e) {
       if (e.code == 'MODULE_NOT_FOUND') {
@@ -18,19 +19,66 @@ var utils = {
         throw e;
       }
     }
+  },
+
+  getRandomString() {
+    return crypto.randomBytes(20).toString('hex');
+  },
+
+  addNpmModules(g) {
+    utils.setDbDialectModules(g);
+
+    g.fs.copyTpl(
+      g.templatePath('_package.json'),
+      g.destinationPath(g.projectFolder + 'package.json'),
+      g
+    );
+
+    g.npmModulesToInstall = g.npmModulesToInstall
+      .concat(Object.keys(g.wejsPLuginsToInstall));
+
+    g.log('Installing the dependencies: ' + g.npmModulesToInstall.join(' '));
+
+    const pkgJson = {
+      dependencies: g.npmModulesToInstall,
+      devDependencies: g.devNpmModulesToInstall
+    };
+
+    g.fs.extendJSON(g.destinationPath(g.projectFolder + 'package.json'), pkgJson);
+  },
+
+  setDbDialectModules(g) {
+    switch (g.appConfigs.dbDialect) {
+      case 'sqlite':
+        g.npmModulesToInstall.push('sqlite3');
+        g.npmModulesToInstall.push('connect-sqlite3');
+        break;
+      case 'postgres':
+        g.npmModulesToInstall.push('pg');
+        g.npmModulesToInstall.push('pg-hstore');
+        break;
+      default:
+        // default users mysql db and redis session for production and sqlite for development:
+        g.npmModulesToInstall.push('mysql2');
+        g.npmModulesToInstall.push('express-mysql-session');
+        g.npmModulesToInstall.push('redis');
+        g.npmModulesToInstall.push('connect-redis');
+        g.devNpmModulesToInstall.push('sqlite3');
+        g.devNpmModulesToInstall.push('connect-sqlite3');
+    }
   }
 };
 
-utils.getModelAttrsFromArgs = function getModelAttrsFromArgs(args) {
-  var text = '';
+utils.getModelAttrsFromArgs = function(args) {
+  let text = '';
 
   args
-  .filter(function (a) {
+  .filter( (a)=> {
     if (a == args[0]) return false;
     return true;
   })
-  .filter(function (a){
-    var aItens = a.split(':');
+  .filter( (a)=> {
+    let aItens = a.split(':');
     if (
       aItens[1] &&
       utils.databaseAssociationTypes.indexOf(aItens[1])>-1
@@ -40,8 +88,8 @@ utils.getModelAttrsFromArgs = function getModelAttrsFromArgs(args) {
       return true
     }
   })
-  .forEach(function (a, i, arr){
-    var aItens = a.split(':');
+  .forEach( (a, i, arr)=> {
+    let aItens = a.split(':');
 
     if (
       aItens[1] &&
@@ -61,8 +109,8 @@ utils.getModelAttrsFromArgs = function getModelAttrsFromArgs(args) {
   return text;
 }
 
-utils.renderModelAttribute = function renderModelAttribute(aItens) {
-  var text = '';
+utils.renderModelAttribute = function (aItens) {
+  let text = '';
 
   if (aItens.length > 1) {
     text += '  "type": "'+aItens[1].toUpperCase()+'"';
@@ -75,8 +123,8 @@ utils.renderModelAttribute = function renderModelAttribute(aItens) {
     text += ',\n'+indent;
 
     if (aItens.length > 2) {
-      for (var i = 2; i < aItens.length; i++) {
-        var att = aItens[i].split('=');
+      for (let i = 2; i < aItens.length; i++) {
+        let att = aItens[i].split('=');
 
         if ( (aItens.length-1) == i) {
           // last item
@@ -95,23 +143,23 @@ utils.renderModelAttribute = function renderModelAttribute(aItens) {
 }
 
 
-utils.getModelAssocsFromArgs = function getModelAssocsFromArgs(args) {
-  var text = '';
+utils.getModelAssocsFromArgs = function (args) {
+  let text = '';
 
   args
-  .filter(function (a){
+  .filter( (a)=> {
     if (a.indexOf(':') > 0) return true;
   })
-  .filter(function (a){
-    var aItens = a.split(':');
+  .filter( (a)=> {
+    let aItens = a.split(':');
     if (utils.databaseAssociationTypes.indexOf(aItens[1])>-1) {
       return true;
     } else {
       return false;
     }
   })
-  .forEach(function (a, i, arr){
-    var aItens = a.split(':');
+  .forEach( (a, i, arr)=> {
+    let aItens = a.split(':');
 
     text += '"'+aItens[0]+'": {\n'+indent;
     text += utils.renderModelAssociation(aItens);
@@ -126,8 +174,8 @@ utils.getModelAssocsFromArgs = function getModelAssocsFromArgs(args) {
   return text;
 }
 
-utils.renderModelAssociation = function renderModelAssociation(aItens) {
-  var text = '';
+utils.renderModelAssociation = function (aItens) {
+  let text = '';
 
   if (aItens.length > 1) {
     text += '  "type": "'+aItens[1] + '",\n'+indent;
@@ -142,8 +190,8 @@ utils.renderModelAssociation = function renderModelAssociation(aItens) {
     text += ',\n'+indent;
 
     if (aItens.length > 3) {
-      for (var i = 3; i < aItens.length; i++) {
-        var att = aItens[i].split('=');
+      for (let i = 3; i < aItens.length; i++) {
+        let att = aItens[i].split('=');
 
         if ( (aItens.length-1) == i) {
           // last item

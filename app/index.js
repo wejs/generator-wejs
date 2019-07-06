@@ -9,6 +9,7 @@ const _s = require('underscore.string'),
   yosay = require('yosay'),
   path = require('path'),
   questions = require('../questions'),
+  utils = require('../utils.js'),
   _ = require('lodash');
 
 let we;
@@ -38,18 +39,6 @@ module.exports = class extends Generator {
     this.option('skip-install', {
       desc: 'Skip npm installations'
     });
-    this.option('db-dialect', {
-      desc: 'Database ex: postgres or mysql'
-    });
-    this.option('db-name', {
-      desc: 'Database name'
-    });
-    this.option('db-username', {
-      desc: 'Database user name'
-    });
-    this.option('db-password', {
-      desc: 'Database user password'
-    });
     this.option('not-create-first-user', {
       desc: 'Skip user creation'
     });
@@ -74,6 +63,8 @@ module.exports = class extends Generator {
 
       this.appConfigs = _.merge(this.options, props);
       this.projectFolder = this.projectName + '/';
+
+      this.appConfigs.randomString = utils.getRandomString();
     });
   }
 
@@ -104,6 +95,12 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_local.js'),
       this.destinationPath(this.projectFolder + 'config/local.js'),
+      this
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_database.js'),
+      this.destinationPath(this.projectFolder + 'config/database.js'),
       this
     );
   }
@@ -146,19 +143,8 @@ module.exports = class extends Generator {
   install() {
     if (this.appConfigs.skipInstall) return;
 
-    switch (this.appConfigs.dbDialect) {
-      case 'sqlite':
-        this.npmModulesToInstall.push('sqlite3');
-        this.npmModulesToInstall.push('connect-sqlite3');
-        break;
-      case 'postgres':
-        this.npmModulesToInstall.push('pg');
-        this.npmModulesToInstall.push('pg-hstore');
-        break;
-      default:
-        this.npmModulesToInstall.push('mysql');
-        this.npmModulesToInstall.push('express-mysql-session');
-    }
+    utils.setDbDialectModules(this);
+
     // enter in folder
     process.chdir(path.resolve(this.projectFolder) );
 
