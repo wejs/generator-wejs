@@ -19,8 +19,6 @@ module.exports = class extends Generator {
     this.sourceRoot(path.resolve(__dirname, '../templates/default'));
 
     this.npmModulesToInstall = [
-      'async',
-      'lodash',
       'we-core',
       'we-theme-blog-startbootstrap-clean'
     ];

@@ -4,8 +4,7 @@ const We = require('we-core'),
   gulp = require('gulp'),
   weGulpTasks = require('we-gulp-tasks-default');
 
-weGulpTasks(we, gulp, projectFolder, function doneTask() {
-  we.exit(function () {
-    process.exit();
-  });
-});
+let tasks = weGulpTasks(we, gulp, projectFolder);
+
+exports.build = tasks.build;
+exports.default = tasks.build;

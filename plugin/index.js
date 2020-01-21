@@ -19,7 +19,6 @@ module.exports = class extends Generator {
       'chance',
       'connect-sqlite3',
       'fs-extra',
-      'istanbul',
       'mocha',
       'nyc',
       'rimraf',

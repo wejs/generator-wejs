@@ -21,14 +21,18 @@ module.exports = class extends Generator {
     this.sourceRoot(path.resolve(__dirname, '../templates/default'));
 
     this.npmModulesToInstall = [
-      'async', 'lodash', 'we-core'
+      'we-core'
     ];
 
     this.devNpmModulesToInstall = [
-      'istanbul',
+      'chance',
+      'connect-sqlite3',
+      'fs-extra',
       'mocha',
+      'ncy',
       'rimraf',
       'sinon',
+      'sqlite3',
       'supertest',
       'we-test-tools'
     ];
@@ -75,68 +79,27 @@ module.exports = class extends Generator {
     }
 
     this.fs.copyTpl(
-      this.templatePath('README.md.ejs'),
-      this.destinationPath(this.projectFolder + 'README.md'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_package.json'),
-      this.destinationPath(this.projectFolder + 'package.json'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_install.js'),
-      this.destinationPath(this.projectFolder + 'install.js'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_local.js'),
-      this.destinationPath(this.projectFolder + 'config/local.js'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_database.js'),
-      this.destinationPath(this.projectFolder + 'config/database.js'),
-      this
+      this.templatePath('tpls'),
+      this.destinationPath(this.projectFolder),
+      this,
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
     );
   }
 
   copyfiles() {
     this.fs.copy(
-      this.templatePath('config'),
-      this.destinationPath(this.projectFolder + 'config')
+      this.templatePath('files-to-copy'),
+      this.destinationPath(this.projectFolder),
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
     );
+    // Copy all dotfiles
     this.fs.copy(
-      this.templatePath('files'),
-      this.destinationPath(this.projectFolder + 'files')
-    );
-    this.fs.copy(
-      this.templatePath('server'),
-      this.destinationPath(this.projectFolder + 'server')
-    );
-    this.fs.copy(
-      this.templatePath('test'),
-      this.destinationPath(this.projectFolder + 'test')
-    );
-    this.fs.copy(
-      this.templatePath('gitignore'),
-      this.destinationPath(this.projectFolder + '.gitignore')
-    );
-    this.fs.copy(
-      this.templatePath('jshintrc'),
-      this.destinationPath(this.projectFolder + '.jshintrc')
-    );
-    this.fs.copy(
-      this.templatePath('app.js'),
-      this.destinationPath(this.projectFolder + 'app.js')
-    );
-    this.fs.copy(
-      this.templatePath('plugin.js'),
-      this.destinationPath(this.projectFolder + 'plugin.js')
+      this.templatePath('files-to-copy/**/.*'),
+      this.destinationRoot()
     );
   }
 

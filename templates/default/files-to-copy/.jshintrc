@@ -7,7 +7,7 @@
   "devel": true,
   "eqeqeq": false,
   "eqnull": true,
-  "esversion": 6,
+  "esversion": 9,
   "evil": false,
   "immed": false,
   "indent": 2,

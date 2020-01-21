@@ -41,6 +41,7 @@ files/sqlite
 files/upload
 files/uploads
 files/tmp
+files/*.txt
 
 # private files
 files/private
@@ -50,3 +51,6 @@ files/wejsdoc
 .tmp
 config/locals.js
 config/local.js
+
+*.sqlite
+*.sql
