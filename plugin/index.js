@@ -35,12 +35,12 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('_README.md'),
+      this.templatePath('README.md.tpl'),
       this.destinationPath(this.projectFolder + 'README.md'),
       this
     );
     this.fs.copyTpl(
-      this.templatePath('_package.json'),
+      this.templatePath('package.json.tpl'),
       this.destinationPath(this.projectFolder + 'package.json'),
       this
     );
@@ -51,13 +51,8 @@ module.exports = class extends Generator {
       this
     );
 
-    this.fs.copy(
-      this.templatePath('test'),
-      this.destinationPath(this.projectFolder + 'test'),
-      this
-    );
     this.fs.copyTpl(
-      this.templatePath('_bootstrap.js'),
+      this.templatePath('test/bootstrap.js.tpl'),
       this.destinationPath(this.projectFolder + '/test/bootstrap.js'),
       this
     );
@@ -75,9 +70,9 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath('_test.js'),
+      this.templatePath('test/tests/requests/example.integration.test.js.tpl'),
       this.destinationPath(
-        this.projectFolder + 'test/features/' + this.pluginName + '/' + this.pluginName + '.test.js'
+        this.projectFolder + 'test/tests/requests/example.integration.test.js'
       ),
       this
     );

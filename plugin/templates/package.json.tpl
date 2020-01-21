@@ -4,22 +4,25 @@
   "version": "0.0.0",
   "main": "plugin.js",
   "scripts": {
-    "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js"
+    "test": "NODE_ENV=test LOG_LV=info ./node_modules/.bin/mocha test/bootstrap.js test/**/*.test.js",
+    "coverage": "NODE_ENV=test LOG_LV=info nyc mocha test/bootstrap.js test/**/*.test.js -b"
   },
   "devDependencies": {
-    "chance": "^1.0.18",
+    "chance": "^1.1.4",
     "connect-sqlite3": "^0.9.11",
-    "fs-extra": "^7.0.1",
+    "fs-extra": "^8.1.0",
     "istanbul": "0.4.5",
-    "mocha": "6.0.2",
-    "rimraf": "^2.6.3",
-    "sinon": "7.2.7",
-    "supertest": "3.4.2",
-    "we-core": "^2.1.0",
-    "we-plugin-acl": "^1.2.13",
-    "we-plugin-auth": "^2.3.1",
-    "we-plugin-user": "^2.0.1",
-    "we-test-tools": "wejs/we-test-tools#0.3.21"
+    "mocha": "7.0.0",
+    "nyc": "^15.0.0",
+    "rimraf": "^3.0.0",
+    "sinon": "8.1.0",
+    "sqlite3": "^4.1.1",
+    "supertest": "4.0.2",
+    "we-core": "^3.1.8",
+    "we-plugin-acl": "^1.2.16",
+    "we-plugin-auth": "^2.3.2",
+    "we-plugin-user": "^3.0.1",
+    "we-test-tools": "^1.0.0"
   },
   "keywords": [
     "wejs-plugin"
