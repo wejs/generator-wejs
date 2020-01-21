@@ -1,11 +1,39 @@
 const _s = require('underscore.string'),
   Generator = require('yeoman-generator'),
-  yosay = require('yosay');
+  yosay = require('yosay'),
+  path = require('path');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.argument('name', { type: String, required: false });
+    this.argument('name', {
+      type: String,
+      required: false
+    });
+
+    this.option('skip-install', {
+      desc: 'Skip npm installations'
+    });
+
+    this.npmModulesDevToInstall = [
+      'chance',
+      'connect-sqlite3',
+      'fs-extra',
+      'istanbul',
+      'mocha',
+      'nyc',
+      'rimraf',
+      'sinon',
+      'sqlite3',
+      'supertest',
+      'we-core',
+      'we-plugin-acl',
+      'we-plugin-auth',
+      'we-plugin-user',
+      'we-test-tools'
+    ];
+
+    this.cwd = process.cwd();
   }
 
   prompting() {
@@ -76,29 +104,38 @@ module.exports = class extends Generator {
       ),
       this
     );
-
+    this.fs.copy(
+      this.templatePath('.mocharc.json'),
+      this.destinationPath(this.projectFolder + '.mocharc.json'),
+      this
+    );
+    this.fs.copy(
+      this.templatePath('.nycrc.json'),
+      this.destinationPath(this.projectFolder + '.nycrc.json'),
+      this
+    );
     this.fs.copy(
       this.templatePath('plugin.js'),
       this.destinationPath(this.projectFolder + 'plugin.js'),
       this
     );
     this.fs.copy(
-      this.templatePath('gitignore'),
+      this.templatePath('.gitignore'),
       this.destinationPath(this.projectFolder + '.gitignore'),
       this
     );
     this.fs.copy(
-      this.templatePath('jshintignore'),
+      this.templatePath('.jshintignore'),
       this.destinationPath(this.projectFolder + '.jshintignore'),
       this
     );
     this.fs.copy(
-      this.templatePath('jshintrc'),
+      this.templatePath('.jshintrc'),
       this.destinationPath(this.projectFolder + '.jshintrc'),
       this
     );
     this.fs.copy(
-      this.templatePath('npmignore'),
+      this.templatePath('.npmignore'),
       this.destinationPath(this.projectFolder + '.npmignore'),
       this
     );
@@ -107,5 +144,24 @@ module.exports = class extends Generator {
       this.destinationPath(this.projectFolder + '.travis.yml'),
       this
     );
+  }
+
+  install() {
+    if (this.appConfigs.skipInstall) return;
+
+    this.log('Starting dev npm modules installation...');
+
+    process.chdir(path.resolve(this.projectFolder));
+
+    this.npmInstall(this.npmModulesDevToInstall, {
+      'save-dev': true
+    });
+
+    this.log('Done dev npm modules installation...');
+  }
+
+  end() {
+    process.chdir(path.resolve(this.cwd));
+    this.log('DONE');
   }
 };
