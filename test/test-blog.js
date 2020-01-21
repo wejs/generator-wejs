@@ -35,7 +35,7 @@ describe('wejs:blog', function () {
       'we-p-blog-test/package.json',
       'we-p-blog-test/plugin.js',
       'we-p-blog-test/files/public/favicon.png',
-      'we-p-blog-test/files/public/home-bg.jpg',
+      // 'we-p-blog-test/files/public/home-bg.jpg',
       'we-p-blog-test/files/public/logo.jpg'
     ]);
   });
