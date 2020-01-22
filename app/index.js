@@ -12,8 +12,6 @@ const _s = require('underscore.string'),
   utils = require('../utils.js'),
   _ = require('lodash');
 
-let we;
-
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -29,7 +27,7 @@ module.exports = class extends Generator {
       'connect-sqlite3',
       'fs-extra',
       'mocha',
-      'ncy',
+      'nyc',
       'rimraf',
       'sinon',
       'sqlite3',
@@ -46,11 +44,6 @@ module.exports = class extends Generator {
     this.option('not-create-first-user', {
       desc: 'Skip user creation'
     });
-
-    this.doneAll = function doneAll(err) {
-      if ( err ) we.log.error('Error:', err);
-      we.exit(process.exit);
-    };
   }
 
   prompting() {
@@ -99,7 +92,10 @@ module.exports = class extends Generator {
     // Copy all dotfiles
     this.fs.copy(
       this.templatePath('files-to-copy/**/.*'),
-      this.destinationRoot()
+      this.destinationRoot(this.projectFolder),
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
     );
   }
 
@@ -107,9 +103,6 @@ module.exports = class extends Generator {
     if (this.appConfigs.skipInstall) return;
 
     utils.setDbDialectModules(this);
-
-    // enter in folder
-    process.chdir(path.resolve(this.projectFolder) );
 
     this.npmModulesToInstall = this.npmModulesToInstall
       .concat(Object.keys(this.wejsPLuginsToInstall));
