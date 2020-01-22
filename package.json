@@ -23,10 +23,10 @@
     "we.js"
   ],
   "dependencies": {
-    "js-comments": "^0.5.4",
     "json2yaml": "^1.1.0",
     "lodash": "^4.17.11",
     "mime": "^2.4.0",
+    "swagger-inline": "^3.0.0",
     "underscore.string": "^3.3.5",
     "yeoman-generator": "^3.2.0",
     "yosay": "^2.0.2"
