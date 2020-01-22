@@ -25,6 +25,9 @@ describe('wejs', function () {
   });
 
   it('creates app project files', function() {
+    const cwd = process.cwd();
+    process.chdir('/tmp/temp-ptest');
+
     assert.file([
       'testap/server/controllers/main.js',
       'testap/config/local.js',
@@ -36,5 +39,7 @@ describe('wejs', function () {
       'testap/plugin.js',
       'testap/files/public/favicon.png'
     ]);
+
+    process.chdir(cwd);
   });
 });

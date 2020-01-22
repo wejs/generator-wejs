@@ -4,7 +4,7 @@ var helpers = require('yeoman-test');
 var os = require('os');
 
 describe('wejs:blog', function () {
-  var projectDir = path.join(os.tmpdir(), './temp-ptest');
+  const projectDir = path.join(os.tmpdir(), './temp-ptest');
   before(function (done) {
     helpers.run(path.join(__dirname, '../blog'))
     .inDir(projectDir)
@@ -25,6 +25,9 @@ describe('wejs:blog', function () {
   });
 
   it('creates blog project files', function() {
+    const cwd = process.cwd();
+    process.chdir('/tmp/temp-ptest');
+
     assert.file([
       'we-p-blog-test/server/controllers/main.js',
       'we-p-blog-test/config/local.js',
@@ -35,8 +38,10 @@ describe('wejs:blog', function () {
       'we-p-blog-test/package.json',
       'we-p-blog-test/plugin.js',
       'we-p-blog-test/files/public/favicon.png',
-      // 'we-p-blog-test/files/public/home-bg.jpg',
+      'we-p-blog-test/files/public/home-bg.jpg',
       'we-p-blog-test/files/public/logo.jpg'
     ]);
+
+    process.chdir(cwd);
   });
 });
