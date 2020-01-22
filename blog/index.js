@@ -24,6 +24,12 @@ module.exports = class extends Generator {
     ];
 
     this.devNpmModulesToInstall = [
+      'chance',
+      'connect-sqlite3',
+      'fs-extra',
+      'nyc',
+      'rimraf',
+      'sqlite3',
       'gulp',
       'mocha',
       'sinon',
@@ -56,7 +62,8 @@ module.exports = class extends Generator {
       'we-passport-oauth2-password': true,
       'we-plugin-i18n-api': true,
       'we-plugin-site-contact': true,
-      'we-plugin-slideshow': true
+      'we-plugin-slideshow': true,
+      'we-plugin-db-system-settings': true
     };
 
     this.argument('name', {
@@ -93,100 +100,54 @@ module.exports = class extends Generator {
 
   writeFiles() {
     this.fs.copyTpl(
-      this.templatePath('README.md.ejs'),
-      this.destinationPath(this.projectFolder + 'README.md'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_package.json'),
-      this.destinationPath(this.projectFolder + 'package.json'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_local.js'),
-      this.destinationPath(this.projectFolder + 'config/local.js'),
-      this
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('_database.js'),
-      this.destinationPath(this.projectFolder + 'config/database.js'),
-      this
+      this.templatePath('tpls'),
+      this.destinationPath(this.projectFolder),
+      this,
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
     );
   }
 
   copyfiles() {
     this.fs.copy(
+      this.templatePath('files-to-copy'),
+      this.destinationPath(this.projectFolder),
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
+    );
+    // Copy all dotfiles
+    this.fs.copy(
+      this.templatePath('files-to-copy/**/.*'),
+      this.destinationRoot(this.projectFolder),
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
+    );
+
+    this.fs.copy(
       path.join(__dirname, 'templates', 'config'),
-      this.destinationPath(this.projectFolder + 'config')
-    );
-
-    this.fs.copy(
-      this.templatePath('files'),
-      this.destinationPath(this.projectFolder + 'files')
-    );
-
-    this.fs.copy(
-      this.templatePath('server'),
-      this.destinationPath(this.projectFolder + 'server')
-    );
-
-    this.fs.copy(
-      this.templatePath('test'),
-      this.destinationPath(this.projectFolder + 'test')
-    );
-
-    this.fs.copy(
-      this.templatePath('app.js'),
-      this.destinationPath(this.projectFolder + 'app.js')
-    );
-
-    this.fs.copy(
-      this.templatePath('Procfile'),
-      this.destinationPath(this.projectFolder + 'Procfile')
+      this.destinationPath('config')
     );
 
     this.fs.copy(
       path.join(__dirname, 'templates', 'plugin.js'),
-      this.destinationPath(this.projectFolder + 'plugin.js')
+      this.destinationPath('plugin.js')
     );
 
-    this.fs.copyTpl(
+    return this.fs.copyTpl(
       path.join(__dirname, 'templates', 'install.js'),
-      this.destinationPath(this.projectFolder + 'install.js'),
+      this.destinationPath('install.js'),
       this
     );
 
-    this.fs.copy(
-      this.templatePath('jshintrc'),
-      this.destinationPath(this.projectFolder + '.jshintrc')
-    );
-
-    this.fs.copy(
-      this.templatePath('bowerrc'),
-      this.destinationPath(this.projectFolder + '.bowerrc')
-    );
-
-    this.fs.copy(
-      this.templatePath('gitignore'),
-      this.destinationPath(this.projectFolder + '.gitignore')
-    );
-
-    this.fs.copy(
-      this.templatePath('gulpfile.js'),
-      this.destinationPath(this.projectFolder + '.gulpfile.js')
-    );
   }
 
   install() {
     if (this.appConfigs.skipInstall) return;
 
     utils.setDbDialectModules(this);
-
-    // enter in folder
-    process.chdir(path.resolve(this.projectFolder) );
 
     this.npmModulesToInstall = this.npmModulesToInstall
       .concat(Object.keys(this.wejsPLuginsToInstall));
