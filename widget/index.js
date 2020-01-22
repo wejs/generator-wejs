@@ -1,10 +1,14 @@
 const _s = require('underscore.string'),
   Generator = require('yeoman-generator'),
+  path = require('path'),
   yosay = require('yosay');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
+
+    this.sourceRoot(path.resolve(__dirname, '../templates/widget'));
+
     this.argument('name', { type: String, required: false });
   }
 
@@ -35,17 +39,17 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('form.hbs.ejs'),
+      this.templatePath('form.hbs'),
       this.destinationPath(this.widgetDirName + '/form.hbs'),
       this
     );
     this.fs.copyTpl(
-      this.templatePath('view.hbs.ejs'),
+      this.templatePath('view.hbs'),
       this.destinationPath(this.widgetDirName + '/view.hbs'),
       this
     );
     this.fs.copyTpl(
-      this.templatePath('index.js.ejs'),
+      this.templatePath('index.js'),
       this.destinationPath(this.widgetDirName + '/index.js'),
       this
     );

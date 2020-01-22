@@ -5,7 +5,7 @@
  */
 
 module.exports = function (projectPath, Widget) {
-  var widget = new Widget('<%= Name %>', __dirname);
+  const widget = new Widget('<%= Name %>', __dirname);
 
   // // Override default widget class functions after instance
   //
@@ -21,7 +21,9 @@ module.exports = function (projectPath, Widget) {
   // }
 
   // // Widget view middleware, use for get data after render the widget html
-  // widget.viewMiddleware = function viewMiddleware(widget, req, res, next) {
+  // widget.viewMiddleware = function viewMiddleware(w, req, res, next) {
+  //
+  //  // set w.hide = true if you need to hide this widget
   //  return next();
   // }
 
