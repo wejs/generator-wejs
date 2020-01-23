@@ -14,7 +14,7 @@ describe('wejs:model', function () {
 
   it('should creates model file in server/models folder', function () {
     assert.file([
-      'server/models/test.json'
+      'server/models/test.js'
     ]);
   });
 });
