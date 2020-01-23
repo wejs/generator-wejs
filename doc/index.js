@@ -37,8 +37,6 @@ module.exports = class extends Generator {
     const done = this.async(),
       self = this;
 
-    this.log('method 1 just ran');
-
     let docB = new DocBuilder(we);
 
     docB.generate()
