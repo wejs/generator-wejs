@@ -29,6 +29,8 @@ module.exports = class extends Generator {
     .then( (props)=> {
       this.name = (this.options.name || props.name);
       this.modelName = _s.slugify(this.name);
+      this.resourceName = this.modelName;
+      this.tableName = this.modelName.replace(/-/g, '_');
       this.appConfigs = props;
     });
   }
@@ -38,8 +40,8 @@ module.exports = class extends Generator {
     this.modelAssociations = utils.getModelAssocsFromArgs(this.args);
 
     this.fs.copyTpl(
-      this.templatePath('model.json'),
-      this.destinationPath('server/models/'+this.modelName+'.json'),
+      this.templatePath('model.js'),
+      this.destinationPath('server/models/'+this.modelName+'.js'),
       this
     );
   }

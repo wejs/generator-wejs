@@ -1,6 +1,6 @@
 const path = require('path'),
   crypto = require("crypto"),
-  indent = '    ';
+  indent = '      ';
 
 const utils = {
   databaseAssociationTypes: [
@@ -96,7 +96,7 @@ utils.getModelAttrsFromArgs = function(args) {
       utils.databaseAssociationTypes.indexOf(aItens[1])>-1
     ) return; // is assoc
 
-    text += '"'+aItens[0]+'": {\n'+indent;
+    text += aItens[0]+': {\n'+indent;
     text += utils.renderModelAttribute(aItens);
 
     if ( (arr.length-1) == i) {
@@ -113,7 +113,7 @@ utils.renderModelAttribute = function (aItens) {
   let text = '';
 
   if (aItens.length > 1) {
-    text += '  "type": "'+aItens[1].toUpperCase()+'"';
+    text += '  type: \''+aItens[1].toUpperCase()+'\'';
 
     if (aItens.length <= 2) {
       text += '\n'+indent;
@@ -128,15 +128,15 @@ utils.renderModelAttribute = function (aItens) {
 
         if ( (aItens.length-1) == i) {
           // last item
-          text += '  "'+att[0]+'": '+ att[1]+'\n'+indent;
+          text += '  '+att[0]+': '+ att[1]+'\n'+indent;
         } else {
-          text += '  "'+att[0]+'": '+ att[1]+',\n'+indent;
+          text += '  '+att[0]+': '+ att[1]+',\n'+indent;
         }
 
       }
     }
   } else {
-    return '  "type": "STRING"\n'+indent;
+    return '  type: \'STRING\'\n'+indent;
   }
 
   return text;
@@ -161,7 +161,7 @@ utils.getModelAssocsFromArgs = function (args) {
   .forEach( (a, i, arr)=> {
     let aItens = a.split(':');
 
-    text += '"'+aItens[0]+'": {\n'+indent;
+    text += '\''+aItens[0]+'\': {\n'+indent;
     text += utils.renderModelAssociation(aItens);
 
     if ( (arr.length-1) == i) {
@@ -178,8 +178,8 @@ utils.renderModelAssociation = function (aItens) {
   let text = '';
 
   if (aItens.length > 1) {
-    text += '  "type": "'+aItens[1] + '",\n'+indent;
-    text += '  "model": "'+aItens[2]+'"';
+    text += '  type: \''+aItens[1] + '\',\n'+indent;
+    text += '  model: \''+aItens[2]+'\'';
 
     if (aItens.length < 4) {
     // dont have more configs

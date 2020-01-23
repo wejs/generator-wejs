@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator'),
   yosay = require('yosay'),
+  path = require('path'),
   DocBuilder = require('../lib/DocBuilder'),
   utils = require('../utils');
 
@@ -8,6 +9,8 @@ let we;
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
+
+    this.sourceRoot(path.resolve(__dirname, '../templates/doc'));
 
     this.argument('name', { type: String, required: false });
 
@@ -45,30 +48,32 @@ module.exports = class extends Generator {
       self.jsonText = r.jsonText;
 
       this.fs.copyTpl(
-        this.templatePath('swagger.yaml'),
+        this.templatePath('tpls/swagger.yaml'),
         this.destinationPath('doc/api/swagger.yaml'),
         { ymlText: self.ymlText }
       );
 
       this.fs.copyTpl(
-        this.templatePath('swagger.json'),
+        this.templatePath('tpls/swagger.json'),
         this.destinationPath('doc/api/swagger.json'),
         { jsonText: self.jsonText }
       );
-      return null;
     })
     .then(done)
     .catch(this.doneAll);
   }
 
   writing() {
-    // html doc:
     this.fs.copy(
-      this.templatePath('html'),
-      this.destinationPath('doc/api/html')
+      this.templatePath('files-to-copy'),
+      this.destinationPath('doc/api/html'),
+      {
+        interpolate: /<%=([\s\S]+?)%>/g
+      }
     );
+
     this.fs.copyTpl(
-      this.templatePath('index.html'),
+      this.templatePath('tpls/index.html'),
       this.destinationPath('doc/api/html/index.html'),
       { jsonText: this.jsonText }
     );
