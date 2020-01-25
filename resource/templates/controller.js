@@ -133,8 +133,8 @@ module.exports = {
    * @param  {Object} req express.js request
    * @param  {Object} res express.js response
    *
-   * @api [get] /<%= resourceName %>/{<%= resourceName %>Id}
-   * description: "Update one <%= resourceName %>"
+   * @api [put] /<%= resourceName %>/{<%= resourceName %>Id}
+   * description: "Update one <%= resourceName %>. By default accepts post, put and update methods"
    * responses:
    *   "200":
    *     description: "Update one by id <%= resourceName %> success"
