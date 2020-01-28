@@ -8,7 +8,7 @@ const projectPath = process.cwd(),
 let we;
 
 before(function (callback) {
-  testTools.copyLocalSQLiteConfigIfNotExitst(projectPath, callback);
+  testTools.copyLocalSQLiteConfigIfNotExists(projectPath, callback);
 });
 
 // prepare we.js core and load app features:
