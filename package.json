@@ -34,7 +34,7 @@
   "devDependencies": {
     "async": "^2.6.2",
     "jshint": "^2.10.2",
-    "mocha": "^6.0.2",
+    "mocha": "^10.2.0",
     "npm-check-updates": "^3.1.1",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
